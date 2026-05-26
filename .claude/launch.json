@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "webshop",
+      "runtimeExecutable": "C:/nodejs-x64/npm.cmd",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000,
+      "cwd": "C:/Users/olive/Desktop/06-Sidoprojekt/webshop"
+    }
+  ]
+}
