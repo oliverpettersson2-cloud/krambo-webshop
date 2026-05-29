@@ -4,8 +4,10 @@
 
 html, body { height: 100%; }
 body {
-  background: #fafaf9;
-  color: #0a0a0a;
-  font-feature-settings: "cv11", "ss01";
+  background: #faf7f2;
+  color: #1a1a1a;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Stora rubriker får serif som default */
+.display { font-family: var(--font-serif), Georgia, serif; }

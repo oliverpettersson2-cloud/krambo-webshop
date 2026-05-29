@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { getProductById } from "@/lib/products";
+import { getProductById, getFormat } from "@/lib/products";
 
 export async function POST(req: Request) {
   try {
-    const { items } = (await req.json()) as { items: { id: string; qty: number }[] };
+    const { items } = (await req.json()) as {
+      items: { productId: string; formatId: string; qty: number }[];
+    };
 
     if (!items?.length) {
       return NextResponse.json({ error: "Kundvagnen är tom" }, { status: 400 });
@@ -18,53 +20,49 @@ export async function POST(req: Request) {
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-    const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+    const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3300";
 
     const line_items = items
       .map((i) => {
-        const p = getProductById(i.id);
+        const p = getProductById(i.productId);
         if (!p || !p.inStock) return null;
+        const f = getFormat(p, i.formatId);
+        if (!f) return null;
+        const qty = f.id === "original" ? 1 : i.qty;
         return {
           price_data: {
             currency: "sek",
             product_data: {
-              name: p.name,
-              description: p.description,
+              name: `${p.name} — ${f.name}`,
+              description: `Cecilia K. (${p.year}) · ${f.description}`,
               images: [p.image],
             },
-            unit_amount: p.priceSEK * 100,
+            unit_amount: f.priceSEK * 100,
           },
-          quantity: i.qty,
+          quantity: qty,
         };
       })
       .filter((x): x is NonNullable<typeof x> => x !== null);
 
     if (!line_items.length) {
-      return NextResponse.json({ error: "Inga giltiga produkter i kundvagnen" }, { status: 400 });
+      return NextResponse.json({ error: "Inga giltiga verk i kundvagnen" }, { status: 400 });
     }
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items,
       payment_method_types: ["card", "klarna"],
-      shipping_address_collection: { allowed_countries: ["SE", "NO", "DK", "FI"] },
+      shipping_address_collection: { allowed_countries: ["SE", "NO", "DK", "FI", "DE", "GB"] },
       shipping_options: [
         {
           shipping_rate_data: {
             type: "fixed_amount",
-            fixed_amount: { amount: 4900, currency: "sek" },
-            display_name: "Standardfrakt (2-4 dagar)",
+            fixed_amount: { amount: 14900, currency: "sek" },
+            display_name: "Försäkrad leverans (5-10 dagar)",
             delivery_estimate: {
-              minimum: { unit: "business_day", value: 2 },
-              maximum: { unit: "business_day", value: 4 },
+              minimum: { unit: "business_day", value: 5 },
+              maximum: { unit: "business_day", value: 10 },
             },
-          },
-        },
-        {
-          shipping_rate_data: {
-            type: "fixed_amount",
-            fixed_amount: { amount: 0, currency: "sek" },
-            display_name: "Fri frakt (över 500 kr)",
           },
         },
       ],

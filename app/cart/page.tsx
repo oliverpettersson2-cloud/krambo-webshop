@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/components/CartContext";
-import { getProductById } from "@/lib/products";
+import { getProductById, getFormat } from "@/lib/products";
 
 export default function CartPage() {
   const { items, setQty, remove, clear } = useCart();
@@ -12,9 +12,11 @@ export default function CartPage() {
 
   const lines = items
     .map((i) => {
-      const product = getProductById(i.id);
+      const product = getProductById(i.productId);
       if (!product) return null;
-      return { ...i, product, lineTotal: product.priceSEK * i.qty };
+      const format = getFormat(product, i.formatId);
+      if (!format) return null;
+      return { ...i, product, format, lineTotal: format.priceSEK * i.qty };
     })
     .filter((x): x is NonNullable<typeof x> => x !== null);
 
@@ -45,12 +47,12 @@ export default function CartPage() {
     return (
       <div className="max-w-2xl mx-auto px-6 py-20 text-center">
         <h1 className="text-3xl font-semibold">Kundvagnen är tom</h1>
-        <p className="text-ink/60 mt-3">Hitta något fint i butiken.</p>
+        <p className="text-ink/60 mt-3">Bläddra galleriet och hitta ett verk.</p>
         <Link
           href="/"
           className="inline-block mt-8 px-6 py-3 bg-ink text-paper rounded-full font-medium hover:bg-accent transition"
         >
-          Till butiken
+          Till galleriet
         </Link>
       </div>
     );
@@ -63,31 +65,35 @@ export default function CartPage() {
       <div className="mt-8 space-y-4">
         {lines.map((l) => (
           <div
-            key={l.id}
+            key={`${l.productId}-${l.formatId}`}
             className="flex gap-4 items-center bg-white border border-ink/10 rounded-xl p-3"
           >
             <div className="relative w-20 h-20 bg-ink/5 rounded-lg overflow-hidden shrink-0">
               <Image src={l.product.image} alt={l.product.name} fill className="object-cover" sizes="80px" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-medium truncate">{l.product.name}</p>
-              <p className="text-sm text-ink/60">{l.product.priceSEK.toLocaleString("sv-SE")} kr/st</p>
+              <p className="font-medium italic truncate">{l.product.name}</p>
+              <p className="text-sm text-ink/60">{l.format.name} · {l.format.priceSEK.toLocaleString("sv-SE")} kr/st</p>
             </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setQty(l.id, l.qty - 1)}
-                className="w-8 h-8 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
-              >−</button>
-              <span className="w-6 text-center">{l.qty}</span>
-              <button
-                onClick={() => setQty(l.id, l.qty + 1)}
-                className="w-8 h-8 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
-              >+</button>
-            </div>
-            <p className="w-24 text-right font-semibold">
+            {l.format.id === "original" ? (
+              <span className="text-sm text-ink/60 px-3 py-1 bg-ink/5 rounded-full">Endast 1</span>
+            ) : (
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setQty(l.productId, l.formatId, l.qty - 1)}
+                  className="w-8 h-8 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
+                >−</button>
+                <span className="w-6 text-center">{l.qty}</span>
+                <button
+                  onClick={() => setQty(l.productId, l.formatId, l.qty + 1)}
+                  className="w-8 h-8 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
+                >+</button>
+              </div>
+            )}
+            <p className="w-28 text-right font-semibold">
               {l.lineTotal.toLocaleString("sv-SE")} kr
             </p>
-            <button onClick={() => remove(l.id)} className="text-ink/40 hover:text-accent">✕</button>
+            <button onClick={() => remove(l.productId, l.formatId)} className="text-ink/40 hover:text-accent">✕</button>
           </div>
         ))}
       </div>

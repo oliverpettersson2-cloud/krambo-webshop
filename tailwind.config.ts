@@ -5,12 +5,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0a0a0a",
-        paper: "#fafaf9",
-        accent: "#ff5a1f",
+        ink: "#1a1a1a",
+        paper: "#faf7f2",
+        accent: "#8b1a2b",       // vinröd — matchar Cecilias färgvärld
+        accentSoft: "#c64a5a",   // ljusare vinröd för hover
+        warm: "#e8dcc4",         // varmt sandfärgad för sektioner
       },
       fontFamily: {
-        sans: ["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "Cambria", "serif"],
+        display: ["var(--font-serif)", "Georgia", "serif"],
       },
     },
   },

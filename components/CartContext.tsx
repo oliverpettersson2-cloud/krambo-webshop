@@ -2,20 +2,24 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
-export type CartItem = { id: string; qty: number };
+export type CartItem = { productId: string; formatId: string; qty: number };
 
 type CartCtx = {
   items: CartItem[];
-  add: (id: string, qty?: number) => void;
-  remove: (id: string) => void;
-  setQty: (id: string, qty: number) => void;
+  add: (productId: string, formatId: string, qty?: number) => void;
+  remove: (productId: string, formatId: string) => void;
+  setQty: (productId: string, formatId: string, qty: number) => void;
   clear: () => void;
   count: number;
 };
 
 const Ctx = createContext<CartCtx | null>(null);
 
-const STORAGE_KEY = "webshop_cart_v1";
+const STORAGE_KEY = "webshop_cart_v2";
+
+function sameLine(a: CartItem, productId: string, formatId: string) {
+  return a.productId === productId && a.formatId === formatId;
+}
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
@@ -34,18 +38,21 @@ export function CartProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items, hydrated]);
 
-  const add = (id: string, qty = 1) =>
+  const add = (productId: string, formatId: string, qty = 1) =>
     setItems((prev) => {
-      const found = prev.find((i) => i.id === id);
-      if (found) return prev.map((i) => (i.id === id ? { ...i, qty: i.qty + qty } : i));
-      return [...prev, { id, qty }];
+      const found = prev.find((i) => sameLine(i, productId, formatId));
+      if (found) return prev.map((i) => (sameLine(i, productId, formatId) ? { ...i, qty: i.qty + qty } : i));
+      return [...prev, { productId, formatId, qty }];
     });
 
-  const remove = (id: string) => setItems((prev) => prev.filter((i) => i.id !== id));
+  const remove = (productId: string, formatId: string) =>
+    setItems((prev) => prev.filter((i) => !sameLine(i, productId, formatId)));
 
-  const setQty = (id: string, qty: number) =>
+  const setQty = (productId: string, formatId: string, qty: number) =>
     setItems((prev) =>
-      qty <= 0 ? prev.filter((i) => i.id !== id) : prev.map((i) => (i.id === id ? { ...i, qty } : i))
+      qty <= 0
+        ? prev.filter((i) => !sameLine(i, productId, formatId))
+        : prev.map((i) => (sameLine(i, productId, formatId) ? { ...i, qty } : i))
     );
 
   const clear = () => setItems([]);
