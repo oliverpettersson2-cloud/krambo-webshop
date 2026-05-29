@@ -46,12 +46,12 @@ export default function Home() {
             </div>
 
             <div className="mt-9 flex flex-wrap gap-3 items-center">
-              <Link
+              <a
                 href="#galleri"
                 className="px-7 py-3 bg-accent text-white rounded-full font-medium hover:bg-accentSoft transition"
               >
                 Se galleriet →
-              </Link>
+              </a>
               <span className="text-ink/55 text-sm">
                 Original · Plexiglas · Canvas · Poster
               </span>
