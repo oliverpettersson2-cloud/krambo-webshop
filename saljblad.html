@@ -4,63 +4,63 @@
 <meta charset="utf-8">
 <title>Säljblad — Webshop åt Cecilia K.</title>
 <style>
-  @page { size: A4; margin: 14mm; }
+  @page { size: A4; margin: 12mm; }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
     font-family: 'Segoe UI', -apple-system, sans-serif;
-    color: #0a0a0a;
-    background: #fafaf9;
-    font-size: 10.5pt;
-    line-height: 1.45;
+    color: #1a1a1a;
+    background: #faf7f2;
+    font-size: 10pt;
+    line-height: 1.4;
   }
-  .page { max-width: 182mm; margin: 0 auto; padding: 0; }
+  .page { max-width: 186mm; margin: 0 auto; }
+  .nobreak { page-break-inside: avoid; break-inside: avoid; }
+  .page-break { page-break-before: always; break-before: page; }
 
-  header { border-bottom: 2px solid #0a0a0a; padding-bottom: 8mm; margin-bottom: 6mm; display: flex; justify-content: space-between; align-items: flex-end; }
-  header h1 { margin: 0; font-size: 22pt; letter-spacing: -0.5px; font-weight: 700; }
-  header h1 span { color: #ff5a1f; }
-  header .sub { font-size: 9pt; color: #666; text-align: right; }
+  header { border-bottom: 2px solid #1a1a1a; padding-bottom: 5mm; margin-bottom: 5mm; display: flex; justify-content: space-between; align-items: flex-end; }
+  header h1 { margin: 0; font-size: 20pt; letter-spacing: -0.4px; font-weight: 700; }
+  header h1 span { color: #8b1a2b; }
+  header .sub { font-size: 8.5pt; color: #666; text-align: right; line-height: 1.4; }
 
-  h2 { font-size: 13pt; margin: 5mm 0 2mm; font-weight: 700; letter-spacing: -0.2px; }
-  h2 .accent { color: #ff5a1f; }
-  p { margin: 0 0 2mm; }
+  h2 { font-size: 12.5pt; margin: 5mm 0 2mm; font-weight: 700; letter-spacing: -0.2px; }
+  h2 .accent { color: #8b1a2b; }
+  h2:first-of-type { margin-top: 0; }
+  p { margin: 0 0 1.5mm; }
 
-  .lead { font-size: 11.5pt; color: #222; margin-bottom: 4mm; }
-  .lead strong { color: #ff5a1f; }
+  .lead { font-size: 10.5pt; color: #222; margin-bottom: 3mm; }
+  .lead strong { color: #8b1a2b; }
 
-  table { width: 100%; border-collapse: collapse; margin: 2mm 0 3mm; }
-  th, td { text-align: left; padding: 2mm 2.5mm; font-size: 9.5pt; border-bottom: 1px solid #e5e5e5; }
-  th { background: #0a0a0a; color: #fafaf9; font-weight: 600; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.4px; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5mm 0 2mm; }
+  th, td { text-align: left; padding: 1.5mm 2mm; font-size: 9pt; border-bottom: 1px solid #e5e5e5; }
+  th { background: #1a1a1a; color: #faf7f2; font-weight: 600; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.4px; }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-  tr.total td { border-top: 2px solid #0a0a0a; border-bottom: 2px solid #0a0a0a; font-weight: 700; background: #f5f5f4; }
+  tr.total td { border-top: 2px solid #1a1a1a; border-bottom: 2px solid #1a1a1a; font-weight: 700; background: #f5f1ec; }
 
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 3mm; }
-  .card { border: 1px solid #e5e5e5; padding: 3.5mm; border-radius: 2mm; background: #fff; }
-  .card h3 { margin: 0 0 1.5mm; font-size: 10.5pt; }
-  .card .price { font-size: 13pt; font-weight: 700; color: #ff5a1f; margin-bottom: 1.5mm; }
-  .card ul { margin: 0; padding-left: 5mm; font-size: 9.5pt; }
-  .card li { margin-bottom: 0.8mm; }
-
-  .pitch-box { background: #0a0a0a; color: #fafaf9; padding: 5mm; border-radius: 2mm; margin: 4mm 0; }
-  .pitch-box .label { color: #ff5a1f; font-size: 8.5pt; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
-  .pitch-box p { font-style: italic; margin: 1.5mm 0 0; font-size: 10.5pt; }
-
-  footer { margin-top: 5mm; padding-top: 3mm; border-top: 1px solid #ccc; display: flex; justify-content: space-between; font-size: 8.5pt; color: #666; }
-
-  .badge { display: inline-block; background: #ff5a1f; color: #fff; padding: 0.5mm 2mm; border-radius: 10mm; font-size: 8pt; font-weight: 600; }
-  .strike { text-decoration: line-through; color: #999; }
-
-  .two-col { columns: 2; column-gap: 8mm; font-size: 9.5pt; }
+  .two-col { columns: 2; column-gap: 6mm; font-size: 9pt; }
   .two-col p { break-inside: avoid; margin-bottom: 1.5mm; }
+
+  .card { border: 1px solid #1a1a1a; padding: 4mm; border-radius: 2mm; background: #fff; margin-top: 2mm; }
+  .card h3 { margin: 0 0 1.5mm; font-size: 10pt; }
+  .card .price { font-size: 22pt; font-weight: 700; color: #8b1a2b; margin: 1mm 0 2mm; line-height: 1; }
+  .card .price .small { font-size: 10pt; color: #666; font-weight: 400; }
+  .card ul { margin: 0; padding-left: 5mm; font-size: 9pt; columns: 2; column-gap: 6mm; }
+  .card li { margin-bottom: 0.6mm; break-inside: avoid; }
+
+  .badge { display: inline-block; background: #8b1a2b; color: #fff; padding: 0.5mm 2mm; border-radius: 10mm; font-size: 7.5pt; font-weight: 600; vertical-align: middle; }
+
+  footer { margin-top: 4mm; padding-top: 2.5mm; border-top: 1px solid #ccc; display: flex; justify-content: space-between; font-size: 8pt; color: #666; }
+
+  .small-note { font-size: 8.5pt; color: #666; margin-top: 1mm; }
 </style>
 </head>
 <body>
 <div class="page">
 
 <header>
-  <h1>Const Collection<span>.</span> — Webshop-förslag</h1>
+  <h1>Art by Cecilia K<span>.</span> — Webshop-förslag</h1>
   <div class="sub">
-    PathfinderAI / Oliver Pettersson<br>
+    PathfinderAI · Oliver Pettersson<br>
     Pitch — maj 2026
   </div>
 </header>
@@ -68,22 +68,31 @@
 <p class="lead">
   En sajt som <strong>säljer</strong> Cecilias verk — automatiskt, dygnet runt, med Klarna och kort.
   Samma domän <strong>constcollection.com</strong>, ny teknik under huven. Yola sägs upp.
+  <strong>499 kr/mån inkl. moms.</strong> Inget setup. Ingen provision.
 </p>
 
-<h2>Vad <span class="accent">Cecilia får</span></h2>
-<div class="two-col">
-  <p><strong>✓ Riktig webshop</strong> — 4 köpformat per verk: original, plexiglastryck, canvas, poster.</p>
-  <p><strong>✓ Klarna + kort</strong> via Stripe — färdigintegrerat, ingen månadsavgift. Per-transaktionsavgift gäller (se nedan).</p>
-  <p><strong>✓ Hela sajten flyttas</strong> — biografi, utställningshistorik, press, alla bilder.</p>
-  <p><strong>✓ Samma domän</strong> — constcollection.com pekar om. Inga länkar dör.</p>
-  <p><strong>✓ Mobiloptimerad</strong> — byggd i Next.js, snabbare och snyggare än Yola.</p>
-  <p><strong>✓ Hosting, säkerhet, backup</strong> — allt skött, hon rör inget tekniskt.</p>
-  <p><strong>✓ Support inom 24h</strong> — vardagar, via mail eller telefon.</p>
-  <p><strong>✓ Innehållsuppdateringar</strong> — nya verk, ändrade priser: jag fixar 1-2 ggr/månad.</p>
+<h2 class="nobreak">Det här <span class="accent">ingår</span> i 499 kr/mån</h2>
+<div class="two-col nobreak">
+  <p><strong>✓ Skräddarsydd webshop</strong> — galleri-känsla, 4 köpformat per verk.</p>
+  <p><strong>✓ Designen anpassas efter Cecilia</strong> — färger, typsnitt, layout enligt hennes vision.</p>
+  <p><strong>✓ Klarna + kort</strong> via Stripe — färdigintegrerat.</p>
+  <p><strong>✓ Hela sajten flyttas</strong> — biografi, utställningshistorik, press.</p>
+  <p><strong>✓ Domän constcollection.com</strong> — Cecilia behåller ägarskap.</p>
+  <p><strong>✓ Hosting + SSL + CDN</strong> via Vercel — snabbare än Yola.</p>
+  <p><strong>✓ Mobiloptimerad</strong> — byggd i Next.js, perfekt på alla skärmar.</p>
+  <p><strong>✓ Säkerhet + dagliga backups</strong> — Cecilia rör inget tekniskt.</p>
+  <p><strong>✓ Säkerhetsuppdateringar</strong> — alla beroenden hålls aktuella.</p>
+  <p><strong>✓ Innehållsuppdateringar</strong> — 1-2 ggr/mån ingår.</p>
+  <p><strong>✓ E-postsupport</strong> — svar inom 24h på vardagar.</p>
+  <p><strong>✓ Buggfixar</strong> — utan extra kostnad.</p>
+  <p><strong>✓ Månatlig sales-rapport</strong> — besökare och försäljningar.</p>
 </div>
+<p class="small-note">
+  <strong>Tillkommer separat (offert):</strong> större designändringar (~3 000 kr engångs), tilläggssidor utöver shoppen, bildtagning, marknadsföring/SEO utöver standard.
+</p>
 
-<h2>Räkningen — <span class="accent">enkelt</span></h2>
-<table>
+<h2 class="nobreak">Räkningen — <span class="accent">enkelt</span></h2>
+<table class="nobreak">
   <thead>
     <tr>
       <th>Post</th>
@@ -97,94 +106,65 @@
     <tr><td>Domän constcollection.com</td><td class="num">~150 kr</td><td class="num">Ingår</td><td class="num">-150 kr</td></tr>
     <tr><td>Faktisk butik (Klarna, kort)</td><td class="num">Saknas</td><td class="num">Ingår</td><td class="num">—</td></tr>
     <tr><td>Bildgalleri + biografi + press</td><td class="num">Ingår</td><td class="num">Ingår</td><td class="num">—</td></tr>
-    <tr class="total"><td>Totalt år 1</td><td class="num">~2 150 kr</td><td class="num">5 988 kr</td><td class="num">+3 838 kr</td></tr>
+    <tr class="total"><td>Totalt år 1 (inkl. moms)</td><td class="num">~2 150 kr</td><td class="num">5 988 kr</td><td class="num">+3 838 kr</td></tr>
   </tbody>
 </table>
+<p class="small-note"><strong>320 kr/månad mer än Yola</strong> — för att gå från "portfolio" till "butik". En cappuccino i veckan.</p>
 
-<p style="font-size: 10pt; margin-top: 2mm;">
-  <strong>Det är 320 kr/månad mer än Yola — för att gå från "portfolio" till "butik".</strong> Eller en cappuccino i veckan.
+<div class="card nobreak">
+  <h3>Pris — en post i bokföringen <span class="badge">Inget setup · Ingen provision</span></h3>
+  <div class="price">499 kr / mån <span class="small">inkl. moms</span></div>
+  <ul>
+    <li>Allt ovanstående ingår</li>
+    <li>0 kr i setup-avgift</li>
+    <li>0% provision på försäljningar</li>
+    <li>12 månaders bindning</li>
+    <li>Säg upp med 1 månads varsel efter</li>
+    <li>Cecilia behåller 100% efter Stripe-avgifter</li>
+  </ul>
+</div>
+
+<div class="page-break"></div>
+
+<h2 class="nobreak">Avgifter & <span class="accent">utbetalning</span></h2>
+<table class="nobreak">
+  <thead>
+    <tr><th>Betalmetod</th><th class="num">Avgift per transaktion</th><th class="num">Vem betalar</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Kort EU/EES (Visa, Mastercard)</td><td class="num">1,5% + 1,80 kr</td><td class="num">Dras vid utbetalning</td></tr>
+    <tr><td>Klarna Faktura</td><td class="num">3,29% + 2 kr</td><td class="num">Dras vid utbetalning</td></tr>
+    <tr><td>Klarna Delbetalning</td><td class="num">5,99% + 2 kr</td><td class="num">Dras vid utbetalning</td></tr>
+    <tr><td>Apple Pay / Google Pay</td><td class="num">Som kort (1,5%)</td><td class="num">Dras vid utbetalning</td></tr>
+  </tbody>
+</table>
+<p class="small-note">
+  Stripe-avgifterna dras automatiskt från Cecilias utbetalning. <strong>Inga månadsavgifter, inga fasta kostnader, inga uppstartsavgifter.</strong> Cecilia sätter sina egna priser på verken — sajten gör resten.
 </p>
 
-<h2>Pris</h2>
-<div class="grid">
-  <div class="card">
-    <h3>Månadsavgift <span class="badge">Inget setup</span></h3>
-    <div class="price">499 kr / mån</div>
-    <ul>
-      <li>12 månaders bindning</li>
-      <li>Allt ovanstående ingår</li>
-      <li>Säg upp efter månad 12 med 1 mån varsel</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>Provision på försäljning</h3>
-    <div class="price">10% över 500 kr</div>
-    <ul>
-      <li>Bara om sajten faktiskt säljer</li>
-      <li>Stripe drar direkt vid utbetalning</li>
-      <li>Aligned incentives — jag tjänar bara om du tjänar</li>
-    </ul>
-  </div>
-</div>
-
-<h2>Avgifter & <span class="accent">utbetalning</span></h2>
-<table>
+<h2 class="nobreak">Så går <span class="accent">flytten</span> till — 2 veckor från avtal till live</h2>
+<table class="nobreak">
   <thead>
-    <tr><th>Betalmetod</th><th class="num">Avgift</th><th class="num">5 900 kr → kvar</th><th class="num">30 000 kr → kvar</th></tr>
+    <tr><th style="width: 8%;">Steg</th><th style="width: 18%;">När</th><th style="width: 40%;">Vad händer</th><th style="width: 34%;">Vem gör det</th></tr>
   </thead>
   <tbody>
-    <tr><td>Kort EU/EES (Visa, Mastercard)</td><td class="num">1,5% + 1,80 kr</td><td class="num">5 810 kr</td><td class="num">29 548 kr</td></tr>
-    <tr><td>Klarna Faktura</td><td class="num">3,29% + 2 kr</td><td class="num">5 704 kr</td><td class="num">29 011 kr</td></tr>
-    <tr><td>Klarna Delbetalning</td><td class="num">5,99% + 2 kr</td><td class="num">5 545 kr</td><td class="num">28 201 kr</td></tr>
-    <tr><td>Apple Pay / Google Pay</td><td class="num">Som kort</td><td class="num">5 810 kr</td><td class="num">29 548 kr</td></tr>
+    <tr><td><strong>1</strong></td><td>Dag 0</td><td>Avtal signas digitalt (BankID)</td><td>Cecilia + Oliver</td></tr>
+    <tr><td><strong>2</strong></td><td>Dag 1–3</td><td>Cecilia mailar verksfoton + prislista</td><td>Cecilia</td></tr>
+    <tr><td><strong>3</strong></td><td>Dag 1–2</td><td>Stripe + Klarna aktiveras i Cecilias namn</td><td>Oliver (med bank-info)</td></tr>
+    <tr><td><strong>4</strong></td><td>Dag 3–7</td><td>Verken läggs in med rätt priser och format</td><td>Oliver</td></tr>
+    <tr><td><strong>5</strong></td><td>Dag 7–10</td><td>Cecilia granskar demo-URL, justerar färger/typsnitt/layout</td><td>Cecilia + Oliver</td></tr>
+    <tr><td><strong>6</strong></td><td>Dag 10–12</td><td>DNS pekas om från Yola till Vercel</td><td>Oliver (Cecilia bekräftar)</td></tr>
+    <tr><td><strong>7</strong></td><td>Dag 12</td><td><strong>Live på constcollection.com.</strong> Första försäljning kan ske.</td><td>—</td></tr>
+    <tr><td><strong>8</strong></td><td>Dag 14</td><td>Cecilia säger upp Yola-abonnemanget</td><td>Cecilia</td></tr>
   </tbody>
 </table>
-<p style="font-size: 9.5pt;">
-  Avgifterna dras automatiskt vid utbetalning till Cecilias konto (default 7 dagar via Stripe). <strong>Inga månadsavgifter, inga fasta kostnader, inga uppstartsavgifter.</strong> Stripe + Klarna har 0 kr i grundavgift — bara per-transaktion.
+<p class="small-note">
+  <strong>Under flytten ligger Yola-sajten kvar.</strong> Inga sekunder av nedtid. När DNS pekar om byts den gamla sajten ut mot den nya — för besökare ser det bara ut som att Cecilia uppgraderat sajten över natten.
 </p>
-
-<h2>Totala kostnaden — och <span class="accent">vs konstgalleri</span></h2>
-<table>
-  <thead>
-    <tr><th>Scenario (årsförsäljning 153 600 kr)</th><th class="num">Avgifter totalt</th><th class="num">Cecilia behåller</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Konstgalleri (typisk kommission 40%)</td><td class="num">61 440 kr (40%)</td><td class="num">92 160 kr (60%)</td></tr>
-    <tr><td>Webshop hos mig (drift + revshare + Stripe/Klarna)</td><td class="num">24 648 kr (16%)</td><td class="num">128 952 kr (84%)</td></tr>
-    <tr class="total"><td>Cecilias <strong>extra</strong> intäkt via webshop</td><td class="num"></td><td class="num">+36 792 kr/år</td></tr>
-  </tbody>
-</table>
-
-<h2>Break-even för <span class="accent">Cecilia</span></h2>
-<table>
-  <thead>
-    <tr><th>Försäljning</th><th>Cecilias vinst (efter Stripe + tryck)</th><th>Täcker årskostnaden?</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>1 original / år</td><td class="num">~29 550 kr</td><td>✓ Hela året täckt</td></tr>
-    <tr><td>1 plexiglas-tryck / månad</td><td class="num">~51 720 kr/år</td><td>✓ + ~46 000 kr i plus</td></tr>
-    <tr><td>4 canvastryck / månad</td><td class="num">~75 000 kr/år</td><td>✓ Solid plus</td></tr>
-  </tbody>
-</table>
-
-<div class="pitch-box">
-  <div class="label">Säljpitchen i en mening</div>
-  <p>"Du betalar 320 kr mer i månaden — och får en sajt som faktiskt säljer. Den första försäljningen täcker hela året."</p>
-</div>
-
-<h2>Vad som krävs av <span class="accent">Cecilia</span></h2>
-<div class="two-col">
-  <p><strong>1. Verksbilder</strong> — högupplösta foton av varje verk (kan mailas eller laddas upp).</p>
-  <p><strong>2. Pris-lista</strong> — vad ska originalen kosta? Och tryckpriserna?</p>
-  <p><strong>3. Tryckleverantör</strong> — finns någon idag? Annars rekommenderar jag svensk POD-aktör.</p>
-  <p><strong>4. Säga upp Yola</strong> — när nya sajten är live (jag hjälper med domänflytten).</p>
-</div>
 
 <footer>
-  <div>
-    <strong>Kontakt:</strong> Oliver Pettersson · oliver.pettersson2@gmail.com · PathfinderAI AB
-  </div>
-  <div>Demo-sajt: constcollection.com (under utveckling)</div>
+  <div><strong>Kontakt:</strong> Oliver Pettersson · oliver.pettersson2@gmail.com · PathfinderAI AB</div>
+  <div>Demo: art-by-cecilia.vercel.app</div>
 </footer>
 
 </div>

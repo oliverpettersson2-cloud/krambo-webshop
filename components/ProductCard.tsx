@@ -36,7 +36,7 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
       <div className="p-4">
         <p className="text-xs text-ink/50 uppercase tracking-wider">{product.year}</p>
-        <h3 className="font-medium mt-1 italic">{product.name}</h3>
+        <h3 className="font-serif text-lg mt-1 italic">{product.name}</h3>
         <p className="text-sm text-ink/60 mt-1 line-clamp-1">{product.description}</p>
         <p className="mt-3 font-semibold">Från {min.toLocaleString("sv-SE")} kr</p>
       </div>

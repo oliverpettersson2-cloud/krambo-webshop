@@ -66,7 +66,6 @@ export const products: Product[] = [
     image: img("the-birth-of-venus"),
     formats: standardFormats(34000),
     inStock: true,
-    badge: "bestseller",
   },
   {
     id: "art_002",
@@ -91,7 +90,6 @@ export const products: Product[] = [
     image: img("the-three-graces"),
     formats: standardFormats(38000),
     inStock: true,
-    badge: "unik",
   },
   {
     id: "art_004",
@@ -132,6 +130,30 @@ export const products: Product[] = [
     inStock: true,
   },
   {
+    id: "art_007",
+    slug: "phenomenal-woman",
+    name: "Phenomenal Woman",
+    year: 2023,
+    description: "Akryl på duk · 2023",
+    longDescription:
+      "Inspirerad av Maya Angelous dikt. Storformat med text och kvinnokropp i siluett. Ett av Cecilias mest reproducerade verk.",
+    image: img("phenomenal-woman"),
+    formats: standardFormats(28000, false),
+    inStock: true,
+  },
+  {
+    id: "art_008",
+    slug: "still-like-air-i-rise",
+    name: "Still Like Air I Rise",
+    year: 2023,
+    description: "Akryl på duk · 2023",
+    longDescription:
+      "Andra hälften av diptyken med Phenomenal Woman. Lättheten möter trycket — den oavbrutna stigningen, i gult och rosa.",
+    image: img("still-like-air-i-rise"),
+    formats: standardFormats(28000),
+    inStock: true,
+  },
+  {
     id: "art_009",
     slug: "multi-eve",
     name: "Multi Eve",
@@ -166,7 +188,6 @@ export const products: Product[] = [
     image: img("lilith-ii"),
     formats: standardFormats(34000, false),
     inStock: true,
-    badge: "unik",
   },
 ];
 
