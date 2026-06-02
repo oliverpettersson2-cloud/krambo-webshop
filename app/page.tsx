@@ -103,59 +103,84 @@ export default function Home() {
         </div>
       </section>
 
-      {/* EVENING GARDEN EXHIBITIONS — Cecilias signatur */}
+      {/* EVENING GARDEN EXHIBITIONS — bild höger, text vänster */}
       <section className="bg-warm py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">
-            Cecilias signatur-format
-          </p>
-          <h2 className="font-serif text-4xl md:text-5xl mt-3">
-            Evening Garden Exhibitions
-          </h2>
-          <p className="mt-6 text-ink/80 leading-relaxed text-lg max-w-2xl mx-auto">
-            Cecilia är som lyckligast när människor spontant snubblar in i hennes konst.
-            Hon föredrar att visa verken i trädgårdar på kvällen — där natten drar för
-            himlen, målningarna lyser upp, och en känsla av samvaro väcks.
-          </p>
-          <p className="mt-5 text-ink/65 leading-relaxed max-w-2xl mx-auto italic">
-            &quot;The outdoors becomes not only a backdrop but a collaborator.
-            As the night curtains the sky, the paintings light up.&quot;
-          </p>
-          <Link href="/utstallningar" className="inline-block mt-8 px-7 py-3 bg-ink text-paper rounded-full font-medium hover:bg-accent transition">
-            Se alla utställningar →
-          </Link>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+            <div>
+              <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">
+                Cecilias signatur-format
+              </p>
+              <h2 className="font-serif text-4xl md:text-5xl mt-3 leading-tight">
+                Evening Garden Exhibitions
+              </h2>
+              <p className="mt-6 text-ink/80 leading-relaxed text-lg">
+                Cecilia är som lyckligast när människor spontant snubblar in i hennes konst.
+                Hon föredrar att visa verken i trädgårdar på kvällen — där natten drar för
+                himlen, målningarna lyser upp, och en känsla av samvaro väcks.
+              </p>
+              <p className="mt-5 text-ink/65 leading-relaxed italic">
+                &quot;The outdoors becomes not only a backdrop but a collaborator.
+                As the night curtains the sky, the paintings light up.&quot;
+              </p>
+              <Link href="/utstallningar" className="inline-block mt-8 px-7 py-3 bg-ink text-paper rounded-full font-medium hover:bg-accent transition">
+                Se alla utställningar →
+              </Link>
+            </div>
+            <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-ink/5 md:order-last">
+              <Image
+                src="/art/speaking-in-colour.png"
+                alt="Speaking in Colour — Cecilia K."
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* MANIFEST — DEAR FRIENDS */}
+      {/* MANIFEST — DEAR FRIENDS, bild vänster, text höger */}
       <section className="bg-ink text-paper py-20">
-        <div className="max-w-3xl mx-auto px-6">
-          <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold text-center">
-            Cecilias ord
-          </p>
-          <h2 className="font-serif text-4xl md:text-5xl mt-4 text-center">Dear friends,</h2>
-          <div className="mt-10 space-y-6 text-paper/85 leading-relaxed text-lg font-serif italic">
-            <p>
-              &quot;In a world cluttered by noise, I believe that art is the only pure
-              thing left. It doesn&apos;t originate from the marketplace or the
-              passing trend. It is its own — a genuine expression, a raw feeling,
-              a painted truth.&quot;
-            </p>
-            <p>
-              &quot;My truth is that I paint the stories of women, my daughters in
-              particular. Knowing that they stand in a lineage of women who are
-              and were unheard, dismissed and granted the least power in both past
-              and present societies. The heavy weight of this ancestral burden
-              stops with us.&quot;
-            </p>
-            <p>
-              &quot;My paintings are a beautiful disguise of quiet defiance on their
-              behalf. As a mother artist, my goal is to amplify their voices and
-              hold an uncompromising space for their worth. The future is surely
-              female. With much love,&quot;
-            </p>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+            <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-paper/5 md:sticky md:top-24">
+              <Image
+                src="/art/madonna.png"
+                alt="Madonna — Cecilia K."
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">
+                Cecilias ord
+              </p>
+              <h2 className="font-serif text-4xl md:text-5xl mt-4">Dear friends,</h2>
+              <div className="mt-8 space-y-5 text-paper/85 leading-relaxed font-serif italic">
+                <p>
+                  &quot;In a world cluttered by noise, I believe that art is the only pure
+                  thing left. It doesn&apos;t originate from the marketplace or the
+                  passing trend. It is its own — a genuine expression, a raw feeling,
+                  a painted truth.&quot;
+                </p>
+                <p>
+                  &quot;My truth is that I paint the stories of women, my daughters in
+                  particular. Knowing that they stand in a lineage of women who are
+                  and were unheard, dismissed and granted the least power in both past
+                  and present societies. The heavy weight of this ancestral burden
+                  stops with us.&quot;
+                </p>
+                <p>
+                  &quot;My paintings are a beautiful disguise of quiet defiance on their
+                  behalf. As a mother artist, my goal is to amplify their voices.
+                  The future is surely female. With much love,&quot;
+                </p>
+              </div>
+              <p className="mt-6 text-paper/60 font-serif">— Cecilia Kristoffersson</p>
+            </div>
           </div>
-          <p className="mt-8 text-paper/60 text-center font-serif">— Cecilia Kristoffersson</p>
         </div>
       </section>
 
