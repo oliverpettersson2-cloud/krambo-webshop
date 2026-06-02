@@ -1,15 +1,57 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
-    <footer className="border-t border-ink/10 mt-16">
-      <div className="max-w-6xl mx-auto px-6 py-10 text-sm text-ink/60 flex flex-col md:flex-row justify-between gap-4">
-        <div>
-          <p className="font-medium text-ink">Art by Cecilia K.</p>
-          <p className="mt-1">Cecilia Kristoffersson · Södra Sverige</p>
+    <footer className="border-t border-ink/10 mt-12 bg-ink text-paper">
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        <div className="grid md:grid-cols-3 gap-10">
+
+          <div>
+            <p className="font-serif text-2xl">Art by Cecilia K<span className="text-accent">.</span></p>
+            <p className="text-sm text-paper/70 mt-3 leading-relaxed">
+              Storskaliga akrylmålningar om feminin kraft, förfädernas minne
+              och berättelsens återtagande.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs uppercase tracking-widest text-paper/60">Sajten</p>
+            <ul className="mt-3 space-y-2 text-sm">
+              <li><Link href="/" className="hover:text-accent">Hem</Link></li>
+              <li><Link href="/utstallningar" className="hover:text-accent">Utställningar</Link></li>
+              <li><Link href="/butik" className="hover:text-accent">Butik</Link></li>
+              <li><Link href="/#kontakt" className="hover:text-accent">Kontakt</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-xs uppercase tracking-widest text-paper/60">Kontakt</p>
+            <ul className="mt-3 space-y-2 text-sm">
+              <li>
+                <span className="block text-paper/60 text-xs">Curator — Magnus Florin</span>
+                <a href="mailto:k.magnus.florin@gmail.com" className="hover:text-accent break-all">
+                  k.magnus.florin@gmail.com
+                </a>
+              </li>
+              <li>
+                <span className="block text-paper/60 text-xs">Konstnären — Cecilia</span>
+                <a href="mailto:cecilia.kristoffersson71@gmail.com" className="hover:text-accent break-all">
+                  cecilia.kristoffersson71@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+46708734215" className="hover:text-accent">
+                  +46 708 73 42 15
+                </a>
+              </li>
+            </ul>
+          </div>
+
         </div>
-        <div className="flex flex-col md:items-end gap-1">
-          <a href="mailto:cecilia.kristoffersson71@gmail.com" className="hover:text-ink">cecilia.kristoffersson71@gmail.com</a>
-          <a href="tel:+46708734215" className="hover:text-ink">+46 708 73 42 15 (Curator: Magnus Florin)</a>
-          <p className="mt-2">© {new Date().getFullYear()} Art by Cecilia K. All rights reserved.</p>
+
+        <div className="mt-10 pt-6 border-t border-paper/15 flex flex-col md:flex-row justify-between gap-3 text-xs text-paper/50">
+          <p>© {new Date().getFullYear()} Art by Cecilia K. Alla rättigheter förbehållna.</p>
+          <p>Vi pratar svenska och engelska · We speak Swedish and English.</p>
         </div>
       </div>
     </footer>
