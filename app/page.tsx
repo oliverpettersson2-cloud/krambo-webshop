@@ -3,10 +3,12 @@ import Image from "next/image";
 import { products } from "@/lib/products";
 
 export default function Home() {
-  const previewWorks = [
-    products.find((p) => p.slug === "speaking-in-colour"),
-    products.find((p) => p.slug === "madonna"),
-    products.find((p) => p.slug === "matopos"),
+  // "Andra utvalda verk" — visar EJ de verk som redan visats sidan om text ovan
+  // (Three Graces, Speaking in Colour, Madonna, Matopos är redan med på hemsidan).
+  const otherWorks = [
+    products.find((p) => p.slug === "the-birth-of-venus"),
+    products.find((p) => p.slug === "noma"),
+    products.find((p) => p.slug === "lilith-ii"),
   ].filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
@@ -127,15 +129,21 @@ export default function Home() {
                 Se alla utställningar →
               </Link>
             </div>
-            <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-ink/5 md:order-last">
-              <Image
-                src="/art/speaking-in-colour.png"
-                alt="Speaking in Colour — Cecilia K."
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
+            <figure className="md:order-last">
+              <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-ink/5">
+                <Image
+                  src="/art/speaking-in-colour.png"
+                  alt="Speaking in Colour — Cecilia K."
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 text-sm text-ink/65 italic text-center md:text-left">
+                <span className="font-serif text-base text-ink not-italic">Speaking in Colour</span>
+                <span className="mx-2 text-ink/30">·</span>2025
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -144,15 +152,21 @@ export default function Home() {
       <section className="bg-ink text-paper py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-            <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-paper/5 md:sticky md:top-24">
-              <Image
-                src="/art/madonna.png"
-                alt="Madonna — Cecilia K."
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
+            <figure className="md:sticky md:top-24">
+              <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-paper/5">
+                <Image
+                  src="/art/madonna.png"
+                  alt="Madonna — Cecilia K."
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 text-sm text-paper/60 italic text-center md:text-left">
+                <span className="font-serif text-base text-paper not-italic">Madonna</span>
+                <span className="mx-2 text-paper/30">·</span>2025
+              </figcaption>
+            </figure>
             <div>
               <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">
                 Cecilias ord
@@ -184,39 +198,49 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PREVIEW AV VERK */}
+      {/* ANDRA UTVALDA VERK */}
       <section className="max-w-6xl mx-auto px-6 py-20">
-        <div className="flex items-end justify-between mb-8 border-b border-ink/15 pb-4">
-          <div>
-            <p className="text-accent uppercase tracking-[0.2em] text-xs font-semibold">Aktuellt</p>
-            <h2 className="font-serif text-4xl mt-2">Ett urval verk</h2>
-          </div>
-          <Link href="/galleri" className="text-sm text-accent hover:underline font-medium">
-            Se hela samlingen →
-          </Link>
+        <div className="text-center mb-12">
+          <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Mer ur samlingen</p>
+          <h2 className="font-serif text-4xl md:text-5xl mt-3">Andra utvalda verk</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {previewWorks.map((p) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+          {otherWorks.map((p) => (
             <Link
               key={p.id}
               href={`/products/${p.slug}`}
-              className="group block bg-white rounded-xl overflow-hidden border border-ink/10 hover:border-ink/30 transition"
+              className="group block"
             >
-              <div className="relative aspect-[4/5] bg-ink/5">
+              <div className="relative aspect-[4/5] bg-ink/5 rounded-xl overflow-hidden">
                 <Image
                   src={p.image}
                   alt={p.name}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <div className="p-5">
+              <div className="mt-4">
                 <p className="text-xs text-ink/50 uppercase tracking-wider">{p.year}</p>
-                <h3 className="font-serif text-xl mt-1 italic">{p.name}</h3>
+                <h3 className="font-serif text-2xl mt-1 italic group-hover:text-accent transition">{p.name}</h3>
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Snyggare köp-CTA under verken */}
+        <div className="mt-16 text-center border-t border-ink/10 pt-12">
+          <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Galleriet</p>
+          <h3 className="font-serif text-3xl md:text-4xl mt-3">Se hela samlingen — och köp direkt</h3>
+          <p className="mt-5 text-ink/70 max-w-xl mx-auto leading-relaxed">
+            Originalmålningar, plexiglastryck, canvastryck och postrar. Klarna och kort via Stripe.
+          </p>
+          <Link
+            href="/galleri"
+            className="inline-block mt-8 px-8 py-3.5 bg-ink text-paper rounded-full font-medium hover:bg-accent transition text-base"
+          >
+            Till galleriet →
+          </Link>
         </div>
       </section>
 
@@ -317,22 +341,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Köp-flöde — peka mot galleriet */}
-        <div className="mt-8 bg-ink text-paper rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5">
-          <div>
-            <p className="text-xs uppercase tracking-widest text-accent font-semibold">Vill du köpa ett verk?</p>
-            <p className="font-serif text-2xl mt-2">Köp sker direkt via galleriet</p>
-            <p className="text-paper/70 text-sm mt-2 max-w-md">
-              Original, plexiglas, canvas och poster. Trygg betalning med kort eller Klarna via Stripe.
-            </p>
-          </div>
-          <Link
-            href="/galleri"
-            className="px-7 py-3 bg-accent text-white rounded-full font-medium hover:bg-accentSoft transition shrink-0"
-          >
-            Till galleriet →
-          </Link>
-        </div>
       </section>
     </div>
   );
