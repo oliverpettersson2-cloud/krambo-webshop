@@ -262,7 +262,7 @@ export default function Home() {
           Kontakt
         </p>
         <h2 className="font-serif text-4xl md:text-5xl mt-3 text-center">
-          För gallery-bokningar, konstvisningar &amp; köp
+          För gallery-bokningar &amp; konstvisningar
         </h2>
         <p className="text-center text-ink/70 mt-5 leading-relaxed max-w-2xl mx-auto">
           Vi pratar både svenska och engelska. <strong>I would love to hear from you</strong> —
@@ -279,7 +279,7 @@ export default function Home() {
             <a href="tel:+46708734215" className="block mt-1 text-ink/70 hover:text-ink">
               +46 708 73 42 15
             </a>
-            <p className="text-xs text-ink/50 mt-3">Bokningar · utställningar · försäljning</p>
+            <p className="text-xs text-ink/50 mt-3">Bokningar · utställningar · samarbeten</p>
           </div>
 
           <div className="border border-ink/15 rounded-xl p-6 bg-white">
@@ -290,6 +290,23 @@ export default function Home() {
             </a>
             <p className="text-xs text-ink/50 mt-3">Artist talks · konstvisningar · personlig kontakt</p>
           </div>
+        </div>
+
+        {/* Köp-flöde — peka mot butiken */}
+        <div className="mt-8 bg-ink text-paper rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-accent font-semibold">Vill du köpa ett verk?</p>
+            <p className="font-serif text-2xl mt-2">Köp sker direkt via butiken</p>
+            <p className="text-paper/70 text-sm mt-2 max-w-md">
+              Original, plexiglas, canvas och poster. Trygg betalning med kort eller Klarna via Stripe.
+            </p>
+          </div>
+          <Link
+            href="/butik"
+            className="px-7 py-3 bg-accent text-white rounded-full font-medium hover:bg-accentSoft transition shrink-0"
+          >
+            Till butiken →
+          </Link>
         </div>
       </section>
     </div>
