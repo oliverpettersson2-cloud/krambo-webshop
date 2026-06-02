@@ -19,7 +19,7 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-sm">
               <li><Link href="/" className="hover:text-accent">Hem</Link></li>
               <li><Link href="/utstallningar" className="hover:text-accent">Utställningar</Link></li>
-              <li><Link href="/butik" className="hover:text-accent">Butik</Link></li>
+              <li><Link href="/galleri" className="hover:text-accent">Galleri</Link></li>
               <li><Link href="/intervju" className="hover:text-accent">Intervju</Link></li>
               <li><Link href="/#kontakt" className="hover:text-accent">Kontakt</Link></li>
             </ul>

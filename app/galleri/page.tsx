@@ -2,11 +2,11 @@ import { products, getYears } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 
 export const metadata = {
-  title: "Butik — Art by Cecilia K.",
-  description: "Köp originalmålningar, plexiglastryck, canvastryck och postrar direkt från konstnären.",
+  title: "Galleri — Art by Cecilia K.",
+  description: "Galleriet — originalmålningar, plexiglastryck, canvastryck och postrar direkt från konstnären.",
 };
 
-export default function ButikPage() {
+export default function GalleriPage() {
   const years = getYears();
 
   return (
@@ -14,9 +14,9 @@ export default function ButikPage() {
       {/* HERO */}
       <section className="bg-ink text-paper py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Butik</p>
+          <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Galleri</p>
           <h1 className="font-serif text-5xl md:text-6xl mt-3 leading-[1.05]">
-            Köp verken — <em>direkt från konstnären</em>
+            Verken — <em>direkt från konstnären</em>
           </h1>
           <p className="mt-5 max-w-xl text-paper/80 text-lg leading-relaxed">
             Original, plexiglas, canvas eller poster. Klarna och kort.

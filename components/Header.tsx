@@ -18,8 +18,8 @@ export default function Header() {
           <Link href="/utstallningar" className="px-4 py-2 border border-ink/15 rounded-md hover:bg-ink hover:text-paper hover:border-ink transition">
             Utställningar
           </Link>
-          <Link href="/butik" className="px-4 py-2 border border-ink/15 rounded-md hover:bg-ink hover:text-paper hover:border-ink transition">
-            Butik
+          <Link href="/galleri" className="px-4 py-2 border border-ink/15 rounded-md hover:bg-ink hover:text-paper hover:border-ink transition">
+            Galleri
           </Link>
         </nav>
         <Link

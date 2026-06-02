@@ -41,7 +41,7 @@ export default function Home() {
             och berättelsens återtagande.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/butik" className="px-7 py-3 bg-accent text-white rounded-full font-medium hover:bg-accentSoft transition">
+            <Link href="/galleri" className="px-7 py-3 bg-accent text-white rounded-full font-medium hover:bg-accentSoft transition">
               Se verken
             </Link>
             <Link href="/utstallningar" className="px-7 py-3 border border-paper/30 text-paper rounded-full font-medium hover:bg-paper hover:text-ink transition">
@@ -166,7 +166,7 @@ export default function Home() {
             <p className="text-accent uppercase tracking-[0.2em] text-xs font-semibold">Aktuellt</p>
             <h2 className="font-serif text-4xl mt-2">Ett urval verk</h2>
           </div>
-          <Link href="/butik" className="text-sm text-accent hover:underline font-medium">
+          <Link href="/galleri" className="text-sm text-accent hover:underline font-medium">
             Se hela samlingen →
           </Link>
         </div>
@@ -292,20 +292,20 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Köp-flöde — peka mot butiken */}
+        {/* Köp-flöde — peka mot galleriet */}
         <div className="mt-8 bg-ink text-paper rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5">
           <div>
             <p className="text-xs uppercase tracking-widest text-accent font-semibold">Vill du köpa ett verk?</p>
-            <p className="font-serif text-2xl mt-2">Köp sker direkt via butiken</p>
+            <p className="font-serif text-2xl mt-2">Köp sker direkt via galleriet</p>
             <p className="text-paper/70 text-sm mt-2 max-w-md">
               Original, plexiglas, canvas och poster. Trygg betalning med kort eller Klarna via Stripe.
             </p>
           </div>
           <Link
-            href="/butik"
+            href="/galleri"
             className="px-7 py-3 bg-accent text-white rounded-full font-medium hover:bg-accentSoft transition shrink-0"
           >
-            Till butiken →
+            Till galleriet →
           </Link>
         </div>
       </section>
