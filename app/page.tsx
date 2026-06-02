@@ -101,6 +101,15 @@ export default function Home() {
                 &quot;ethereal spirit of the paintings&quot; hon själv beskriver.
               </p>
             </div>
+
+            <div className="mt-8">
+              <Link
+                href="/intervju"
+                className="inline-flex items-center gap-2 text-accent font-medium hover:underline"
+              >
+                Läs hela intervjun med Cecilia →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -242,19 +251,6 @@ export default function Home() {
             Till galleriet →
           </Link>
         </div>
-      </section>
-
-      {/* INTERVJU-CTA */}
-      <section className="max-w-4xl mx-auto px-6 py-16 text-center">
-        <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Samtal med konstnären</p>
-        <h2 className="font-serif text-4xl mt-3">Intervju med Cecilia</h2>
-        <p className="mt-5 text-ink/75 leading-relaxed max-w-2xl mx-auto">
-          Om feminin kraft, förfädernas minne och varför hon ställer ut sin konst
-          i trädgårdar på kvällen.
-        </p>
-        <Link href="/intervju" className="inline-block mt-7 px-7 py-3 bg-ink text-paper rounded-full font-medium hover:bg-accent transition">
-          Läs hela intervjun →
-        </Link>
       </section>
 
       {/* SAMARBETEN & FORSKNING */}
