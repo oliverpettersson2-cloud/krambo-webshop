@@ -12,17 +12,14 @@ export default function Header() {
           Art by Cecilia K<span className="text-accent">.</span>
         </Link>
         <nav className="hidden md:flex items-center gap-3 text-sm flex-1 justify-center font-medium">
-          <Link
-            href="/"
-            className="px-4 py-2 border border-ink/15 rounded-md hover:bg-ink hover:text-paper hover:border-ink transition"
-          >
+          <Link href="/" className="px-4 py-2 border border-ink/15 rounded-md hover:bg-ink hover:text-paper hover:border-ink transition">
             Hem
           </Link>
-          <Link
-            href="/#galleri"
-            className="px-4 py-2 border border-ink/15 rounded-md hover:bg-ink hover:text-paper hover:border-ink transition"
-          >
-            Galleri
+          <Link href="/utstallningar" className="px-4 py-2 border border-ink/15 rounded-md hover:bg-ink hover:text-paper hover:border-ink transition">
+            Utställningar
+          </Link>
+          <Link href="/butik" className="px-4 py-2 border border-ink/15 rounded-md hover:bg-ink hover:text-paper hover:border-ink transition">
+            Butik
           </Link>
         </nav>
         <Link

@@ -1,0 +1,67 @@
+import { products, getYears } from "@/lib/products";
+import ProductCard from "@/components/ProductCard";
+
+export const metadata = {
+  title: "Butik — Art by Cecilia K.",
+  description: "Köp originalmålningar, plexiglastryck, canvastryck och postrar direkt från konstnären.",
+};
+
+export default function ButikPage() {
+  const years = getYears();
+
+  return (
+    <div>
+      {/* HERO */}
+      <section className="bg-ink text-paper py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Butik</p>
+          <h1 className="font-serif text-5xl md:text-6xl mt-3 leading-[1.05]">
+            Köp verken — <em>direkt från konstnären</em>
+          </h1>
+          <p className="mt-5 max-w-xl text-paper/80 text-lg leading-relaxed">
+            Original, plexiglas, canvas eller poster. Klarna och kort.
+            Hemma hos dig inom 5–10 dagar.
+          </p>
+        </div>
+      </section>
+
+      {/* GALLERI PER ÅR */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        {years.map((year) => {
+          const items = products.filter((p) => p.year === year);
+          return (
+            <div key={year} id={`ar-${year}`} className="mb-12 scroll-mt-20">
+              <div className="flex items-end justify-between mb-6 border-b border-ink/10 pb-3">
+                <h2 className="font-serif text-3xl">{year}</h2>
+                <p className="text-sm text-ink/50">{items.length} verk</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {items.map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      {/* TRUST */}
+      <section className="bg-ink/5 border-y border-ink/10">
+        <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+          <div>
+            <p className="font-serif text-xl">Äkthetsintyg ingår</p>
+            <p className="text-sm text-ink/60 mt-2">Signerat av Cecilia. Original numreras separat.</p>
+          </div>
+          <div>
+            <p className="font-serif text-xl">Försäkrad leverans</p>
+            <p className="text-sm text-ink/60 mt-2">Original packas av professionell konsthandlare.</p>
+          </div>
+          <div>
+            <p className="font-serif text-xl">Trygg betalning</p>
+            <p className="text-sm text-ink/60 mt-2">Kort och Klarna via Stripe — färdigintegrerat.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
