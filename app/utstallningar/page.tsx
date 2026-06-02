@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Utställningar — Art by Cecilia K.",
@@ -56,14 +57,24 @@ export default function UtstallningarPage() {
 
   return (
     <div>
-      {/* HERO */}
-      <section className="bg-ink text-paper py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-6">
+      {/* HERO med bakgrundsbild */}
+      <section className="relative bg-ink text-paper overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/art/still-like-air-i-rise.png"
+            alt=""
+            fill
+            priority
+            className="object-cover opacity-45"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
+        <div className="relative max-w-4xl mx-auto px-6 py-20 md:py-28">
           <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Cecilia i världen</p>
-          <h1 className="font-serif text-5xl md:text-6xl mt-3 leading-[1.05]">
+          <h1 className="font-serif text-5xl md:text-7xl mt-3 leading-[1.05]">
             Utställningar
           </h1>
-          <p className="mt-5 text-paper/80 max-w-2xl leading-relaxed text-lg">
+          <p className="mt-5 text-paper/85 max-w-2xl leading-relaxed text-lg">
             Från trädgården i Helsingborg till galleri-rummen i Stockholm.
             Här är vad som kommer — och vart vägen har gått.
           </p>
