@@ -195,23 +195,64 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRESS */}
+      {/* INTERVJU-CTA */}
+      <section className="max-w-4xl mx-auto px-6 py-16 text-center">
+        <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Samtal med konstnären</p>
+        <h2 className="font-serif text-4xl mt-3">Intervju med Cecilia</h2>
+        <p className="mt-5 text-ink/75 leading-relaxed max-w-2xl mx-auto">
+          Om feminin kraft, förfädernas minne och varför hon ställer ut sin konst
+          i trädgårdar på kvällen.
+        </p>
+        <Link href="/intervju" className="inline-block mt-7 px-7 py-3 bg-ink text-paper rounded-full font-medium hover:bg-accent transition">
+          Läs hela intervjun →
+        </Link>
+      </section>
+
+      {/* SAMARBETEN & FORSKNING */}
       <section className="bg-warm py-16">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Press</p>
-          <h2 className="font-serif text-3xl mt-3">Akademisk publikation</h2>
-          <p className="mt-5 text-ink/75 leading-relaxed">
-            <em>Past, Future, Present</em> — Bussey, M. &amp; Kristoffersson, C. (2024).
-            <br/>Anticipatory Aesthetics &amp; Phenomenologies of Grace. Sage Journals.
-          </p>
-          <a
-            href="https://journals.sagepub.com/doi/10.1177/19467567241249718"
-            target="_blank"
-            rel="noopener"
-            className="inline-block mt-5 text-sm text-accent hover:underline font-medium"
-          >
-            Läs publikationen →
-          </a>
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Samarbeten &amp; forskning</p>
+            <h2 className="font-serif text-4xl mt-3">När konsten möter akademin</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div className="bg-white rounded-xl p-6 border border-ink/10">
+              <p className="text-xs uppercase tracking-widest text-ink/50">Publicerat i Sage Journals · 2024</p>
+              <h3 className="font-serif text-2xl mt-2"><em>Past, Future, Present</em></h3>
+              <p className="text-sm text-ink/65 mt-2">
+                Bussey, M. &amp; Kristoffersson, C. (2024). Anticipatory Aesthetics &amp; Phenomenologies of Grace.
+              </p>
+              <p className="mt-4 text-ink/75 leading-relaxed text-sm italic">
+                &quot;Denna dikt är en reflektion över motsägelserna inneboende i framtidsarbete.
+                Det förflutna, det nutida och det framtida viker sig in i varandra — och detta
+                speglas i den medvetet stamliga bilden som Kristoffersson erbjuder.
+                I både bild och dikt ligger biografi och minne, både personligt och epokalt.&quot;
+              </p>
+              <a
+                href="https://journals.sagepub.com/doi/10.1177/19467567241249718"
+                target="_blank"
+                rel="noopener"
+                className="inline-block mt-4 text-sm text-accent hover:underline font-medium"
+              >
+                Läs hela publikationen →
+              </a>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-widest text-ink/50">Medförfattare</p>
+              <h3 className="font-serif text-2xl mt-2">Marcus Bussey, PhD</h3>
+              <p className="text-ink/70 mt-3 leading-relaxed">
+                Senior Lecturer i History and Futures vid University of the Sunshine Coast, Australien.
+                Forskningsintresse: anticipatorisk estetik och fenomenologin av grace.
+              </p>
+              <p className="mt-5 text-xs uppercase tracking-widest text-ink/50">Verket som diskuteras</p>
+              <h3 className="font-serif text-xl mt-2 italic">Past, Future, Present (2023)</h3>
+              <p className="text-sm text-ink/65 mt-2">
+                Tre tider i en kropp. Verket som figurerar i publikationen.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -224,7 +265,8 @@ export default function Home() {
           För gallery-bokningar, konstvisningar &amp; köp
         </h2>
         <p className="text-center text-ink/70 mt-5 leading-relaxed max-w-2xl mx-auto">
-          Vi pratar svenska och engelska. Hör av dig — vi svarar inom 1–2 dagar.
+          Vi pratar både svenska och engelska. <strong>I would love to hear from you</strong> —
+          hör av dig så svarar vi inom 1–2 dagar.
         </p>
 
         <div className="mt-12 grid md:grid-cols-2 gap-6">
