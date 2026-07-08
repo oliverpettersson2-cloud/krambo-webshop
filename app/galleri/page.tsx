@@ -4,7 +4,7 @@ import ProductCard from "@/components/ProductCard";
 
 export const metadata = {
   title: "Galleri — Art by Cecilia K.",
-  description: "Galleriet — originalmålningar, plexiglastryck, canvastryck och postrar direkt från konstnären.",
+  description: "Galleriet — signerade postrar, fine art prints, canvas och plexiglastryck direkt från konstnären.",
 };
 
 export default function GalleriPage() {

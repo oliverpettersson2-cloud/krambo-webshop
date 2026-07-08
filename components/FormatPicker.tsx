@@ -24,12 +24,7 @@ export default function FormatPicker({ product }: { product: Product }) {
             >
               <div className="flex items-baseline justify-between gap-3">
                 <div>
-                  <p className="font-medium">
-                    {f.name}
-                    {f.id === "original" && (
-                      <span className="ml-2 text-xs bg-ink text-paper px-2 py-0.5 rounded-full align-middle">Endast 1</span>
-                    )}
-                  </p>
+                  <p className="font-medium">{f.name}</p>
                   <p className="text-sm text-ink/60 mt-1">{f.description}</p>
                   <p className="text-xs text-ink/50 mt-1">{f.leadTime}</p>
                 </div>

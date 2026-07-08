@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>Uppföljning — det jag behöver innan jag kan bygga vidare</title>
+<style>
+  @page { size: A4; margin: 12mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, sans-serif;
+    color: #1a1a1a;
+    background: #faf7f2;
+    font-size: 10pt;
+    line-height: 1.45;
+  }
+  .page { max-width: 186mm; margin: 0 auto; }
+
+  header.doc { border-bottom: 2px solid #1a1a1a; padding-bottom: 4mm; margin-bottom: 5mm; display: flex; justify-content: space-between; align-items: flex-end; }
+  header.doc h1 { margin: 0; font-size: 20pt; letter-spacing: -0.4px; font-weight: 700; }
+  header.doc h1 span { color: #8b1a2b; }
+  header.doc .sub { font-size: 8.5pt; color: #666; text-align: right; line-height: 1.4; }
+
+  h2 { font-size: 12pt; margin: 5mm 0 2mm; font-weight: 700; letter-spacing: -0.2px; text-transform: uppercase; color: #8b1a2b; border-bottom: 1px solid #8b1a2b; padding-bottom: 1mm; }
+  h2:first-of-type { margin-top: 0; }
+  h2 .icon { color: #1a1a1a; margin-right: 3mm; }
+
+  ul { list-style: none; padding: 0; margin: 2mm 0; }
+  li {
+    padding: 1.5mm 0 1.5mm 7mm;
+    position: relative;
+    font-size: 9.5pt;
+    break-inside: avoid;
+  }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2mm;
+    width: 3.5mm;
+    height: 3.5mm;
+    border: 1.2px solid #1a1a1a;
+    border-radius: 0.5mm;
+    background: #fff;
+  }
+  li strong { color: #1a1a1a; }
+  li .hint { display: block; color: #666; font-size: 8.5pt; font-style: italic; margin-top: 0.5mm; }
+
+  .cta { background: #1a1a1a; color: #faf7f2; padding: 4mm 5mm; border-radius: 2mm; margin-top: 5mm; text-align: center; }
+  .cta strong { color: #ff8a96; }
+  .cta p { margin: 0; font-size: 10pt; }
+
+  footer.doc { margin-top: 5mm; padding-top: 2.5mm; border-top: 1px solid #ccc; font-size: 8pt; color: #666; text-align: center; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="doc">
+  <h1>Uppföljning<span>.</span> Det jag behöver från Cecilia</h1>
+  <div class="sub">
+    PathfinderAI · Oliver Pettersson<br>
+    Internt — för mig själv
+  </div>
+</header>
+
+<h2><span class="icon">🎨</span>Verken — vad ska sajten sälja</h2>
+<ul>
+  <li><strong>Vilka verk säljs?</strong> Alla 11 vi visar idag? Något som ska bort? Något nytt vi missar?</li>
+  <li><strong>Vilka format per verk?</strong> (Poster / Fine art print / Canvas 30×40 / Canvas 50×70 / Plexiglas)
+    <span class="hint">Alla 5 format på alla verk, eller bara vissa? Ex: några verk kanske inte trycks på plexi.</span>
+  </li>
+  <li><strong>Priser per format</strong> — vad tar hon för poster, print, canvas (2 storlekar), plexi?
+    <span class="hint">Behöver för att fylla i sajten och räkna på offert.</span>
+  </li>
+</ul>
+
+<h2><span class="icon">📷</span>Material — bilder & innehåll</h2>
+<ul>
+  <li><strong>Högupplösta verksfoton</strong> — ≥ 2000×2500 px, en per verk. När kan hon skicka?</li>
+  <li><strong>Porträttbild</strong> av Cecilia — för Om-sektionen. Har hon en bra, eller behöver vi ta?</li>
+  <li><strong>Utställningsfoton</strong> — från Edenfield (trädgårdskvällarna), BYWRTRS, Dunkers, Clarion Sea U?</li>
+  <li><strong>Text-godkännande</strong> — biografi och manifest på sajten OK? Vad ska ändras?</li>
+</ul>
+
+<h2><span class="icon">📅</span>Utställningar — vad är aktuellt just nu</h2>
+<ul>
+  <li><strong>Pågående eller kommande utställningar</strong> just nu? Datum + plats.</li>
+  <li><strong>Saknas det historiska utställningar</strong> i listan?</li>
+</ul>
+
+<h2><span class="icon">🏢</span>Företag — för Stripe & fakturering</h2>
+<ul>
+  <li><strong>Organisationsnummer</strong> eller F-skatt?</li>
+  <li><strong>Momsregistrerad?</strong> (påverkar hur vi fakturerar henne)</li>
+  <li><strong>Namn på tryckleverantör</strong> (om hon har en) — så jag kan hitta deras API för orderautomation</li>
+</ul>
+
+<h2><span class="icon">📧</span>Kontakt & uppföljning</h2>
+<ul>
+  <li><strong>Bästa mail-adress</strong> att skicka offert och bilder till?</li>
+  <li><strong>Nästa möte</strong> — datum? (Föreslå inom 1-2 veckor)</li>
+</ul>
+
+<footer class="doc">
+  Skriv snabbt · nicka mycket · tack för mötet · gå
+</footer>
+
+</div>
+</body>
+</html>

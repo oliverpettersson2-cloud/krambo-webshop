@@ -14,7 +14,6 @@ export default function AddToCartButton({
   const { add } = useCart();
   const [added, setAdded] = useState(false);
 
-  const isUnique = format.id === "original";
   const disabled = !product.inStock;
 
   function handleClick() {
@@ -33,8 +32,6 @@ export default function AddToCartButton({
         ? "Slutsåld"
         : added
         ? "Tillagd ✓"
-        : isUnique
-        ? `Köp originalet — ${format.priceSEK.toLocaleString("sv-SE")} kr`
         : `Lägg i kundvagn — ${format.priceSEK.toLocaleString("sv-SE")} kr`}
     </button>
   );

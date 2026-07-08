@@ -75,21 +75,17 @@ export default function CartPage() {
               <p className="font-medium italic truncate">{l.product.name}</p>
               <p className="text-sm text-ink/60">{l.format.name} · {l.format.priceSEK.toLocaleString("sv-SE")} kr/st</p>
             </div>
-            {l.format.id === "original" ? (
-              <span className="text-sm text-ink/60 px-3 py-1 bg-ink/5 rounded-full">Endast 1</span>
-            ) : (
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setQty(l.productId, l.formatId, l.qty - 1)}
-                  className="w-8 h-8 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
-                >−</button>
-                <span className="w-6 text-center">{l.qty}</span>
-                <button
-                  onClick={() => setQty(l.productId, l.formatId, l.qty + 1)}
-                  className="w-8 h-8 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
-                >+</button>
-              </div>
-            )}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setQty(l.productId, l.formatId, l.qty - 1)}
+                className="w-8 h-8 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
+              >−</button>
+              <span className="w-6 text-center">{l.qty}</span>
+              <button
+                onClick={() => setQty(l.productId, l.formatId, l.qty + 1)}
+                className="w-8 h-8 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
+              >+</button>
+            </div>
             <p className="w-28 text-right font-semibold">
               {l.lineTotal.toLocaleString("sv-SE")} kr
             </p>

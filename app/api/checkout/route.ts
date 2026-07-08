@@ -28,7 +28,7 @@ export async function POST(req: Request) {
         if (!p || !p.inStock) return null;
         const f = getFormat(p, i.formatId);
         if (!f) return null;
-        const qty = f.id === "original" ? 1 : i.qty;
+        const qty = i.qty;
         return {
           price_data: {
             currency: "sek",

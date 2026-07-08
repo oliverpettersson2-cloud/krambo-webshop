@@ -12,18 +12,18 @@
     color: #1a1a1a;
     background: #faf7f2;
     font-size: 10pt;
-    line-height: 1.4;
+    line-height: 1.45;
   }
   .page { max-width: 186mm; margin: 0 auto; }
   .nobreak { page-break-inside: avoid; break-inside: avoid; }
   .page-break { page-break-before: always; break-before: page; }
 
-  header { border-bottom: 2px solid #1a1a1a; padding-bottom: 5mm; margin-bottom: 5mm; display: flex; justify-content: space-between; align-items: flex-end; }
-  header h1 { margin: 0; font-size: 20pt; letter-spacing: -0.4px; font-weight: 700; }
-  header h1 span { color: #8b1a2b; }
-  header .sub { font-size: 8.5pt; color: #666; text-align: right; line-height: 1.4; }
+  header.doc { border-bottom: 2px solid #1a1a1a; padding-bottom: 5mm; margin-bottom: 5mm; display: flex; justify-content: space-between; align-items: flex-end; }
+  header.doc h1 { margin: 0; font-size: 20pt; letter-spacing: -0.4px; font-weight: 700; }
+  header.doc h1 span { color: #8b1a2b; }
+  header.doc .sub { font-size: 8.5pt; color: #666; text-align: right; line-height: 1.4; }
 
-  h2 { font-size: 12.5pt; margin: 5mm 0 2mm; font-weight: 700; letter-spacing: -0.2px; }
+  h2 { font-size: 13pt; margin: 6mm 0 2.5mm; font-weight: 700; letter-spacing: -0.2px; }
   h2 .accent { color: #8b1a2b; }
   h2:first-of-type { margin-top: 0; }
   p { margin: 0 0 1.5mm; }
@@ -32,7 +32,7 @@
   .lead strong { color: #8b1a2b; }
 
   table { width: 100%; border-collapse: collapse; margin: 1.5mm 0 2mm; }
-  th, td { text-align: left; padding: 1.5mm 2mm; font-size: 9pt; border-bottom: 1px solid #e5e5e5; }
+  th, td { text-align: left; padding: 1.6mm 2mm; font-size: 9pt; border-bottom: 1px solid #e5e5e5; vertical-align: top; }
   th { background: #1a1a1a; color: #faf7f2; font-weight: 600; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.4px; }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   tr.total td { border-top: 2px solid #1a1a1a; border-bottom: 2px solid #1a1a1a; font-weight: 700; background: #f5f1ec; }
@@ -49,15 +49,16 @@
 
   .badge { display: inline-block; background: #8b1a2b; color: #fff; padding: 0.5mm 2mm; border-radius: 10mm; font-size: 7.5pt; font-weight: 600; vertical-align: middle; }
 
-  footer { margin-top: 4mm; padding-top: 2.5mm; border-top: 1px solid #ccc; display: flex; justify-content: space-between; font-size: 8pt; color: #666; }
+  footer.doc { margin-top: 4mm; padding-top: 2.5mm; border-top: 1px solid #ccc; display: flex; justify-content: space-between; font-size: 8pt; color: #666; }
 
-  .small-note { font-size: 8.5pt; color: #666; margin-top: 1mm; }
+  .small-note { font-size: 8.5pt; color: #666; margin-top: 1.5mm; }
+  .small-note strong { color: #333; }
 </style>
 </head>
 <body>
 <div class="page">
 
-<header>
+<header class="doc">
   <h1>Art by Cecilia K<span>.</span> — Webshop-förslag</h1>
   <div class="sub">
     PathfinderAI · Oliver Pettersson<br>
@@ -67,28 +68,29 @@
 
 <p class="lead">
   En sajt som <strong>säljer</strong> Cecilias verk — automatiskt, dygnet runt, med Klarna och kort.
-  Samma domän <strong>constcollection.com</strong>, ny teknik under huven. Yola sägs upp.
-  <strong>499 kr/mån inkl. moms.</strong> Inget setup. Ingen provision.
+  Samma domän <strong>constcollection.com</strong>, ny teknik under huven. Canva sägs upp.
+  <strong>549 kr/mån inkl. moms.</strong> Inget setup. Ingen provision.
 </p>
 
-<h2 class="nobreak">Det här <span class="accent">ingår</span> i 499 kr/mån</h2>
+<h2 class="nobreak">Det här <span class="accent">ingår</span> i 549 kr/mån</h2>
 <div class="two-col nobreak">
   <p><strong>✓ Skräddarsydd webshop</strong> — galleri-känsla, 4 köpformat per verk.</p>
-  <p><strong>✓ Designen anpassas efter Cecilia</strong> — färger, typsnitt, layout enligt hennes vision.</p>
-  <p><strong>✓ Klarna + kort</strong> via Stripe — färdigintegrerat.</p>
+  <p><strong>✓ Designen anpassas efter Cecilia</strong> — färger, typsnitt, layout.</p>
+  <p><strong>✓ Klarna + kort + Swish</strong> via Stripe — färdigintegrerat.</p>
+  <p><strong>✓ Proffs-mail</strong> — cecilia@constcollection.com m.fl., forwardas till hennes Gmail.</p>
   <p><strong>✓ Hela sajten flyttas</strong> — biografi, utställningshistorik, press.</p>
-  <p><strong>✓ Domän constcollection.com</strong> — Cecilia behåller ägarskap.</p>
-  <p><strong>✓ Hosting + SSL + CDN</strong> via Vercel — snabbare än Yola.</p>
-  <p><strong>✓ Mobiloptimerad</strong> — byggd i Next.js, perfekt på alla skärmar.</p>
+  <p><strong>✓ Domän constcollection.com</strong> — flyttas till Cecilias eget ägarskap (mer nedan).</p>
+  <p><strong>✓ Hosting + SSL + CDN</strong> via Vercel — snabbare än Canva.</p>
+  <p><strong>✓ Mobiloptimerad</strong> — byggd i Next.js, fungerar perfekt på alla skärmar.</p>
   <p><strong>✓ Säkerhet + dagliga backups</strong> — Cecilia rör inget tekniskt.</p>
   <p><strong>✓ Säkerhetsuppdateringar</strong> — alla beroenden hålls aktuella.</p>
-  <p><strong>✓ Innehållsuppdateringar</strong> — 1-2 ggr/mån ingår.</p>
+  <p><strong>✓ Innehållsuppdateringar</strong> — var 3:e månad ingår (nya verk, priser, texter).</p>
   <p><strong>✓ E-postsupport</strong> — svar inom 24h på vardagar.</p>
   <p><strong>✓ Buggfixar</strong> — utan extra kostnad.</p>
   <p><strong>✓ Månatlig sales-rapport</strong> — besökare och försäljningar.</p>
 </div>
 <p class="small-note">
-  <strong>Tillkommer separat (offert):</strong> större designändringar (~3 000 kr engångs), tilläggssidor utöver shoppen, bildtagning, marknadsföring/SEO utöver standard.
+  <strong>Tillkommer separat (offert vid behov):</strong> större designändringar, tilläggssidor utöver shoppen, bildtagning, marknadsföring/SEO utöver standard.
 </p>
 
 <h2 class="nobreak">Räkningen — <span class="accent">enkelt</span></h2>
@@ -96,37 +98,63 @@
   <thead>
     <tr>
       <th>Post</th>
-      <th class="num">Idag (Yola)</th>
+      <th class="num">Idag (Canva)*</th>
       <th class="num">Med mig</th>
       <th class="num">Skillnad</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td>Plattform / drift</td><td class="num">~2 000 kr/år</td><td class="num">5 988 kr/år</td><td class="num">+3 988 kr/år</td></tr>
-    <tr><td>Domän constcollection.com</td><td class="num">~150 kr</td><td class="num">Ingår</td><td class="num">-150 kr</td></tr>
+    <tr><td>Plattform / drift</td><td class="num">~2 000 kr/år</td><td class="num">6 588 kr/år</td><td class="num">+4 588 kr/år</td></tr>
+    <tr><td>Domän constcollection.com</td><td class="num">~150 kr/år</td><td class="num">Ingår</td><td class="num">-150 kr</td></tr>
     <tr><td>Faktisk butik (Klarna, kort)</td><td class="num">Saknas</td><td class="num">Ingår</td><td class="num">—</td></tr>
     <tr><td>Bildgalleri + biografi + press</td><td class="num">Ingår</td><td class="num">Ingår</td><td class="num">—</td></tr>
-    <tr class="total"><td>Totalt år 1 (inkl. moms)</td><td class="num">~2 150 kr</td><td class="num">5 988 kr</td><td class="num">+3 838 kr</td></tr>
+    <tr class="total"><td>Totalt år 1 (inkl. moms)</td><td class="num">~2 150 kr</td><td class="num">6 588 kr</td><td class="num">+4 438 kr</td></tr>
   </tbody>
 </table>
-<p class="small-note"><strong>320 kr/månad mer än Yola</strong> — för att gå från "portfolio" till "butik". En cappuccino i veckan.</p>
+<p class="small-note">
+  <strong>+370 kr/månad mer än Canva</strong> — för att gå från "portfolio" till "butik" med proffs-mail på köpet.
+  <br>*Canva-kostnaden är uppskattad utifrån Canvas prislista. Cecilia bekräftar exakt belopp.
+</p>
 
 <div class="card nobreak">
   <h3>Pris — en post i bokföringen <span class="badge">Inget setup · Ingen provision</span></h3>
-  <div class="price">499 kr / mån <span class="small">inkl. moms</span></div>
+  <div class="price">549 kr / mån <span class="small">inkl. moms · år 1 · mail ingår</span></div>
   <ul>
     <li>Allt ovanstående ingår</li>
     <li>0 kr i setup-avgift</li>
     <li>0% provision på försäljningar</li>
     <li>12 månaders bindning</li>
-    <li>Säg upp <strong>3 månader</strong> innan avtalets slut</li>
-    <li>Annars förlängs automatiskt 12 mån med <strong>+5%</strong> prisökning</li>
+    <li>Säg upp senast <strong>3 mån</strong> innan avtalets slut</li>
+    <li>Annars förlängs 12 mån <strong>+5%</strong> (år 2: 576 kr/mån, år 3: 605 kr/mån)</li>
+    <li>Över <strong>25 verk</strong> i galleriet: +50 kr/mån per 25 verk (mer att administrera)</li>
+    <li>Start: <strong>1 augusti 2026</strong></li>
   </ul>
 </div>
 
 <div class="page-break"></div>
 
-<h2 class="nobreak">Avgifter & <span class="accent">utbetalning</span></h2>
+<h2 class="nobreak">Domänen — <span class="accent">Cecilias för all framtid</span></h2>
+<p>
+  Idag äger Canva domänen <strong>constcollection.com</strong> tekniskt sett. Om Canva höjer priset, byter ägare eller stänger
+  — kan domänen försvinna. Det är hennes brand. Hon ska äga den själv.
+</p>
+<table class="nobreak">
+  <thead>
+    <tr><th style="width: 60%;">Vad jag gör</th><th class="num">Kostnad</th><th class="num">Tid</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Begär transfer-kod från Canva (Cecilia mailar in den till mig)</td><td class="num">0 kr</td><td class="num">1-5 dagar</td></tr>
+    <tr><td>Flyttar registreringen till <strong>Cloudflare Registrar</strong> (ingår i mitt arbete)</td><td class="num">~95 kr engångs (ingår)</td><td class="num">5-7 dagar</td></tr>
+    <tr><td>Pekar DNS från Canva till Vercel — sajten går live på samma URL</td><td class="num">0 kr</td><td class="num">några timmar</td></tr>
+    <tr><td>Löpande domän + proffs-mail (Cloudflare debiterar mig — ingår i 549 kr/mån)</td><td class="num">~95 kr/år (ingår)</td><td class="num">årligen</td></tr>
+    <tr class="total"><td>Cecilias kostnad för domänen</td><td class="num">0 kr</td><td class="num">—</td></tr>
+  </tbody>
+</table>
+<p class="small-note">
+  Efter transfer äger <strong>Cecilia själv</strong> domänen via Cloudflare. Om hon någon gång lämnar mig som leverantör följer domänen med henne — ingen inlåsning. Canva sägs upp efter att domänen är säkrad.
+</p>
+
+<h2 class="nobreak">Avgifter & <span class="accent">utbetalning</span> (Stripe)</h2>
 <table class="nobreak">
   <thead>
     <tr><th>Betalmetod</th><th class="num">Avgift per transaktion</th><th class="num">Vem betalar</th></tr>
@@ -139,31 +167,47 @@
   </tbody>
 </table>
 <p class="small-note">
-  Stripe-avgifterna dras automatiskt från Cecilias utbetalning. <strong>Inga månadsavgifter, inga fasta kostnader, inga uppstartsavgifter.</strong> Cecilia sätter sina egna priser på verken — sajten gör resten.
+  Stripe-avgifterna dras automatiskt från Cecilias utbetalning. <strong>Inga månadsavgifter, inga fasta kostnader, inga uppstartsavgifter</strong> för Stripe. Cecilia sätter sina egna priser på verken — sajten gör resten.
 </p>
 
-<h2 class="nobreak">Så går <span class="accent">flytten</span> till — 2 veckor från avtal till live</h2>
+<h2 class="nobreak">Vad <span class="accent">Cecilia</span> behöver göra</h2>
+<div class="two-col nobreak">
+  <p><strong>1. Signera avtalet</strong> — digitalt med BankID. Tar 2 minuter.</p>
+  <p><strong>2. Begära transfer-kod från Canva</strong> + maila den till mig. (15 min på Canvas kontosida.)</p>
+  <p><strong>3. Maila verksfoton</strong> — högupplöst, ≥ 2000×2500 px, en per verk.</p>
+  <p><strong>4. Skicka slutgiltig prislista</strong> — originalpriser + tryckpriser (plexi, canvas, poster).</p>
+  <p><strong>5. Skapa Stripe-konto</strong> i sitt eget namn (BankID + utbetalningskonto). Vi gör det tillsammans via skärmdelning, tar 20-30 min.</p>
+  <p><strong>6. Tryckleverantör</strong> — har Cecilia en idag? Annars rekommenderar jag svensk POD-aktör.</p>
+  <p><strong>7. Granska demo-sajten</strong> — texter, biografi, manifest, kontaktinfo.</p>
+  <p><strong>8. Designval</strong> — färger, typsnitt, layout enligt din vision.</p>
+  <p><strong>9. Säga upp Canva</strong> — när nya sajten är live (efter att domänen är säkrad).</p>
+</div>
+<p class="small-note">
+  <strong>Du behöver inte göra något tekniskt.</strong> Bara skicka material och godkänna granskningen. Jag sköter Stripe-konto, Klarna-aktivering, domän-transfer, DNS-flytt, hosting och allt annat.
+</p>
+
+<h2 class="nobreak">Tidslinje — <span class="accent">2-3 veckor</span> från avtal till live</h2>
 <table class="nobreak">
   <thead>
     <tr><th style="width: 8%;">Steg</th><th style="width: 18%;">När</th><th style="width: 40%;">Vad händer</th><th style="width: 34%;">Vem gör det</th></tr>
   </thead>
   <tbody>
     <tr><td><strong>1</strong></td><td>Dag 0</td><td>Avtal signas digitalt (BankID)</td><td>Cecilia + Oliver</td></tr>
-    <tr><td><strong>2</strong></td><td>Dag 1–3</td><td>Cecilia mailar verksfoton + prislista</td><td>Cecilia</td></tr>
-    <tr><td><strong>3</strong></td><td>Dag 1–2</td><td>Stripe + Klarna aktiveras i Cecilias namn</td><td>Oliver (med bank-info)</td></tr>
-    <tr><td><strong>4</strong></td><td>Dag 3–7</td><td>Verken läggs in med rätt priser och format</td><td>Oliver</td></tr>
-    <tr><td><strong>5</strong></td><td>Dag 7–10</td><td>Cecilia granskar demo-URL, justerar färger/typsnitt/layout</td><td>Cecilia + Oliver</td></tr>
-    <tr><td><strong>6</strong></td><td>Dag 10–12</td><td>DNS pekas om från Yola till Vercel</td><td>Oliver (Cecilia bekräftar)</td></tr>
-    <tr><td><strong>7</strong></td><td>Dag 12</td><td><strong>Live på constcollection.com.</strong> Första försäljning kan ske.</td><td>—</td></tr>
-    <tr><td><strong>8</strong></td><td>Dag 14</td><td>Cecilia säger upp Yola-abonnemanget</td><td>Cecilia</td></tr>
+    <tr><td><strong>2</strong></td><td>Dag 1</td><td>Cecilia begär transfer-kod från Canva, mailar verksfoton + prislista</td><td>Cecilia</td></tr>
+    <tr><td><strong>3</strong></td><td>Dag 2-3</td><td>Cecilia skapar Stripe-konto + aktiverar Klarna i sitt namn</td><td>Cecilia (Oliver via skärmdelning)</td></tr>
+    <tr><td><strong>4</strong></td><td>Dag 3-7</td><td>Verken läggs in, designen anpassas, transfer initieras hos Cloudflare</td><td>Oliver</td></tr>
+    <tr><td><strong>5</strong></td><td>Dag 7-10</td><td>Cecilia granskar demo-URL, justerar färger/typsnitt/layout</td><td>Cecilia + Oliver</td></tr>
+    <tr><td><strong>6</strong></td><td>Dag 10-14</td><td>Domän-transfer slutförs hos Cloudflare. DNS pekas mot Vercel</td><td>Oliver</td></tr>
+    <tr><td><strong>7</strong></td><td>Dag 14</td><td><strong>Sajten är live på constcollection.com.</strong> Första försäljning kan ske.</td><td>—</td></tr>
+    <tr><td><strong>8</strong></td><td>Dag 14-21</td><td>Cecilia säger upp Canva-abonnemanget (domänen är redan säkrad)</td><td>Cecilia</td></tr>
   </tbody>
 </table>
 <p class="small-note">
-  <strong>Under flytten ligger Yola-sajten kvar.</strong> Inga sekunder av nedtid. När DNS pekar om byts den gamla sajten ut mot den nya — för besökare ser det bara ut som att Cecilia uppgraderat sajten över natten.
+  <strong>Under flytten ligger Canva-sajten kvar.</strong> Inga sekunder av nedtid. När DNS pekar om byts den gamla sajten ut mot den nya — för besökare ser det bara ut som att Cecilia uppgraderat sajten över natten.
 </p>
 
-<footer>
-  <div><strong>Kontakt:</strong> Oliver Pettersson · oliver.pettersson2@gmail.com · PathfinderAI AB</div>
+<footer class="doc">
+  <div><strong>Kontakt:</strong> Oliver Pettersson · oliver@pathfinderai.se · PathfinderAI</div>
   <div>Demo: art-by-cecilia.vercel.app</div>
 </footer>
 

@@ -21,6 +21,8 @@ const TODAY = "2026-05";
 
 const exhibitionsRaw: Omit<Exhibition, "status">[] = [
   // Lägg till nya kommande/pågående här när Cecilia bokar
+  { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "7-8 augusti", city: "Helsingborg", note: "Två helger i augusti — kvällsvisning i trädgården där målningarna lyser upp när natten faller" },
+  { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "14-15 augusti", city: "Helsingborg", note: "Andra helgen — samma format, ny publik" },
   { start: "2025-11", end: "2026-04", title: "BYWRTRS Gallery", place: "Odengatan 15", city: "Stockholm", note: "Soloutställning" },
   { start: "2026-02", end: "2026-03", title: "I samarbete med HBGCITY", place: "Södergatan 11 & Södergallerian", city: "Helsingborg" },
   { start: "2025-11", title: "\"Here Together\" — gruppvisning", place: "Dunkers Kulturhus", city: "Helsingborg", note: "I samarbete med Kulturrumet" },

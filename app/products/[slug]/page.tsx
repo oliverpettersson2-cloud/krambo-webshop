@@ -32,7 +32,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <ul className="mt-10 space-y-2 text-sm text-ink/60 border-t border-ink/10 pt-6">
             <li>✓ Äkthetsintyg signerat av konstnären</li>
             <li>✓ Försäkrad leverans inom Sverige</li>
-            <li>✓ 14 dagars ångerrätt (gäller ej originalmålningar)</li>
+            <li>✓ 14 dagars ångerrätt enligt distansköplagen</li>
             <li>✓ Betala med kort eller Klarna</li>
           </ul>
         </div>
