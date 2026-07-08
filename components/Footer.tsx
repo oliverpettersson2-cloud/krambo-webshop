@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useLang } from "./LanguageProvider";
 
 export default function Footer() {
+  const { t } = useLang();
   return (
     <footer className="border-t border-ink/10 mt-12 bg-ink text-paper">
       <div className="max-w-6xl mx-auto px-6 py-12">
@@ -8,34 +12,31 @@ export default function Footer() {
 
           <div>
             <p className="font-serif text-2xl">Art by Cecilia K<span className="text-accent">.</span></p>
-            <p className="text-sm text-paper/70 mt-3 leading-relaxed">
-              Storskaliga akrylmålningar om feminin kraft, förfädernas minne
-              och berättelsens återtagande.
-            </p>
+            <p className="text-sm text-paper/70 mt-3 leading-relaxed">{t("footer.tagline")}</p>
           </div>
 
           <div>
-            <p className="text-xs uppercase tracking-widest text-paper/60">Sajten</p>
+            <p className="text-xs uppercase tracking-widest text-paper/60">{t("footer.site")}</p>
             <ul className="mt-3 space-y-2 text-sm">
-              <li><Link href="/" className="hover:text-accent">Hem</Link></li>
-              <li><Link href="/utstallningar" className="hover:text-accent">Utställningar</Link></li>
-              <li><Link href="/galleri" className="hover:text-accent">Galleri</Link></li>
-              <li><Link href="/intervju" className="hover:text-accent">Intervju</Link></li>
-              <li><Link href="/#kontakt" className="hover:text-accent">Kontakt</Link></li>
+              <li><Link href="/" className="hover:text-accent">{t("nav.home")}</Link></li>
+              <li><Link href="/utstallningar" className="hover:text-accent">{t("nav.exhibitions")}</Link></li>
+              <li><Link href="/galleri" className="hover:text-accent">{t("nav.gallery")}</Link></li>
+              <li><Link href="/intervju" className="hover:text-accent">{t("nav.interview")}</Link></li>
+              <li><Link href="/#kontakt" className="hover:text-accent">{t("footer.contact")}</Link></li>
             </ul>
           </div>
 
           <div>
-            <p className="text-xs uppercase tracking-widest text-paper/60">Kontakt</p>
+            <p className="text-xs uppercase tracking-widest text-paper/60">{t("footer.contact")}</p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <span className="block text-paper/60 text-xs">Curator — Magnus Florin</span>
+                <span className="block text-paper/60 text-xs">{t("footer.curator")}</span>
                 <a href="mailto:k.magnus.florin@gmail.com" className="hover:text-accent break-all">
                   k.magnus.florin@gmail.com
                 </a>
               </li>
               <li>
-                <span className="block text-paper/60 text-xs">Konstnären — Cecilia</span>
+                <span className="block text-paper/60 text-xs">{t("footer.artist")}</span>
                 <a href="mailto:cecilia@constcollection.com" className="hover:text-accent break-all">
                   cecilia@constcollection.com
                 </a>
@@ -51,8 +52,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-paper/15 flex flex-col md:flex-row justify-between gap-3 text-xs text-paper/50">
-          <p>© {new Date().getFullYear()} Art by Cecilia K. Alla rättigheter förbehållna.</p>
-          <p>Vi pratar svenska och engelska · We speak Swedish and English.</p>
+          <p>© {new Date().getFullYear()} Art by Cecilia K. {t("footer.rights")}</p>
+          <p>{t("footer.lang")}</p>
         </div>
       </div>
     </footer>
