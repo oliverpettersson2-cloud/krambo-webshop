@@ -20,9 +20,9 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Art by Cecilia K. — Originalmålningar och tryck",
+  title: "Art by Cecilia K. — Konsttryck & plexiglas",
   description:
-    "Cecilia Kristoffersson — samtida konstnär. Originalmålningar, plexiglastryck, canvastryck och postrar.",
+    "Cecilia Kristoffersson — samtida konstnär. Fine art print, canvas, plexiglastryck och postrar direkt från konstnären.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
