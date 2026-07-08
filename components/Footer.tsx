@@ -36,8 +36,8 @@ export default function Footer() {
               </li>
               <li>
                 <span className="block text-paper/60 text-xs">Konstnären — Cecilia</span>
-                <a href="mailto:cecilia.kristoffersson71@gmail.com" className="hover:text-accent break-all">
-                  cecilia.kristoffersson71@gmail.com
+                <a href="mailto:cecilia@constcollection.com" className="hover:text-accent break-all">
+                  cecilia@constcollection.com
                 </a>
               </li>
               <li>

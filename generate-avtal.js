@@ -113,8 +113,9 @@ const loi = new Document({
       bullet("Betalmetoder: kort, Klarna och Swish via Stripe."),
       bullet("Domänen constcollection.com flyttas till Cecilias eget ägarskap via Cloudflare (ingår)."),
 
-      h2("Vad som ska göras innan avtalstecknandet (senast 20 juli)"),
-      bullet("Cecilia skickar högupplösta verksfoton (≥ 2000×2500 px)."),
+      h2("Vad som ska göras innan avtalstecknandet"),
+      p("Följande ska vara klart senast 20 juli 2026, så vi hinner signera det fullständiga avtalet 25 juli 2026 och gå live 1 augusti 2026:"),
+      bullet("Cecilia laddar upp högupplösta verksfoton (≥ 2000×2500 px) i en Google Drive-mapp som Oliver delar med henne. Bilder kan uppdateras löpande."),
       bullet("Cecilia skickar slutgiltig prislista per format (poster, fine art print, canvas 30×40, canvas 50×70, plexiglas)."),
       bullet("Cecilia begär transfer-kod för domänen constcollection.com från Canva och vidarebefordrar den till Oliver."),
       bullet("Cecilia skapar Stripe-konto i eget namn (Oliver assisterar via skärmdelning)."),
@@ -194,9 +195,10 @@ const avtal = new Document({
       p("Uppsägning sker skriftligen till oliver@pathfinderai.se."),
 
       h2("§6 Beställarens ansvar"),
-      bullet("Skickar högupplösta verksfoton och slutgiltig prislista före driftstart."),
+      bullet("Laddar upp högupplösta verksfoton i den Google Drive-mapp Leverantören delar. Bilder kan uppdateras löpande. Slutgiltig prislista lämnas före driftstart."),
       bullet("Skapar och underhåller eget Stripe-konto för utbetalningar."),
       bullet("Ansvarar för avtal med tryckleverantör för fysiska verk."),
+  bullet("Ansvarar själv för samtliga verksfoton, porträttbilder och övrigt bildmaterial. Leverantören utför inte fotografering."),
       bullet("Ansvarar för korrekta produkt-, moms- och företagsuppgifter."),
       bullet("Följer köp- och konsumentlagstiftning för e-handel."),
 

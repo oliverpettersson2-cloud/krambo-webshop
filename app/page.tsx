@@ -242,7 +242,7 @@ export default function Home() {
           <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">Galleriet</p>
           <h3 className="font-serif text-3xl md:text-4xl mt-3">Se hela samlingen — och köp direkt</h3>
           <p className="mt-5 text-ink/70 max-w-xl mx-auto leading-relaxed">
-            Originalmålningar, plexiglastryck, canvastryck och postrar. Klarna och kort via Stripe.
+            Poster, fine art print, canvas och plexiglastryck. Klarna, kort och Swish via Stripe.
           </p>
           <Link
             href="/galleri"
@@ -330,8 +330,8 @@ export default function Home() {
           <div className="border border-ink/15 rounded-xl p-6 bg-white">
             <p className="text-xs uppercase tracking-widest text-ink/50">Konstnären</p>
             <p className="font-serif text-2xl mt-2">Cecilia Kristoffersson</p>
-            <a href="mailto:cecilia.kristoffersson71@gmail.com" className="block mt-4 text-accent hover:underline break-all">
-              cecilia.kristoffersson71@gmail.com
+            <a href="mailto:cecilia@constcollection.com" className="block mt-4 text-accent hover:underline break-all">
+              cecilia@constcollection.com
             </a>
             <p className="text-xs text-ink/50 mt-3">Artist talks · konstvisningar · personlig kontakt</p>
           </div>

@@ -25,30 +25,28 @@
   h2:first-of-type { margin-top: 0; }
   h2 .icon { color: #1a1a1a; margin-right: 3mm; }
 
-  ul { list-style: none; padding: 0; margin: 2mm 0; }
-  li {
-    padding: 1.5mm 0 1.5mm 7mm;
-    position: relative;
-    font-size: 9.5pt;
-    break-inside: avoid;
-  }
-  li::before {
+  .item { margin: 2mm 0 4mm; break-inside: avoid; padding-left: 7mm; position: relative; }
+  .item::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 2mm;
+    top: 1.5mm;
     width: 3.5mm;
     height: 3.5mm;
     border: 1.2px solid #1a1a1a;
     border-radius: 0.5mm;
     background: #fff;
   }
-  li strong { color: #1a1a1a; }
-  li .hint { display: block; color: #666; font-size: 8.5pt; font-style: italic; margin-top: 0.5mm; }
-
-  .cta { background: #1a1a1a; color: #faf7f2; padding: 4mm 5mm; border-radius: 2mm; margin-top: 5mm; text-align: center; }
-  .cta strong { color: #ff8a96; }
-  .cta p { margin: 0; font-size: 10pt; }
+  .item .q { font-size: 9.5pt; }
+  .item .q strong { color: #1a1a1a; }
+  .item .hint { display: block; color: #666; font-size: 8.5pt; font-style: italic; margin-top: 0.5mm; }
+  .item .line {
+    display: block;
+    border-bottom: 1px dotted #999;
+    height: 4mm;
+    margin-top: 2mm;
+  }
+  .item .line + .line { margin-top: 5mm; }
 
   footer.doc { margin-top: 5mm; padding-top: 2.5mm; border-top: 1px solid #ccc; font-size: 8pt; color: #666; text-align: center; }
 </style>
@@ -65,42 +63,100 @@
 </header>
 
 <h2><span class="icon">🎨</span>Verken — vad ska sajten sälja</h2>
-<ul>
-  <li><strong>Vilka verk säljs?</strong> Alla 11 vi visar idag? Något som ska bort? Något nytt vi missar?</li>
-  <li><strong>Vilka format per verk?</strong> (Poster / Fine art print / Canvas 30×40 / Canvas 50×70 / Plexiglas)
-    <span class="hint">Alla 5 format på alla verk, eller bara vissa? Ex: några verk kanske inte trycks på plexi.</span>
-  </li>
-  <li><strong>Priser per format</strong> — vad tar hon för poster, print, canvas (2 storlekar), plexi?
-    <span class="hint">Behöver för att fylla i sajten och räkna på offert.</span>
-  </li>
-</ul>
 
-<h2><span class="icon">📷</span>Material — bilder & innehåll</h2>
-<ul>
-  <li><strong>Högupplösta verksfoton</strong> — ≥ 2000×2500 px, en per verk. När kan hon skicka?</li>
-  <li><strong>Porträttbild</strong> av Cecilia — för Om-sektionen. Har hon en bra, eller behöver vi ta?</li>
-  <li><strong>Utställningsfoton</strong> — från Edenfield (trädgårdskvällarna), BYWRTRS, Dunkers, Clarion Sea U?</li>
-  <li><strong>Text-godkännande</strong> — biografi och manifest på sajten OK? Vad ska ändras?</li>
-</ul>
+<div class="item">
+  <div class="q"><strong>Vilka verk säljs?</strong> Alla 11 vi visar idag? Något som ska bort? Något nytt vi missar?</div>
+  <span class="line"></span>
+  <span class="line"></span>
+</div>
+
+<div class="item">
+  <div class="q"><strong>Vilka format per verk?</strong> (Poster / Fine art print / Canvas 30×40 / Canvas 50×70 / Plexiglas)
+    <span class="hint">Alla 5 format på alla verk, eller bara vissa? Ex: några verk kanske inte trycks på plexi.</span>
+  </div>
+  <span class="line"></span>
+  <span class="line"></span>
+</div>
+
+<div class="item">
+  <div class="q"><strong>Priser per format</strong> — vad tar hon för poster, print, canvas (2 storlekar), plexi?
+    <span class="hint">Behöver för att fylla i sajten och räkna på offert.</span>
+  </div>
+  <span class="line"></span>
+  <span class="line"></span>
+  <span class="line"></span>
+</div>
+
+<h2><span class="icon">📷</span>Material — bilder & innehåll (via Google Drive)</h2>
+
+<div class="item">
+  <div class="q"><strong>Verksfoton i Google Drive</strong> — jag skapar mapp åt henne, hon laddar upp högupplöst (≥ 2000×2500 px). Går att uppdatera löpande.
+    <span class="hint">När kan hon börja ladda upp?</span>
+  </div>
+  <span class="line"></span>
+</div>
+
+<div class="item">
+  <div class="q"><strong>Porträttbild</strong> av Cecilia — för Om-sektionen. Har hon en bra som hon laddar upp?
+    <span class="hint">Cecilia ansvarar själv för att skaffa bilden — jag tar inga foton.</span>
+  </div>
+  <span class="line"></span>
+</div>
+
+<div class="item">
+  <div class="q"><strong>Utställningsfoton</strong> — från Edenfield (trädgårdskvällarna), BYWRTRS, Dunkers, Clarion Sea U?</div>
+  <span class="line"></span>
+</div>
+
+<div class="item">
+  <div class="q"><strong>Text-godkännande</strong> — biografi och manifest på sajten OK? Vad ska ändras?</div>
+  <span class="line"></span>
+  <span class="line"></span>
+</div>
 
 <h2><span class="icon">📅</span>Utställningar — vad är aktuellt just nu</h2>
-<ul>
-  <li><strong>Pågående eller kommande utställningar</strong> just nu? Datum + plats.</li>
-  <li><strong>Saknas det historiska utställningar</strong> i listan?</li>
-</ul>
+
+<div class="item">
+  <div class="q"><strong>Pågående eller kommande utställningar</strong> just nu? Datum + plats.
+    <span class="hint">Trädgårdsfest 7-8 aug + 14-15 aug 2026 är redan inlagd. Fler?</span>
+  </div>
+  <span class="line"></span>
+  <span class="line"></span>
+</div>
+
+<div class="item">
+  <div class="q"><strong>Saknas det historiska utställningar</strong> i listan?</div>
+  <span class="line"></span>
+</div>
 
 <h2><span class="icon">🏢</span>Företag — för Stripe & fakturering</h2>
-<ul>
-  <li><strong>Organisationsnummer</strong> eller F-skatt?</li>
-  <li><strong>Momsregistrerad?</strong> (påverkar hur vi fakturerar henne)</li>
-  <li><strong>Namn på tryckleverantör</strong> (om hon har en) — så jag kan hitta deras API för orderautomation</li>
-</ul>
+
+<div class="item">
+  <div class="q"><strong>Organisationsnummer</strong> eller F-skatt?</div>
+  <span class="line"></span>
+</div>
+
+<div class="item">
+  <div class="q"><strong>Momsregistrerad?</strong> (påverkar hur vi fakturerar henne) &nbsp; Ja &nbsp;☐ &nbsp; Nej &nbsp;☐</div>
+  <span class="line"></span>
+</div>
+
+<div class="item">
+  <div class="q"><strong>Namn på tryckleverantör</strong> (om hon har en) — så jag kan hitta deras API för orderautomation</div>
+  <span class="line"></span>
+</div>
 
 <h2><span class="icon">📧</span>Kontakt & uppföljning</h2>
-<ul>
-  <li><strong>Bästa mail-adress</strong> att skicka offert och bilder till?</li>
-  <li><strong>Nästa möte</strong> — datum? (Föreslå inom 1-2 veckor)</li>
-</ul>
+
+<div class="item">
+  <div class="q"><strong>Bästa mail-adress</strong> att skicka offert och bilder till?</div>
+  <span class="line"></span>
+</div>
+
+<div class="item">
+  <div class="q"><strong>Nästa möte</strong> — datum? (Föreslå inom 1-2 veckor)</div>
+  <span class="line"></span>
+</div>
 
 <footer class="doc">
   Skriv snabbt · nicka mycket · tack för mötet · gå

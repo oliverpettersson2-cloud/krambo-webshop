@@ -131,8 +131,8 @@ export default function IntervjuPage() {
             Boka en artist talk eller konstvisning hos Cecilia.
           </p>
           <p className="mt-4">
-            <a className="text-accent hover:underline font-medium" href="mailto:cecilia.kristoffersson71@gmail.com">
-              cecilia.kristoffersson71@gmail.com
+            <a className="text-accent hover:underline font-medium" href="mailto:cecilia@constcollection.com">
+              cecilia@constcollection.com
             </a>
           </p>
         </div>
