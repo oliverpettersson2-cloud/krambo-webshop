@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { getProduct, products } from "@/lib/products";
 import FormatPicker from "@/components/FormatPicker";
+import ProductImage from "@/components/ProductImage";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -17,9 +17,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     <div className="max-w-6xl mx-auto px-6 py-10">
       <Link href="/" className="text-sm text-ink/60 hover:text-ink">← Tillbaka till galleriet</Link>
       <div className="grid md:grid-cols-2 gap-12 mt-6">
-        <div className="relative aspect-square bg-ink/5 rounded-2xl overflow-hidden">
-          <Image src={product.image} alt={product.name} fill sizes="50vw" className="object-cover" />
-        </div>
+        <ProductImage src={product.image} alt={product.name} />
         <div>
           <p className="text-xs uppercase tracking-wider text-ink/50">Cecilia Kristoffersson · {product.year}</p>
           <h1 className="text-3xl md:text-4xl font-semibold mt-2 italic">{product.name}</h1>
