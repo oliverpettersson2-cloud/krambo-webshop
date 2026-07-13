@@ -5,6 +5,7 @@ import { CartProvider } from "@/components/CartContext";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -20,9 +21,25 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://constcollection.com"),
   title: "Art by Cecilia K. — Konsttryck & plexiglas",
   description:
     "Cecilia Kristoffersson — samtida konstnär. Fine art print, canvas, plexiglastryck och postrar direkt från konstnären.",
+  openGraph: {
+    title: "Art by Cecilia K. — I am a mother artist.",
+    description:
+      "Storskaliga illuminerade akrylmålningar om feminin kraft, förfädernas minne och berättelsens återtagande.",
+    url: "https://constcollection.com",
+    siteName: "Art by Cecilia K.",
+    locale: "sv_SE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Art by Cecilia K. — I am a mother artist.",
+    description:
+      "Storskaliga illuminerade akrylmålningar. Poster, fine art print, canvas, plexiglas — direkt från konstnären.",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -34,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
+            <CookieBanner />
           </CartProvider>
         </LanguageProvider>
       </body>
