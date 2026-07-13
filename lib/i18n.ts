@@ -173,6 +173,8 @@ export const dict: Dict = {
   "footer.artist": { sv: "Konstnären — Cecilia", en: "The artist — Cecilia" },
   "footer.rights": { sv: "Alla rättigheter förbehållna.", en: "All rights reserved." },
   "footer.lang": { sv: "Vi pratar svenska och engelska.", en: "We speak Swedish and English." },
+  "footer.terms": { sv: "Köpvillkor", en: "Terms & Conditions" },
+  "footer.privacy": { sv: "Integritetspolicy", en: "Privacy Policy" },
 };
 
 export function t(key: string, lang: Lang): string {

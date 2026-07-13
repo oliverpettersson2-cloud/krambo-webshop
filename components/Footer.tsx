@@ -23,6 +23,8 @@ export default function Footer() {
               <li><Link href="/galleri" className="hover:text-accent">{t("nav.gallery")}</Link></li>
               <li><Link href="/intervju" className="hover:text-accent">{t("nav.interview")}</Link></li>
               <li><Link href="/#kontakt" className="hover:text-accent">{t("footer.contact")}</Link></li>
+              <li className="pt-2 border-t border-paper/15 mt-2"><Link href="/kopvillkor" className="hover:text-accent text-paper/70">{t("footer.terms")}</Link></li>
+              <li><Link href="/integritet" className="hover:text-accent text-paper/70">{t("footer.privacy")}</Link></li>
             </ul>
           </div>
 
