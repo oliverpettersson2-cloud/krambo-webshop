@@ -10,13 +10,13 @@ export default function ProductCard({ product }: { product: Product }) {
       href={`/products/${product.slug}`}
       className="group block bg-white rounded-xl overflow-hidden border border-ink/10 hover:border-ink/30 transition"
     >
-      <div className="relative aspect-square bg-ink/5">
+      <div className="relative aspect-square bg-warm p-3">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(max-width: 768px) 50vw, 25vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-contain group-hover:scale-105 transition-transform duration-500 p-1"
         />
         {!product.inStock && (
           <span className="absolute top-3 left-3 text-xs bg-ink text-paper px-2 py-1 rounded-full">
