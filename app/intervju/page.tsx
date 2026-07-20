@@ -89,7 +89,7 @@ export default function IntervjuPage() {
       <section className="relative bg-ink text-paper overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/art/lilith-ii.png"
+            src="/art/lilith-i.jpg"
             alt=""
             fill
             priority
@@ -115,15 +115,15 @@ export default function IntervjuPage() {
           <figure className="md:sticky md:top-24 md:self-start">
             <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-ink/5">
               <Image
-                src="/art/phenomenal-woman.png"
-                alt="Phenomenal Woman — Cecilia K."
+                src="/art/phenomenal.jpg"
+                alt="Phenomenal — Cecilia K."
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover"
               />
             </div>
             <figcaption className="mt-3 text-sm text-ink/60 italic text-center md:text-left">
-              <span className="font-serif text-base text-ink not-italic">Phenomenal Woman</span>
+              <span className="font-serif text-base text-ink not-italic">Phenomenal</span>
               <span className="mx-2 text-ink/30">·</span>2023
             </figcaption>
             <p className="mt-6 text-sm text-ink/55 leading-relaxed hidden md:block">

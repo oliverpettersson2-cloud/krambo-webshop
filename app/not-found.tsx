@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <Image src="/art/lilith-ii.png" alt="" fill className="object-cover opacity-30" priority />
+        <Image src="/art/lilith-i.jpg" alt="" fill className="object-cover opacity-30" priority />
         <div className="absolute inset-0 bg-gradient-to-br from-paper via-paper/85 to-paper/50" />
       </div>
       <div className="max-w-2xl mx-auto px-6 py-20 text-center">

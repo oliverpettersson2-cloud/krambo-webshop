@@ -28,8 +28,8 @@ export default function KopvillkorPage() {
           </h2>
           <p className="mt-3">
             {isEn
-              ? "constcollection.com is operated by Cecilia Kristoffersson (\"Art by Cecilia K.\"). All artworks and prints are sold directly by the artist. For questions, contact "
-              : "constcollection.com drivs av Cecilia Kristoffersson (\"Art by Cecilia K.\"). Alla verk och tryck säljs direkt av konstnären. Frågor besvaras på "}
+              ? "constcollection.com is operated by Cecilia Kristoffersson (\"Art by Cecilia K.\"), Växjögatan 5F, 252 51 Helsingborg, Sweden. All artworks and prints are sold directly by the artist. For questions, contact "
+              : "constcollection.com drivs av Cecilia Kristoffersson (\"Art by Cecilia K.\"), Växjögatan 5F, 252 51 Helsingborg. Alla verk och tryck säljs direkt av konstnären. Frågor besvaras på "}
             <a href="mailto:cecilia@constcollection.com" className="text-accent underline">
               cecilia@constcollection.com
             </a>

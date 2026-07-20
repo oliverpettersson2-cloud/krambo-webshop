@@ -13,6 +13,11 @@ export default function Footer() {
           <div>
             <p className="font-serif text-2xl">Art by Cecilia K<span className="text-accent">.</span></p>
             <p className="text-sm text-paper/70 mt-3 leading-relaxed">{t("footer.tagline")}</p>
+            <p className="text-xs text-paper/50 mt-4">
+              Cecilia Kristoffersson<br/>
+              Växjögatan 5F<br/>
+              252 51 Helsingborg
+            </p>
           </div>
 
           <div>

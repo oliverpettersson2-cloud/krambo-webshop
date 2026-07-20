@@ -14,7 +14,7 @@ export default function GalleriPage() {
       {/* HERO */}
       <section className="relative bg-ink text-paper overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/art/multi-eve.png" alt="" fill priority className="object-cover opacity-45" />
+          <Image src="/art/eve.jpg" alt="" fill priority className="object-cover opacity-45" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
         <div className="relative max-w-6xl mx-auto px-6 py-20 md:py-28">

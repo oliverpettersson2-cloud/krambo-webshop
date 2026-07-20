@@ -87,8 +87,8 @@ export const dict: Dict = {
   "buy.eyebrow": { sv: "Galleriet", en: "The gallery" },
   "buy.h2": { sv: "Se hela samlingen — och köp direkt", en: "See the full collection — and buy directly" },
   "buy.p": {
-    sv: "Poster, fine art print, canvas och plexiglastryck. Klarna, kort och Swish via Stripe.",
-    en: "Poster, fine art print, canvas and plexiglass print. Klarna, card and Swish via Stripe.",
+    sv: "Poster, signerade fine art prints och plexiglastryck i presentlåda. Klarna, kort och Swish via Stripe.",
+    en: "Posters, signed fine art prints and plexiglass prints in gift box. Klarna, card and Swish via Stripe.",
   },
   "buy.cta": { sv: "Till galleriet →", en: "To the gallery →" },
 
@@ -123,8 +123,8 @@ export const dict: Dict = {
   "galleri.eyebrow": { sv: "Galleri", en: "Gallery" },
   "galleri.h1": { sv: "Verken — direkt från konstnären", en: "The works — direct from the artist" },
   "galleri.intro": {
-    sv: "Poster, fine art print, canvas eller plexiglas. Klarna, kort och Swish. Hemma hos dig inom 5–10 dagar.",
-    en: "Poster, fine art print, canvas or plexiglass. Klarna, card and Swish. Delivered within 5–10 days.",
+    sv: "Poster, signerad fine art print eller plexiglas i presentlåda. Klarna, kort och Swish. Hemma hos dig inom 5–10 dagar.",
+    en: "Poster, signed fine art print or plexiglass in gift box. Klarna, card and Swish. Delivered within 5–10 days.",
   },
   "galleri.works": { sv: "verk", en: "works" },
   "galleri.trust.h1": { sv: "Äkthetsintyg ingår", en: "Certificate of authenticity included" },

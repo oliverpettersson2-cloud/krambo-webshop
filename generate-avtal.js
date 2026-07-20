@@ -98,6 +98,7 @@ const loi = new Document({
       new Paragraph({ spacing: { after: 200 }, children: [new TextRun({ text: "", size: 12 })] }),
       p("Beställare: Cecilia Kristoffersson", { bold: true }),
       p("Verksamhet: Art by Cecilia K., constcollection.com"),
+      p("Adress: Växjögatan 5F, 252 51 Helsingborg"),
 
       h2("Syfte"),
       p("Denna avsiktsförklaring bekräftar parternas gemensamma avsikt att teckna ett fullständigt tjänsteavtal om leverans och drift av en webshop för constcollection.com. Fullständigt avtal signeras senast 25 juli 2026. Fakturering påbörjas 1 augusti 2026. Sajten ska vara publikt live senast 6 augusti 2026 — inför Cecilias Trädgårdsfest 7-8 augusti 2026."),
@@ -168,7 +169,7 @@ const avtal = new Document({
 
       h2("§1 Parter"),
       p("Leverantör: Oliver Pettersson, PathfinderAI, oliver@pathfinderai.se (\"Leverantören\")."),
-      p("Beställare: Cecilia Kristoffersson, verksamheten Art by Cecilia K. (\"Beställaren\")."),
+      p("Beställare: Cecilia Kristoffersson, verksamheten Art by Cecilia K., Växjögatan 5F, 252 51 Helsingborg (\"Beställaren\")."),
 
       h2("§2 Tjänsten"),
       p("Leverantören åtar sig att leverera och löpande driftsätta en webshop för Beställaren på domänen constcollection.com. I tjänsten ingår följande:"),

@@ -9,9 +9,9 @@ export default function Home() {
   const { t } = useLang();
 
   const otherWorks = [
-    products.find((p) => p.slug === "the-birth-of-venus"),
-    products.find((p) => p.slug === "noma"),
-    products.find((p) => p.slug === "lilith-ii"),
+    products.find((p) => p.slug === "adam"),
+    products.find((p) => p.slug === "obsidian"),
+    products.find((p) => p.slug === "jikinya"),
   ].filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       {/* HERO */}
       <section className="relative bg-ink text-paper overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/art/matopos.png" alt="" fill className="object-cover opacity-50" priority />
+          <Image src="/art/eden.jpg" alt="" fill className="object-cover opacity-50" priority />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/30" />
         <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
@@ -43,7 +43,7 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-ink/5 md:sticky md:top-24">
-            <Image src="/art/the-three-graces.png" alt="The Three Graces" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+            <Image src="/art/the-three-graces.jpg" alt="The Three Graces" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
           </div>
           <div>
             <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">{t("brush.eyebrow")}</p>
@@ -78,10 +78,10 @@ export default function Home() {
             </div>
             <figure className="md:order-last">
               <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-ink/5">
-                <Image src="/art/speaking-in-colour.png" alt="Speaking in Colour" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                <Image src="/art/phenomenal.jpg" alt="Phenomenal" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
               </div>
               <figcaption className="mt-3 text-sm text-ink/65 italic text-center md:text-left">
-                <span className="font-serif text-base text-ink not-italic">Speaking in Colour</span>
+                <span className="font-serif text-base text-ink not-italic">Phenomenal</span>
                 <span className="mx-2 text-ink/30">·</span>2025
               </figcaption>
             </figure>
@@ -95,10 +95,10 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
             <figure className="md:sticky md:top-24">
               <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-paper/5">
-                <Image src="/art/madonna.png" alt="Madonna" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                <Image src="/art/i-rise.jpg" alt="I Rise" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
               </div>
               <figcaption className="mt-3 text-sm text-paper/60 italic text-center md:text-left">
-                <span className="font-serif text-base text-paper not-italic">Madonna</span>
+                <span className="font-serif text-base text-paper not-italic">I Rise</span>
                 <span className="mx-2 text-paper/30">·</span>2025
               </figcaption>
             </figure>

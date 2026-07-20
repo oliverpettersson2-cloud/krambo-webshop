@@ -70,13 +70,49 @@ export default function UtstallningarPage() {
       {/* HERO */}
       <section className="relative bg-ink text-paper overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/art/still-like-air-i-rise.png" alt="" fill priority className="object-cover opacity-45" />
+          <Image src="/art/i-rise.jpg" alt="" fill priority className="object-cover opacity-45" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
         <div className="relative max-w-4xl mx-auto px-6 py-20 md:py-28">
           <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">{t("exh.eyebrow")}</p>
           <h1 className="font-serif text-5xl md:text-7xl mt-3 leading-[1.05]">{t("exh.h1")}</h1>
           <p className="mt-5 text-paper/85 max-w-2xl leading-relaxed text-lg">{t("exh.intro")}</p>
+        </div>
+      </section>
+
+      {/* TRÄDGÅRDSFEST — utvalt event med affisch */}
+      <section className="bg-warm py-12">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="grid md:grid-cols-[280px_1fr] gap-8 items-center">
+            <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-xl bg-ink/5">
+              <Image
+                src={lang === "en" ? "/art/tradgardsfest-en.jpg" : "/art/tradgardsfest-sv.jpg"}
+                alt="Kvällskonst 2026 — Trädgårdsfesten"
+                fill
+                sizes="280px"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">
+                {lang === "en" ? "Featured this summer" : "Sommarens höjdpunkt"}
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl mt-3">Kvällskonst 2026</h2>
+              <p className="mt-4 text-ink/80 leading-relaxed">
+                {lang === "en"
+                  ? "Evening art exhibition outdoors in the garden. Bring your own picnic basket and blanket, sit a while and enjoy the shifting colours of the paintings when night falls."
+                  : "Kvällskonst-utställning ute i trädgården. Ta med egen picknickkorg och filt, sitt en stund och njut av tavlornas skiftande färger när natten faller."}
+              </p>
+              <ul className="mt-5 space-y-1 text-sm">
+                <li>📅 <strong>7–8 augusti &amp; 14–15 augusti 2026</strong></li>
+                <li>🕗 20:30–23:00</li>
+                <li>📍 Norrtäljegatan 13, Helsingborg</li>
+                <li className="text-ink/60 italic mt-2">
+                  {lang === "en" ? "Cancelled if heavy rain." : "Ställs in vid mycket regn."}
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
