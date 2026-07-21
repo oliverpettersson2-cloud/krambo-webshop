@@ -42,8 +42,9 @@ export default function Home() {
       {/* WHO HOLDS THE BRUSH */}
       <section className="max-w-6xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-ink/5 md:sticky md:top-24">
-            <Image src="/art/the-three-graces.jpg" alt="The Three Graces" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+          <div className="rounded-xl overflow-hidden bg-white md:sticky md:top-24">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/art/the-three-graces.jpg" alt="The Three Graces" className="w-full h-auto block" />
           </div>
           <div>
             <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">{t("brush.eyebrow")}</p>
@@ -77,8 +78,9 @@ export default function Home() {
               </Link>
             </div>
             <figure className="md:order-last">
-              <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-ink/5">
-                <Image src="/art/phenomenal.jpg" alt="Phenomenal" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+              <div className="rounded-xl overflow-hidden bg-white">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/art/phenomenal.jpg" alt="Phenomenal" className="w-full h-auto block" />
               </div>
               <figcaption className="mt-3 text-sm text-ink/65 italic text-center md:text-left">
                 <span className="font-serif text-base text-ink not-italic">Phenomenal</span>
@@ -94,8 +96,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
             <figure className="md:sticky md:top-24">
-              <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-paper/5">
-                <Image src="/art/i-rise.jpg" alt="I Rise" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+              <div className="rounded-xl overflow-hidden bg-white">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/art/i-rise.jpg" alt="I Rise" className="w-full h-auto block" />
               </div>
               <figcaption className="mt-3 text-sm text-paper/60 italic text-center md:text-left">
                 <span className="font-serif text-base text-paper not-italic">I Rise</span>
@@ -125,8 +128,8 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
           {otherWorks.map((p) => (
             <Link key={p.id} href={`/products/${p.slug}`} className="group block">
-              <div className="relative aspect-[4/5] bg-ink/5 rounded-xl overflow-hidden">
-                <Image src={p.image} alt={p.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="relative aspect-[3/4] bg-white rounded-xl overflow-hidden p-3">
+                <Image src={p.image} alt={p.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain group-hover:scale-[1.03] transition-transform duration-700" />
               </div>
               <div className="mt-4">
                 <p className="text-xs text-ink/50 uppercase tracking-wider">{p.year}</p>

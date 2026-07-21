@@ -70,8 +70,8 @@ export default function CartPage() {
             key={`${l.productId}-${l.formatId}`}
             className="flex gap-4 items-center bg-white border border-ink/10 rounded-xl p-3"
           >
-            <div className="relative w-20 h-20 bg-ink/5 rounded-lg overflow-hidden shrink-0">
-              <Image src={l.product.image} alt={l.product.name} fill className="object-cover" sizes="80px" />
+            <div className="relative w-20 h-20 bg-white rounded-lg overflow-hidden shrink-0">
+              <Image src={l.product.image} alt={l.product.name} fill className="object-contain p-1" sizes="80px" />
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-medium italic truncate">{l.product.name}</p>

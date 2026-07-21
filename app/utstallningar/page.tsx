@@ -84,13 +84,12 @@ export default function UtstallningarPage() {
       <section className="bg-warm py-12">
         <div className="max-w-4xl mx-auto px-6">
           <div className="grid md:grid-cols-[280px_1fr] gap-8 items-center">
-            <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-xl bg-ink/5">
-              <Image
+            <div className="rounded-lg overflow-hidden shadow-xl bg-white">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={lang === "en" ? "/art/tradgardsfest-en.jpg" : "/art/tradgardsfest-sv.jpg"}
                 alt="Kvällskonst 2026 — Trädgårdsfesten"
-                fill
-                sizes="280px"
-                className="object-cover"
+                className="w-full h-auto block"
               />
             </div>
             <div>
