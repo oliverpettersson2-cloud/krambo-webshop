@@ -34,7 +34,7 @@ export default function GalleriPage() {
                 <h2 className="font-serif text-3xl">{year}</h2>
                 <p className="text-sm text-ink/50">{items.length} {t("galleri.works")}</p>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6">
                 {items.map((p) => (
                   <ProductCard key={p.id} product={p} />
                 ))}

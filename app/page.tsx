@@ -125,11 +125,12 @@ export default function Home() {
           <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">{t("other.eyebrow")}</p>
           <h2 className="font-serif text-4xl md:text-5xl mt-3">{t("other.h2")}</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <div className="columns-1 md:columns-3 gap-7">
           {otherWorks.map((p) => (
-            <Link key={p.id} href={`/products/${p.slug}`} className="group block">
-              <div className="relative aspect-[3/4] bg-white rounded-xl overflow-hidden p-3">
-                <Image src={p.image} alt={p.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain group-hover:scale-[1.03] transition-transform duration-700" />
+            <Link key={p.id} href={`/products/${p.slug}`} className="group block break-inside-avoid mb-7">
+              <div className="rounded-xl overflow-hidden bg-white">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={p.image} alt={p.name} className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-700" />
               </div>
               <div className="mt-4">
                 <p className="text-xs text-ink/50 uppercase tracking-wider">{p.year}</p>
