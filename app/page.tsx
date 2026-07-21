@@ -82,7 +82,7 @@ export default function Home() {
               </div>
               <figcaption className="mt-3 text-sm text-ink/65 italic text-center md:text-left">
                 <span className="font-serif text-base text-ink not-italic">Phenomenal</span>
-                <span className="mx-2 text-ink/30">·</span>2025
+                <span className="mx-2 text-ink/30">·</span>2023
               </figcaption>
             </figure>
           </div>
@@ -99,7 +99,7 @@ export default function Home() {
               </div>
               <figcaption className="mt-3 text-sm text-paper/60 italic text-center md:text-left">
                 <span className="font-serif text-base text-paper not-italic">I Rise</span>
-                <span className="mx-2 text-paper/30">·</span>2025
+                <span className="mx-2 text-paper/30">·</span>2023
               </figcaption>
             </figure>
             <div>

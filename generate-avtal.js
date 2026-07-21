@@ -119,7 +119,7 @@ const loi = new Document({
       h2("Vad som ska göras innan avtalstecknandet"),
       p("Följande ska vara klart senast 20 juli 2026, så vi hinner signera det fullständiga avtalet 25 juli 2026 och gå live senast 6 augusti 2026 inför Trädgårdsfesten:"),
       bullet("Skapar egen Google Drive-mapp med högupplösta verksfoton (≥ 2000×2500 px) och delar den med oliver@pathfinderai.se. Bilder kan uppdateras löpande."),
-      bullet("Skickar slutgiltig prislista per format (poster, fine art print, canvas 30×40, canvas 50×70, plexiglas)."),
+      bullet("Skickar slutgiltig prislista per format (poster 40×50, poster 50×70, fine art print 40×50, fine art print 50×70, plexiglas 15×20)."),
       bullet("Begär transfer-kod för domänen constcollection.com från Canva — vidarebefordras till Oliver eller sker tillsammans/via skärmdelning."),
       bullet("Skapar Stripe-konto i eget namn — vi går igenom uppsättningen tillsammans eller via skärmdelning."),
       bullet("Bekräftar tryckleverantör."),
@@ -173,7 +173,7 @@ const avtal = new Document({
 
       h2("§2 Tjänsten"),
       p("Leverantören åtar sig att leverera och löpande driftsätta en webshop för Beställaren på domänen constcollection.com. I tjänsten ingår följande:"),
-      bullet("Skräddarsydd webshop byggd i Next.js med galleri-känsla och 5 köpformat per verk (poster, fine art print, canvas 30×40, canvas 50×70, plexiglas)."),
+      bullet("Skräddarsydd webshop byggd i Next.js med galleri-känsla och 5 köpformat per verk (poster 40×50, poster 50×70, fine art print 40×50, fine art print 50×70, plexiglas 15×20)."),
       bullet("Betallösning via Stripe: kort, Klarna och Swish."),
       bullet("Hosting via Vercel, inklusive SSL-certifikat och CDN."),
       bullet("Domänhantering via Cloudflare Registrar — Beställaren behåller ägarskap."),

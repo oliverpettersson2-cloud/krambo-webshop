@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://constcollection.com"),
   title: "Art by Cecilia K. — Konsttryck & plexiglas",
   description:
-    "Cecilia Kristoffersson — samtida konstnär. Fine art print, canvas, plexiglastryck och postrar direkt från konstnären.",
+    "Cecilia Kristoffersson — samtida konstnär. Fine art print, plexiglastryck och postrar direkt från konstnären.",
   openGraph: {
     title: "Art by Cecilia K. — I am a mother artist.",
     description:
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Art by Cecilia K. — I am a mother artist.",
     description:
-      "Storskaliga illuminerade akrylmålningar. Poster, fine art print, canvas, plexiglas — direkt från konstnären.",
+      "Storskaliga illuminerade akrylmålningar. Poster, fine art print, plexiglas — direkt från konstnären.",
   },
 };
 

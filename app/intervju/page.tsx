@@ -153,9 +153,9 @@ export default function IntervjuPage() {
 
         {/* CTA */}
         <div className="mt-16 bg-warm rounded-xl p-8 text-center">
-          <p className="font-serif text-2xl">Vill du veta mer?</p>
+          <p className="font-serif text-2xl">{t("interview.moreH")}</p>
           <p className="text-ink/70 mt-3">
-            Boka en artist talk eller konstvisning hos Cecilia.
+            {t("interview.moreP")}
           </p>
           <p className="mt-4">
             <a className="text-accent hover:underline font-medium" href="mailto:cecilia@constcollection.com">

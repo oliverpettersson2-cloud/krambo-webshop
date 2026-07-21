@@ -3,14 +3,16 @@
 import { useState } from "react";
 import type { Product, Format } from "@/lib/products";
 import AddToCartButton from "./AddToCartButton";
+import { useLang } from "@/components/LanguageProvider";
 
 export default function FormatPicker({ product }: { product: Product }) {
   const [selectedId, setSelectedId] = useState<string>(product.formats[0].id);
   const selected = product.formats.find((f) => f.id === selectedId)!;
+  const { t } = useLang();
 
   return (
     <div>
-      <p className="text-xs uppercase tracking-wider text-ink/50">Välj format</p>
+      <p className="text-xs uppercase tracking-wider text-ink/50">{t("format.pick")}</p>
       <div className="mt-3 space-y-2">
         {product.formats.map((f: Format) => {
           const isSel = f.id === selectedId;

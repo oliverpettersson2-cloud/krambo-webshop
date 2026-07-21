@@ -55,7 +55,7 @@ export default async function OGImage() {
             lineHeight: 1.3,
           }}
         >
-          Storskaliga illuminerade akrylmålningar. Poster, fine art print, canvas, plexiglas — direkt från konstnären.
+          Storskaliga illuminerade akrylmålningar. Poster, fine art print, plexiglas — direkt från konstnären.
         </div>
         <div
           style={{

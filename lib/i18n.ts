@@ -114,8 +114,8 @@ export const dict: Dict = {
   "contact.buyEyebrow": { sv: "Vill du köpa ett verk?", en: "Want to buy a work?" },
   "contact.buyH": { sv: "Köp sker direkt via galleriet", en: "Purchase happens directly via the gallery" },
   "contact.buyP": {
-    sv: "Poster, fine art print, canvas och plexiglastryck. Trygg betalning med kort, Klarna eller Swish via Stripe.",
-    en: "Poster, fine art print, canvas and plexiglass print. Secure payment with card, Klarna or Swish via Stripe.",
+    sv: "Poster, fine art print och plexiglastryck. Trygg betalning med kort, Klarna eller Swish via Stripe.",
+    en: "Poster, fine art print and plexiglass print. Secure payment with card, Klarna or Swish via Stripe.",
   },
   "contact.buyCta": { sv: "Till galleriet →", en: "To the gallery →" },
 
@@ -175,6 +175,49 @@ export const dict: Dict = {
   "footer.lang": { sv: "Vi pratar svenska och engelska.", en: "We speak Swedish and English." },
   "footer.terms": { sv: "Köpvillkor", en: "Terms & Conditions" },
   "footer.privacy": { sv: "Integritetspolicy", en: "Privacy Policy" },
+
+  // CART
+  "cart.h1": { sv: "Din kundvagn", en: "Your cart" },
+  "cart.empty.h": { sv: "Kundvagnen är tom", en: "Your cart is empty" },
+  "cart.empty.p": { sv: "Bläddra galleriet och hitta ett verk.", en: "Browse the gallery to find a work." },
+  "cart.empty.cta": { sv: "Till galleriet", en: "To the gallery" },
+  "cart.clear": { sv: "Töm kundvagn", en: "Clear cart" },
+  "cart.totalVat": { sv: "Totalt inkl. moms", en: "Total incl. VAT" },
+  "cart.checkout": { sv: "Till kassan", en: "Checkout" },
+  "cart.checkoutLoading": { sv: "Skickar till betalning…", en: "Sending to payment…" },
+  "cart.perUnit": { sv: "kr/st", en: "kr/each" },
+  "cart.error.generic": { sv: "Något gick fel", en: "Something went wrong" },
+  "cart.error.stripe": {
+    sv: "Kunde inte ansluta till betalningen. Är Stripe-nycklarna satta i .env.local?",
+    en: "Could not connect to payment. Are the Stripe keys set in .env.local?",
+  },
+
+  // PRODUCT CARD
+  "card.from": { sv: "Från", en: "From" },
+  "card.soldOut": { sv: "Slutsåld", en: "Sold out" },
+  "card.badge.bestseller": { sv: "Bästsäljare", en: "Bestseller" },
+  "card.badge.nyhet": { sv: "Nyhet", en: "New" },
+  "card.badge.unik": { sv: "Unik", en: "Unique" },
+  "card.badge.rea": { sv: "Rea", en: "Sale" },
+
+  // FORMAT PICKER + ADD TO CART
+  "format.pick": { sv: "Välj format", en: "Choose format" },
+  "cart.add": { sv: "Lägg i kundvagn", en: "Add to cart" },
+  "cart.added": { sv: "Tillagd ✓", en: "Added ✓" },
+
+  // PRODUCT PAGE
+  "product.back": { sv: "← Tillbaka till galleriet", en: "← Back to the gallery" },
+  "product.trust.1": { sv: "Äkthetsintyg signerat av konstnären (fine art print)", en: "Certificate of authenticity signed by the artist (fine art print)" },
+  "product.trust.2": { sv: "Försäkrad leverans inom Sverige", en: "Insured delivery within Sweden" },
+  "product.trust.3": { sv: "14 dagars ångerrätt enligt distansköplagen", en: "14-day right of withdrawal by Swedish law" },
+  "product.trust.4": { sv: "Betala med kort, Klarna eller Swish", en: "Pay with card, Klarna or Swish" },
+
+  // INTERVJU CTA
+  "interview.moreH": { sv: "Vill du veta mer?", en: "Want to know more?" },
+  "interview.moreP": {
+    sv: "Boka en artist talk eller konstvisning hos Cecilia.",
+    en: "Book an artist talk or art viewing with Cecilia.",
+  },
 };
 
 export function t(key: string, lang: Lang): string {

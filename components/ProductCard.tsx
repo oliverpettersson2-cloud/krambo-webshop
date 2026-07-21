@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import type { Product } from "@/lib/products";
 import { fromPrice } from "@/lib/products";
+import { useLang } from "@/components/LanguageProvider";
 
 export default function ProductCard({ product }: { product: Product }) {
   const min = fromPrice(product);
+  const { t } = useLang();
   return (
     <Link
       href={`/products/${product.slug}`}
@@ -20,7 +24,7 @@ export default function ProductCard({ product }: { product: Product }) {
         />
         {!product.inStock && (
           <span className="absolute top-3 left-3 text-xs bg-ink text-paper px-2 py-1 rounded-full">
-            Slutsåld
+            {t("card.soldOut")}
           </span>
         )}
         {product.inStock && product.badge && (
@@ -30,7 +34,7 @@ export default function ProductCard({ product }: { product: Product }) {
             product.badge === "unik" ? "bg-ink text-paper" :
             "bg-red-600 text-white"
           }`}>
-            {product.badge === "bestseller" ? "Bästsäljare" : product.badge === "nyhet" ? "Nyhet" : product.badge === "unik" ? "Unik" : "Rea"}
+            {t(`card.badge.${product.badge}`)}
           </span>
         )}
       </div>
@@ -38,7 +42,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="text-xs text-ink/50 uppercase tracking-wider">{product.year}</p>
         <h3 className="font-serif text-lg mt-1 italic">{product.name}</h3>
         <p className="text-sm text-ink/60 mt-1 line-clamp-1">{product.description}</p>
-        <p className="mt-3 font-semibold">Från {min.toLocaleString("sv-SE")} kr</p>
+        <p className="mt-3 font-semibold">{t("card.from")} {min.toLocaleString("sv-SE")} kr</p>
       </div>
     </Link>
   );

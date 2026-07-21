@@ -5,10 +5,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/components/CartContext";
 import { getProductById, getFormat } from "@/lib/products";
+import { useLang } from "@/components/LanguageProvider";
 
 export default function CartPage() {
   const { items, setQty, remove, clear } = useCart();
   const [loading, setLoading] = useState(false);
+  const { t } = useLang();
 
   const lines = items
     .map((i) => {
@@ -34,11 +36,11 @@ export default function CartPage() {
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert(data.error || "Något gick fel");
+        alert(data.error || t("cart.error.generic"));
         setLoading(false);
       }
     } catch (e) {
-      alert("Kunde inte ansluta till betalningen. Är Stripe-nycklarna satta i .env.local?");
+      alert(t("cart.error.stripe"));
       setLoading(false);
     }
   }
@@ -46,13 +48,13 @@ export default function CartPage() {
   if (lines.length === 0) {
     return (
       <div className="max-w-2xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-3xl font-semibold">Kundvagnen är tom</h1>
-        <p className="text-ink/60 mt-3">Bläddra galleriet och hitta ett verk.</p>
+        <h1 className="text-3xl font-semibold">{t("cart.empty.h")}</h1>
+        <p className="text-ink/60 mt-3">{t("cart.empty.p")}</p>
         <Link
           href="/"
           className="inline-block mt-8 px-6 py-3 bg-ink text-paper rounded-full font-medium hover:bg-accent transition"
         >
-          Till galleriet
+          {t("cart.empty.cta")}
         </Link>
       </div>
     );
@@ -60,7 +62,7 @@ export default function CartPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
-      <h1 className="text-3xl font-semibold">Din kundvagn</h1>
+      <h1 className="text-3xl font-semibold">{t("cart.h1")}</h1>
 
       <div className="mt-8 space-y-4">
         {lines.map((l) => (
@@ -73,7 +75,7 @@ export default function CartPage() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-medium italic truncate">{l.product.name}</p>
-              <p className="text-sm text-ink/60">{l.format.name} · {l.format.priceSEK.toLocaleString("sv-SE")} kr/st</p>
+              <p className="text-sm text-ink/60">{l.format.name} · {l.format.priceSEK.toLocaleString("sv-SE")} {t("cart.perUnit")}</p>
             </div>
             <div className="flex items-center gap-2">
               <button
@@ -96,17 +98,17 @@ export default function CartPage() {
 
       <div className="mt-8 border-t border-ink/10 pt-6 flex flex-col md:flex-row justify-between gap-6">
         <button onClick={clear} className="text-sm text-ink/60 hover:text-accent self-start">
-          Töm kundvagn
+          {t("cart.clear")}
         </button>
         <div className="md:text-right">
-          <p className="text-sm text-ink/60">Totalt inkl. moms</p>
+          <p className="text-sm text-ink/60">{t("cart.totalVat")}</p>
           <p className="text-3xl font-semibold mt-1">{total.toLocaleString("sv-SE")} kr</p>
           <button
             onClick={checkout}
             disabled={loading}
             className="mt-4 px-8 py-3 bg-accent text-white rounded-full font-medium hover:bg-ink transition disabled:opacity-50"
           >
-            {loading ? "Skickar till betalning…" : "Till kassan"}
+            {loading ? t("cart.checkoutLoading") : t("cart.checkout")}
           </button>
         </div>
       </div>

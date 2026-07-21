@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useCart } from "./CartContext";
 import type { Product, Format } from "@/lib/products";
+import { useLang } from "@/components/LanguageProvider";
 
 export default function AddToCartButton({
   product,
@@ -13,6 +14,7 @@ export default function AddToCartButton({
 }) {
   const { add } = useCart();
   const [added, setAdded] = useState(false);
+  const { t } = useLang();
 
   const disabled = !product.inStock;
 
@@ -29,10 +31,10 @@ export default function AddToCartButton({
       className="w-full md:w-auto px-8 py-4 bg-ink text-paper rounded-full font-medium hover:bg-accent transition disabled:bg-ink/30 disabled:cursor-not-allowed"
     >
       {disabled
-        ? "Slutsåld"
+        ? t("card.soldOut")
         : added
-        ? "Tillagd ✓"
-        : `Lägg i kundvagn — ${format.priceSEK.toLocaleString("sv-SE")} kr`}
+        ? t("cart.added")
+        : `${t("cart.add")} — ${format.priceSEK.toLocaleString("sv-SE")} kr`}
     </button>
   );
 }

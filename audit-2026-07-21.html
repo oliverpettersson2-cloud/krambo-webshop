@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>Audit constcollection.com — 2026-07-21</title>
+<style>
+  :root { --ink:#1a1a1a; --paper:#faf7f2; --warm:#e8dcc4; --accent:#8b1a2b; --muted:#6b6b6b; }
+  * { box-sizing: border-box; }
+  body { font: 15px/1.55 -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--paper); margin: 0; padding: 32px 24px; }
+  main { max-width: 940px; margin: 0 auto; }
+  h1 { font-family: Georgia, serif; font-size: 34px; margin: 0 0 4px; }
+  .lede { color: var(--muted); margin: 0 0 28px; }
+  h2 { font-family: Georgia, serif; font-size: 24px; margin: 40px 0 6px; padding-top: 20px; border-top: 2px solid var(--ink); }
+  h3 { font-size: 17px; margin: 22px 0 6px; }
+  ul { padding-left: 22px; margin: 8px 0 14px; }
+  li { margin: 4px 0; }
+  code { background: #f0e9dc; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  .pill { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .5px; padding: 3px 8px; border-radius: 10px; margin-right: 6px; vertical-align: 2px; }
+  .p-blocker { background: #b30000; color: #fff; }
+  .p-high    { background: var(--accent); color: #fff; }
+  .p-med     { background: #d9a441; color: #fff; }
+  .p-low     { background: #7d7d7d; color: #fff; }
+  .p-info    { background: #2a5b8a; color: #fff; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0 16px; font-size: 14px; }
+  th, td { border: 1px solid #ddd0b8; padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--warm); font-weight: 700; }
+  .box { background: #fff; border: 1px solid #e6ddc8; border-radius: 10px; padding: 16px 20px; margin: 12px 0; }
+  .box.blocker { border-left: 6px solid #b30000; }
+  .box.high    { border-left: 6px solid var(--accent); }
+  .box.med     { border-left: 6px solid #d9a441; }
+  .box.low     { border-left: 6px solid #7d7d7d; }
+  .box.info    { border-left: 6px solid #2a5b8a; }
+  .file { font-family: Consolas, monospace; font-size: 13px; color: #555; }
+  .checkbox { color: #2a5b8a; font-weight: 700; margin-right: 6px; }
+  .tag { display: inline-block; background: var(--warm); color: var(--ink); font-size: 12px; padding: 2px 8px; border-radius: 8px; margin-right: 4px; }
+  .summary { background: var(--warm); border-radius: 10px; padding: 18px 22px; margin-bottom: 24px; }
+  .summary p { margin: 4px 0; }
+  .footer-note { margin-top: 40px; color: var(--muted); font-size: 13px; border-top: 1px dashed #ccc; padding-top: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Audit — constcollection.com</h1>
+  <p class="lede">Full genomgång: Drive vs sajt vs säljdokument · genomförd 2026-07-21 · källor: tre parallella granskare</p>
+
+  <div class="summary">
+    <p><strong>Kort läge:</strong> Sajten fungerar, priser och datum är rena i säljbladet, men det finns <strong>fyra riktiga blockerare</strong> som måste fixas innan du skickar avtal/uppföljning till Cecilia.</p>
+    <p><strong>Blockerare:</strong> <span class="pill p-blocker">1</span> "Canvas 30×40 / 50×70" i avtalet + uppföljningen &nbsp; <span class="pill p-blocker">2</span> "canvas" marknadsförs i site-metadata &nbsp; <span class="pill p-blocker">3</span> Fel årtal på hemsidan (Phenomenal, I Rise) &nbsp; <span class="pill p-blocker">4</span> Engelska språkläget trasigt på cart/produktsida/knappar</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>🔴 Blockerare — fix INNAN du skickar / går live</h2>
+
+  <div class="box blocker">
+    <h3><span class="pill p-blocker">B1</span> Avtalet lovar "Canvas 30×40 / 50×70" — men de säljs inte</h3>
+    <p>Kritiskt eftersom felet står i själva avtalstexten. Måste bytas mot "Fine art print 40×50 / Fine art print 50×70". Fem ställen:</p>
+    <ul>
+      <li><span class="file">generate-avtal.js</span> rad 122 (LOI) — "poster, fine art print, canvas 30×40, canvas 50×70, plexiglas"</li>
+      <li><span class="file">generate-avtal.js</span> rad 176 (§2 Tjänsten) — "5 köpformat per verk (poster, fine art print, canvas 30×40, canvas 50×70, plexiglas)"</li>
+      <li><span class="file">uppfoljning.html</span> rad 81 — "(Poster / Fine art print / Canvas 30×40 / Canvas 50×70 / Plexiglas)"</li>
+      <li><span class="file">uppfoljning.html</span> rad 89 — "vad tar du för poster, print, canvas (2 storlekar), plexi?"</li>
+      <li><span class="file">uppfoljning.html</span> rad 169 — "Skicka slutgiltig prislista per format (poster, print, canvas 30×40, canvas 50×70, plexi)"</li>
+    </ul>
+    <p><em>Säljbladet är redan korrekt.</em></p>
+  </div>
+
+  <div class="box blocker">
+    <h3><span class="pill p-blocker">B2</span> "canvas" nämns i sajtens metadata / OG / kontakt — men säljs inte</h3>
+    <p>Läcker till Google-preview, Facebook-preview och kontakt-sidan att canvas säljs, vilket det inte gör. Bort med "canvas" på:</p>
+    <ul>
+      <li><span class="file">app/layout.tsx</span> — <code>metadata.description</code></li>
+      <li><span class="file">app/layout.tsx</span> — <code>twitter.description</code></li>
+      <li><span class="file">app/opengraph-image.tsx</span> — OG-bilden text</li>
+      <li><span class="file">lib/i18n.ts</span> — <code>contact.buyP</code> (både SV och EN)</li>
+    </ul>
+  </div>
+
+  <div class="box blocker">
+    <h3><span class="pill p-blocker">B3</span> Fel årtal på hemsidan — säger 2025 istället för 2023</h3>
+    <ul>
+      <li><span class="file">app/page.tsx</span> rad 85 — "Phenomenal · <strong>2025</strong>" → ska vara <strong>2023</strong></li>
+      <li><span class="file">app/page.tsx</span> rad 102 — "I Rise · <strong>2025</strong>" → ska vara <strong>2023</strong></li>
+    </ul>
+  </div>
+
+  <div class="box blocker">
+    <h3><span class="pill p-blocker">B4</span> Engelskt språkläge är trasigt utanför startsidan</h3>
+    <p>En engelsktalande besökare får plötsligt svensk text så snart hen klickar sig vidare. Följande komponenter/sidor har hårdkodad svenska utan <code>t()</code>:</p>
+    <ul>
+      <li><span class="file">app/cart/page.tsx</span> — hela sidan (kundvagn, knappar, alerts)</li>
+      <li><span class="file">app/products/[slug]/page.tsx</span> — hela produktsidan ("Tillbaka till galleriet", "Äkthetsintyg signerat...", "Betala med kort eller Klarna")</li>
+      <li><span class="file">components/FormatPicker.tsx</span> — "Välj format"</li>
+      <li><span class="file">components/AddToCartButton.tsx</span> — "Lägg i kundvagn", "Slutsåld", "Tillagd ✓"</li>
+      <li><span class="file">components/ProductCard.tsx</span> — "Slutsåld", "Bästsäljare", "Nyhet", "Unik", "Rea", "Från X kr"</li>
+      <li><span class="file">app/intervju/page.tsx</span> rad 156–163 — CTA "Vill du veta mer?"</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>🟠 Hög — bör fixas före live 6 aug</h2>
+
+  <div class="box high">
+    <h3><span class="pill p-high">H1</span> Cecilias kontaktuppgifter saknas i avtalet §1</h3>
+    <p>Både LOI och fullständigt kontrakt har bara namn + adress på Cecilia. E-post och telefonnummer bör stå i "Parter"-blocket för att avtalet ska vara komplett. Oliver har mail men saknar telefon.</p>
+  </div>
+
+  <div class="box high">
+    <h3><span class="pill p-high">H2</span> Två bildfiler är för stora — mobilprestanda</h3>
+    <ul>
+      <li><span class="file">public/art/jikinya.jpg</span> — <strong>9,9 MB</strong> (bör vara &lt; 1,5 MB)</li>
+      <li><span class="file">public/art/the-three-graces.jpg</span> — <strong>9,2 MB</strong> (bör vara &lt; 1,5 MB)</li>
+    </ul>
+    <p>Cecilia har redan lagt upp lämpligare 2–3 MB-versioner i Drive-mappen (Fine art prints/-mappen) — vi kan byta ut och komprimera.</p>
+  </div>
+
+  <div class="box high">
+    <h3><span class="pill p-high">H3</span> DPA (personuppgiftsbiträdesavtal) borde vara obligatoriskt, inte "vid behov"</h3>
+    <p>§7 säger "Vid behov tecknas separat personuppgiftsbiträdesavtal enligt GDPR art. 28." Eftersom slutkundsdata (namn, adress, orderhistorik, e-post) faktiskt behandlas via Vercel/Stripe är det redan personuppgifter i biträdesroll. Skriv istället: <em>"Ett personuppgiftsbiträdesavtal enligt GDPR art. 28 tecknas i samband med detta avtal och bifogas som Bilaga 1."</em></p>
+  </div>
+
+  <div class="box high">
+    <h3><span class="pill p-high">H4</span> "Cecilia Kristofferssson" (dubbelt 's') i äkthetsintygsmallen</h3>
+    <p>Ligger i Drive-filen <span class="file">CERTIFICATE OF AUTHENTICITY.docx</span>. E-postraden står <code>cecilia.kristofferssson71@gmail.com</code> — dubbelt 's'. Sannolikt skrivfel. Bekräfta med Cecilia och rätta i mallen innan hon börjar signera certifikat.</p>
+  </div>
+
+  <div class="box high">
+    <h3><span class="pill p-high">H5</span> Sitemap.ts saknar /kontakt</h3>
+    <p>Endast <code>/</code>, <code>/galleri</code>, <code>/utstallningar</code>, <code>/intervju</code>, <code>/kopvillkor</code>, <code>/integritet</code> + produktsidor listas. Lägg till <code>/kontakt</code>.</p>
+  </div>
+
+  <div class="box high">
+    <h3><span class="pill p-high">H6</span> Uppfoljning.html — utställningsnamn stavning</h3>
+    <p>Rad 114: "Edenfield (trädgårdskvällarna), BYWRTRS, Dunkers, Clarion Sea U" — <strong>"BYWRTRS"</strong> och <strong>"Sea U"</strong> stämmer inte med officiella stavningar. Verifiera mot Cecilias CV eller pressmaterial.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>🟡 Medel — polerar leveransen</h2>
+
+  <div class="box med">
+    <h3><span class="pill p-med">M1</span> Säljbladet nämner inte betalningsvillkor</h3>
+    <p>Avtalet säger "20 dagar netto" (§4), men det står inte i säljbladet — bra att nämna kort i prisrutan för att undvika överraskning.</p>
+  </div>
+
+  <div class="box med">
+    <h3><span class="pill p-med">M2</span> Avtalet saknar dröjsmålsränta &amp; hävningsklausul</h3>
+    <ul>
+      <li>§4: ingen dröjsmålsränta/påminnelseavgift. Standard: referensränta + 8 % enligt räntelagen.</li>
+      <li>§5: enda uppsägningsvägen är 3 mån innan avtalstidens utgång. Ingen hävning vid väsentligt avtalsbrott (t.ex. utebliven betalning &gt; 30 dagar).</li>
+    </ul>
+  </div>
+
+  <div class="box med">
+    <h3><span class="pill p-med">M3</span> Exit-klausul otydlig</h3>
+    <p>§8 säger domänen och innehåll överlåts vid avtalets upphörande, men <em>inte hur</em>: tidsfrist, exportformat, kostnad för teknisk hjälp vid överflyttning. Fyll ut.</p>
+  </div>
+
+  <div class="box med">
+    <h3><span class="pill p-med">M4</span> Prisjustering täcker inte tredjepartschockar</h3>
+    <p>+5 % vid årlig förlängning täcker inte plötsliga prishöjningar från Vercel/Stripe/Cloudflare. Lägg till en klausul om "extraordinära kostnadsökningar från underleverantörer får läggas till kundpriset med 30 dagars varsel".</p>
+  </div>
+
+  <div class="box med">
+    <h3><span class="pill p-med">M5</span> Uppföljningen saknar rader för telefon &amp; org.nr</h3>
+    <p>Cecilia ska fylla i F-skatt / momsstatus — komplettera samma sektion med rader för <strong>telefon, postadress, personnummer eller organisationsnummer</strong>.</p>
+  </div>
+
+  <div class="box med">
+    <h3><span class="pill p-med">M6</span> Ingen input-ruta för köpvillkor &amp; integritetspolicy</h3>
+    <p>Cecilia behöver ge input till returpolicy och leveranstider (från Crimson / White Wall Berlin) för att köpvillkoren ska stämma. Lägg till en fråga i uppföljningen.</p>
+  </div>
+
+  <div class="box med">
+    <h3><span class="pill p-med">M7</span> README.md heter "Krambo — Webshop (MVP)"</h3>
+    <p>Om Cecilia får tillgång till GitHub-repot ser det oprofessionellt ut. Byt titel och första meningen till "Art by Cecilia K. — Webshop".</p>
+  </div>
+
+  <div class="box med">
+    <h3><span class="pill p-med">M8</span> Saljblad — årtal saknas på 1 aug / 6 aug</h3>
+    <p>Rad 131: "Fakturering fr.o.m. <strong>1 augusti</strong>" och "live senast <strong>6 augusti</strong>" utan årtal. Sätt ut 2026 för tydlighet — resten av dokumenten är konsekventa.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>🟢 Låg — teknisk städning</h2>
+
+  <div class="box low">
+    <h3><span class="pill p-low">L1</span> <code>next lint</code> fungerar inte i Next 16</h3>
+    <p>Kommandot har flyttats. <code>package.json</code> har fortfarande <code>"lint": "next lint"</code>. Migrera till ESLint eller Biome direkt.</p>
+  </div>
+
+  <div class="box low">
+    <h3><span class="pill p-low">L2</span> next.config.mjs har döda remotePatterns</h3>
+    <p><code>images.unsplash.com</code>, <code>source.unsplash.com</code>, <code>picsum.photos</code>, <code>loremflickr.com</code> — placeholders från prototypfasen. Kan tas bort helt.</p>
+  </div>
+
+  <div class="box low">
+    <h3><span class="pill p-low">L3</span> Dead code — badge-varianter som inte används</h3>
+    <p><code>ProductCard</code> renderar "Nyhet", "Unik" och "Rea" — men inget verk har någon av dem. Bara "Bästsäljare" används (3 verk). Rensa eller använd.</p>
+  </div>
+
+  <div class="box low">
+    <h3><span class="pill p-low">L4</span> Metadata — saknar alternates för SV/EN</h3>
+    <p>Sajten togglar mellan SV/EN men <code>metadata.alternates.languages</code> är inte satt. Ingen impact förrän vi har separata URL:er per språk, så egentligen bara nice-to-have.</p>
+  </div>
+
+  <div class="box low">
+    <h3><span class="pill p-low">L5</span> signatureLine() i generate-avtal.js — oanvända argument</h3>
+    <p>Funktionen deklareras som <code>signatureLine(role, name)</code> men anropas alltid utan argument, och kroppen använder dem inte. Ren kosmetik — men rensa.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>💡 Ny info från Drive vi kan berika sajten med</h2>
+
+  <div class="box info">
+    <h3><span class="pill p-info">D1</span> Fine art print — signerad, numrerad, edition 40 st</h3>
+    <p>Drive-prislistan säger: <strong>Fine art print</strong> = Hahnemühle Studio Lustre 250 g, <strong>signerad, numrerad, stämplad, edition 40 st</strong>. Det borde synas på sajtens produktsida (idag står bara "tryckt på fotografiskt papper"). Höjer upplevt värde.</p>
+  </div>
+
+  <div class="box info">
+    <h3><span class="pill p-info">D2</span> Plexiglas — i presentlåda 25×25×2,5 cm</h3>
+    <p>Ligger inte tydligt på sajten idag. "I presentlåda" kommunicerar gåv-värde — ta med det i formatbeskrivningen.</p>
+  </div>
+
+  <div class="box info">
+    <h3><span class="pill p-info">D3</span> Plexiglas — 12 video-previews i Drive</h3>
+    <p>Cecilia har spelat in 12 st MP4 med plexiglaset i olika vinklar (en per verk). Kunde bli en 3D-hover eller karusell på plexiglas-formatvalet — starkt säljargument.</p>
+  </div>
+
+  <div class="box info">
+    <h3><span class="pill p-info">D4</span> ~150 porträtt-/utställningsfoton finns</h3>
+    <p>"Portrait foto och utställnings foto mm"-mappen har rikligt material. P1010-serien i svartvitt är särskilt bra för hero/bio-sektionen. Idag har vi bara en placeholder-porträttbild.</p>
+  </div>
+
+  <div class="box info">
+    <h3><span class="pill p-info">D5</span> "II"-versioner av vissa verk</h3>
+    <p>Fine art-mappen har filer märkta "II": Obsidian II, Phenomenal II, Jikinya II, The Three Graces II, Bird of Paradise II, Blue II — troligtvis omkalibrerade/nyare originalfiler. Kolla med Cecilia om det är dessa versioner som ska ligga på sajten.</p>
+  </div>
+
+  <div class="box info">
+    <h3><span class="pill p-info">D6</span> Äkthetsintyg — nämns på sajten men mall finns i Drive</h3>
+    <p>Sajten säger "✓ Äkthetsintyg signerat av konstnären". Cecilia har mallen (<span class="file">CERTIFICATE OF AUTHENTICITY.docx</span>) — bekräfta att det <em>endast</em> är fine art prints (edition 40) som får certifikat, inte postrar och plexiglas. Uppdatera texten på produktsidan så det matchar.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>📋 Vad som stämmer — grönt över hela linjen</h2>
+  <ul>
+    <li>Alla priser är samstämmiga: 549 kr/mån, 3 294 kr/6 mån, +5 %, 500/900/1200/1600/2500 kr per format.</li>
+    <li>Alla datum är samstämmiga: 25 juli signering, 1 aug fakturering, 6 aug live, 7-8 & 14-15 aug Trädgårdsfest 2026.</li>
+    <li>Cecilias adress (Växjögatan 5F, 252 51 Helsingborg) är konsekvent i footer, köpvillkor, integritet, LOI, avtal.</li>
+    <li>Rollfördelning är tydlig: Cecilia levererar innehåll, Oliver bygger sajten.</li>
+    <li>"PathfinderAI" utan "AB" konsekvent.</li>
+    <li>Domän-referens: Canva → Cloudflare, konsekvent (inga "Yola"-rester).</li>
+    <li>Alla 12 produkter mappar mot verkliga bildfiler.</li>
+    <li><code>npx tsc --noEmit</code> — 0 fel.</li>
+    <li><code>npx next build</code> — OK, bara en icke-kritisk varning.</li>
+  </ul>
+
+  <p class="footer-note">Rapport genererad av tre parallella granskningsagenter · Drive-mappen ID <span class="file">1vjrB1lYX74f1uLikdBUOnxFXwmKCGrhs</span> · Repo <span class="file">C:\Users\olive\Desktop\06-Sidoprojekt\webshop\</span></p>
+
+</main>
+</body>
+</html>
