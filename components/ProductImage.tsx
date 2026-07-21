@@ -11,7 +11,7 @@ export default function ProductImage({ src, alt }: { src: string; alt: string })
       <button
         onClick={() => setOpen(true)}
         aria-label={`Zooma in ${alt}`}
-        className="relative aspect-square bg-warm rounded-2xl overflow-hidden w-full cursor-zoom-in group p-4"
+        className="relative aspect-square bg-white rounded-2xl overflow-hidden w-full cursor-zoom-in group p-4"
       >
         <Image
           src={src}
