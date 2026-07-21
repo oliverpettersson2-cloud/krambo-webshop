@@ -14,7 +14,7 @@ export default function ProductCard({ product }: { product: Product }) {
       href={`/products/${product.slug}`}
       className="group block bg-white rounded-xl overflow-hidden border border-ink/10 hover:border-ink/30 transition"
     >
-      <div className="relative aspect-square bg-white p-3">
+      <div className="relative aspect-[3/4] bg-white p-3">
         <Image
           src={product.image}
           alt={product.name}

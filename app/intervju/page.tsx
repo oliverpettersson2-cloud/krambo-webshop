@@ -113,13 +113,14 @@ export default function IntervjuPage() {
 
           {/* Bild — sticky vid scroll på desktop */}
           <figure className="md:sticky md:top-24 md:self-start">
-            <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-white p-4">
+            <div className="rounded-xl overflow-hidden bg-white">
               <Image
                 src="/art/phenomenal.jpg"
                 alt="Phenomenal — Cecilia K."
-                fill
+                width={1600}
+                height={2000}
                 sizes="(max-width: 768px) 100vw, 40vw"
-                className="object-contain"
+                className="w-full h-auto"
               />
             </div>
             <figcaption className="mt-3 text-sm text-ink/60 italic text-center md:text-left">
