@@ -46,7 +46,7 @@ export default function ProductMedia({
           loop
           muted
           playsInline
-          className="w-full h-auto block rounded-2xl bg-white"
+          className="max-h-[70vh] w-auto max-w-full mx-auto block rounded-2xl bg-white"
         />
       )}
 
