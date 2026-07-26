@@ -1,33 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import type { Product } from "@/lib/products";
 import FormatPicker from "@/components/FormatPicker";
-import ProductImage from "@/components/ProductImage";
+import ProductMedia, { type MediaKind } from "@/components/ProductMedia";
 import { useLang } from "@/components/LanguageProvider";
 
 export default function ProductDetail({ product }: { product: Product }) {
   const { t } = useLang();
+  const [media, setMedia] = useState<MediaKind>("image");
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       <Link href="/galleri" className="text-sm text-ink/60 hover:text-ink">{t("product.back")}</Link>
       <div className="grid md:grid-cols-2 gap-12 mt-6">
         <div>
-          <ProductImage src={product.image} alt={product.name} />
-          {product.video && (
-            <div className="mt-6">
-              <p className="text-xs uppercase tracking-wider text-ink/50 mb-2">{t("product.video")}</p>
-              <video
-                src={product.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                controls
-                className="w-full h-auto block rounded-2xl bg-white"
-              />
-            </div>
-          )}
+          <ProductMedia product={product} active={media} onChange={setMedia} />
         </div>
         <div>
           <p className="text-xs uppercase tracking-wider text-ink/50">Cecilia Kristoffersson · {product.year}</p>
@@ -35,7 +23,10 @@ export default function ProductDetail({ product }: { product: Product }) {
           <p className="text-ink/70 mt-6 leading-relaxed">{product.longDescription}</p>
 
           <div className="mt-8">
-            <FormatPicker product={product} />
+            <FormatPicker
+              product={product}
+              onSelect={(id) => setMedia(id === "plexi-15x20" ? "video" : "image")}
+            />
           </div>
 
           <ul className="mt-10 space-y-2 text-sm text-ink/60 border-t border-ink/10 pt-6">

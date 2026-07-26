@@ -5,7 +5,13 @@ import type { Product, Format } from "@/lib/products";
 import AddToCartButton from "./AddToCartButton";
 import { useLang } from "@/components/LanguageProvider";
 
-export default function FormatPicker({ product }: { product: Product }) {
+export default function FormatPicker({
+  product,
+  onSelect,
+}: {
+  product: Product;
+  onSelect?: (formatId: string) => void;
+}) {
   const [selectedId, setSelectedId] = useState<string>(product.formats[0].id);
   const selected = product.formats.find((f) => f.id === selectedId)!;
   const { t } = useLang();
@@ -19,7 +25,10 @@ export default function FormatPicker({ product }: { product: Product }) {
           return (
             <button
               key={f.id}
-              onClick={() => setSelectedId(f.id)}
+              onClick={() => {
+                setSelectedId(f.id);
+                onSelect?.(f.id);
+              }}
               className={`w-full text-left border rounded-xl p-4 transition ${
                 isSel ? "border-ink bg-ink/5" : "border-ink/15 hover:border-ink/30"
               }`}
