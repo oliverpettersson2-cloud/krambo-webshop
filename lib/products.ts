@@ -14,6 +14,7 @@ export type Product = {
   description: string;
   longDescription: string;
   image: string;
+  video?: string;
   formats: Format[];
   inStock: boolean;
   badge?: "bestseller" | "nyhet" | "rea" | "unik";
@@ -21,6 +22,9 @@ export type Product = {
 
 // Bilder ligger i /public/art/. Filnamn = slug + .jpg.
 const img = (slug: string) => `/art/${slug}.jpg`;
+
+// Plexiglas-filmer ligger i /public/art/video/. Filnamn = slug + .mp4.
+const vid = (slug: string) => `/art/video/${slug}.mp4`;
 
 // Cecilias faktiska prislista, juli 2026. Fine art prints är signerade och numrerade i upplaga 40.
 const standardFormats = (): Format[] => [
@@ -71,6 +75,7 @@ export const products: Product[] = [
     longDescription:
       "En omtolkning av Adam — maskuliniteten mjukat, präglad, närvarande. Del av Cecilias serie där kroppen bär färgens språk.",
     image: img("adam"),
+    video: vid("adam"),
     formats: standardFormats(),
     inStock: true,
   },
@@ -83,6 +88,7 @@ export const products: Product[] = [
     longDescription:
       "Frihetens fågel i förvandling. Skarpa turkosa och gula lager bär ett bildspråk om längtan och rörelse.",
     image: img("bird-of-paradise"),
+    video: vid("bird-of-paradise"),
     formats: standardFormats(),
     inStock: true,
   },
@@ -95,6 +101,7 @@ export const products: Product[] = [
     longDescription:
       "En stilla studie i kroppslighet och sinnesstämning. Blå toner bär både djup och genomskinlighet.",
     image: img("blue"),
+    video: vid("blue"),
     formats: standardFormats(),
     inStock: true,
   },
@@ -107,6 +114,7 @@ export const products: Product[] = [
     longDescription:
       "En modern trädgårdsberättelse. Färgexplosionen bär ekot av hennes uppväxts landskap i Zimbabwe.",
     image: img("eden"),
+    video: vid("eden"),
     formats: standardFormats(),
     inStock: true,
     badge: "bestseller",
@@ -120,6 +128,7 @@ export const products: Product[] = [
     longDescription:
       "Eva som många — varje kvinna bär en mångfald inom sig. Ett av kärnverken i Cecilias konstnärskap.",
     image: img("eve"),
+    video: vid("eve"),
     formats: standardFormats(),
     inStock: true,
   },
@@ -132,6 +141,7 @@ export const products: Product[] = [
     longDescription:
       "Ödesgudinnan i Cecilias färgblick. Guldade lager möter förfädrens rytm — hopp och kraft i samma andetag.",
     image: img("fortuna"),
+    video: vid("fortuna"),
     formats: standardFormats(),
     inStock: true,
   },
@@ -144,6 +154,7 @@ export const products: Product[] = [
     longDescription:
       "Inspirerad av Maya Angelou. Lättheten möter trycket — den oavbrutna stigningen i gult och rosa.",
     image: img("i-rise"),
+    video: vid("i-rise"),
     formats: standardFormats(),
     inStock: true,
     badge: "bestseller",
@@ -157,6 +168,7 @@ export const products: Product[] = [
     longDescription:
       "Ett namn från Zimbabwe — flickan som talar sanning även när ingen lyssnar. Cecilias hyllning till modet.",
     image: img("jikinya"),
+    video: vid("jikinya"),
     formats: standardFormats(),
     inStock: true,
   },
@@ -169,6 +181,7 @@ export const products: Product[] = [
     longDescription:
       "Den första kvinnan — den som vägrade lyda. Cecilias tolkning ger henne tillbaka röst, kropp och plats.",
     image: img("lilith-i"),
+    video: vid("lilith-i"),
     formats: standardFormats(),
     inStock: true,
   },
@@ -181,6 +194,7 @@ export const products: Product[] = [
     longDescription:
       "Det svarta glaset som speglar allt. Mörkret som håller ljuset kvar. En kropp som bär motstånd i tystnad.",
     image: img("obsidian"),
+    video: vid("obsidian"),
     formats: standardFormats(),
     inStock: true,
   },
@@ -193,6 +207,7 @@ export const products: Product[] = [
     longDescription:
       "Inspirerad av Maya Angelous \"Phenomenal Woman\". Text och kvinnokropp i siluett — ett av Cecilias mest reproducerade verk.",
     image: img("phenomenal"),
+    video: vid("phenomenal"),
     formats: standardFormats(),
     inStock: true,
     badge: "bestseller",
@@ -206,6 +221,7 @@ export const products: Product[] = [
     longDescription:
       "Tre kvinnogestalter — de klassiska gracerna omtolkade i Cecilias varma färgskala. Mor, dotter och förmoder i en synkroniserad rörelse.",
     image: img("the-three-graces"),
+    video: vid("the-three-graces"),
     formats: standardFormats(),
     inStock: true,
   },

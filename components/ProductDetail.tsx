@@ -12,7 +12,23 @@ export default function ProductDetail({ product }: { product: Product }) {
     <div className="max-w-6xl mx-auto px-6 py-10">
       <Link href="/galleri" className="text-sm text-ink/60 hover:text-ink">{t("product.back")}</Link>
       <div className="grid md:grid-cols-2 gap-12 mt-6">
-        <ProductImage src={product.image} alt={product.name} />
+        <div>
+          <ProductImage src={product.image} alt={product.name} />
+          {product.video && (
+            <div className="mt-6">
+              <p className="text-xs uppercase tracking-wider text-ink/50 mb-2">{t("product.video")}</p>
+              <video
+                src={product.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+                className="w-full h-auto block rounded-2xl bg-white"
+              />
+            </div>
+          )}
+        </div>
         <div>
           <p className="text-xs uppercase tracking-wider text-ink/50">Cecilia Kristoffersson · {product.year}</p>
           <h1 className="text-3xl md:text-4xl font-semibold mt-2 italic">{product.name}</h1>
