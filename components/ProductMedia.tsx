@@ -46,7 +46,6 @@ export default function ProductMedia({
           loop
           muted
           playsInline
-          controls
           className="w-full h-auto block rounded-2xl bg-white"
         />
       )}
