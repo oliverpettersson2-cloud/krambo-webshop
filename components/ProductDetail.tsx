@@ -8,7 +8,7 @@ import ProductMedia, { type MediaKind } from "@/components/ProductMedia";
 import { useLang } from "@/components/LanguageProvider";
 
 export default function ProductDetail({ product }: { product: Product }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [media, setMedia] = useState<MediaKind>("image");
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
@@ -16,6 +16,14 @@ export default function ProductDetail({ product }: { product: Product }) {
       <div className="grid md:grid-cols-2 gap-12 mt-6">
         <div>
           <ProductMedia product={product} active={media} onChange={setMedia} />
+          <div className="mt-8 border-t border-ink/10 pt-6">
+            <p className="text-xs uppercase tracking-wider text-ink/50">{t("product.original.heading")}</p>
+            <p className="text-ink/70 mt-3 leading-relaxed whitespace-pre-line">{product.story[lang]}</p>
+            <p className="text-sm text-ink/50 mt-4">{product.originalSpec[lang]}</p>
+            <Link href="/kontakt" className="inline-block text-sm underline underline-offset-4 text-ink/70 hover:text-ink mt-2">
+              {t("product.original.contact")}
+            </Link>
+          </div>
         </div>
         <div>
           <p className="text-xs uppercase tracking-wider text-ink/50">Cecilia Kristoffersson · {product.year}</p>
