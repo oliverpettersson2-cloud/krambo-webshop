@@ -12,7 +12,7 @@
 | **Mail** | **Zoho Mail (EU)** | `cecilia@constcollection.com` — ligger INTE hos Canva |
 | Mål | Cloudflare DNS + Vercel | Webshopen `art-by-cecilia` tar över webben |
 
-**Viktigaste insikten:** mailen ligger hos Zoho, inte Canva. Den kan inte "försvinna" i flytten — men den slutar fungera om MX/SPF/DKIM-posterna inte följer med till nya DNS:en. Det är hela risken, och den elimineras i steg 1.
+**Viktigaste insikten:** domänens mail-DNS pekar på Zoho, inte Canva. Men — **brevlådan `cecilia@constcollection.com` är inte skapad ännu** (bekräftat 2026-07-30). Det som finns är bara DNS-kopplingen till ett Zoho-konto som någon satt upp tidigare. Se "Mailadressen — två vägar" längst ner innan du bryr dig om DKIM-tabellen nedan.
 
 ---
 
@@ -117,6 +117,21 @@ Då flyttar man hela domänregistreringen ut från Canva ("transfer out"):
 
 ---
 
+## Mailadressen — två vägar (uppdaterat 2026-07-30)
+
+Brevlådan `cecilia@constcollection.com` **finns inte ännu** — den ska skapas. DNS:en pekar på Zoho för att någon (okänt vem — fråga Cecilia/ev. tidigare webbhjälp) en gång kopplat domänen dit.
+
+**Väg 1 — Zoho-inlogget hittas:** logga in på Zohos adminpanel (zoho.eu) → Users → skapa `cecilia@constcollection.com`. Klart på 5 min. Då gäller MX/DKIM-tabellen ovan exakt som den står.
+
+**Väg 2 — inget inlogg finns (troligast):** skapa ett **nytt** Zoho Mail-konto (gratisplanen "Forever Free" räcker för en adress) — men gör det **EFTER** domänflytten, när DNS:en ligger i Cloudflare:
+1. Registrera på zoho.eu → Mail → lägg till domänen constcollection.com
+2. Verifiera med den TXT-post Zoho ger dig → läggs in i Cloudflare
+3. Zoho ger nya MX/SPF/DKIM-värden → **ersätt de gamla posterna i Cloudflare med dessa** (gamla DKIM-tabellen ovan blir då irrelevant)
+4. Skapa brevlådan `cecilia@` + ev. vidarebefordran till hennes Gmail
+5. Kör verifieringen i steg 5 igen (testmail in/ut)
+
+I väg 2 är de gamla Zoho-posterna bara skräp från förr — de behålls under själva domänflytten (enligt guiden) för säkerhets skull, och byts ut i lugn och ro när nya kontot är uppe.
+
 ## TL;DR
 
 1. Skärmdumpa Canvas DNS-poster
@@ -126,4 +141,4 @@ Då flyttar man hela domänregistreringen ut från Canva ("transfer out"):
 5. Verifiera: sajt = webshopen, mail in/ut funkar
 6. Senare: flytta registreringen till Cloudflare Registrar = 100 % fri från Canva
 
-**Mailen överlever eftersom den bor hos Zoho — vi flyttar bara vägvisarna, och de är dokumenterade ovan.**
+**Mailen kan inte gå sönder i flytten — brevlådan finns inte ännu. Den skapas i lugn och ro efteråt ("Mailadressen — två vägar" ovan), och då styr ni själva alla poster i Cloudflare.**
