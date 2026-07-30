@@ -33,7 +33,11 @@ export default function ProductDetail({ product }: { product: Product }) {
           <div className="mt-8">
             <FormatPicker
               product={product}
-              onSelect={(id) => setMedia(id === "plexi-15x20" ? "video" : "image")}
+              onSelect={(id) =>
+                setMedia(
+                  id === "plexi-15x20" ? "video" : id.startsWith("poster") && product.poster ? "poster" : "image"
+                )
+              }
             />
           </div>
 

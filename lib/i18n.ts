@@ -212,6 +212,7 @@ export const dict: Dict = {
   "product.trust.3": { sv: "14 dagars ångerrätt enligt distansköplagen", en: "14-day right of withdrawal by Swedish law" },
   "product.trust.4": { sv: "Betala med kort, Klarna eller Swish", en: "Pay with card, Klarna or Swish" },
   "product.video": { sv: "Verket på plexiglas", en: "The artwork on plexiglass" },
+  "product.poster": { sv: "Som poster", en: "As poster" },
   "product.original.heading": { sv: "Om originalverket", en: "About the original painting" },
   "product.original.contact": { sv: "Kontakta oss direkt för köp av originalmålningen →", en: "Contact us directly to purchase the original painting →" },
 

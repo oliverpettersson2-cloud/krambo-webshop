@@ -18,6 +18,7 @@ export type Product = {
   story: Localized;
   originalSpec: Localized;
   image: string;
+  poster?: string;
   video?: string;
   formats: Format[];
   inStock: boolean;
@@ -29,6 +30,9 @@ const img = (slug: string) => `/art/${slug}.jpg`;
 
 // Plexiglas-filmer ligger i /public/art/video/. Filnamn = slug + .mp4.
 const vid = (slug: string) => `/art/video/${slug}.mp4`;
+
+// Posterdesigner (vit ram + Const Collection-typografi) ligger i /public/art/poster/. Filnamn = slug + .jpg.
+const pos = (slug: string) => `/art/poster/${slug}.jpg`;
 
 // Cecilias faktiska prislista, juli 2026. Fine art prints är signerade och numrerade i upplaga 40.
 const standardFormats = (): Format[] => [
@@ -89,6 +93,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic paint on canvas, in handmade illuminated frame. 78×148×9 cm.",
     },
     image: img("adam"),
+    poster: pos("adam"),
     video: vid("adam"),
     formats: standardFormats(),
     inStock: true,
@@ -110,6 +115,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic on canvas with gold leaf, in handmade illuminated frame. 128×108×9 cm.",
     },
     image: img("bird-of-paradise"),
+    poster: pos("bird-of-paradise"),
     video: vid("bird-of-paradise"),
     formats: standardFormats(),
     inStock: true,
@@ -131,6 +137,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic on canvas in handmade illuminated frame. 108×108×9 cm.",
     },
     image: img("blue"),
+    poster: pos("blue"),
     video: vid("blue"),
     formats: standardFormats(),
     inStock: true,
@@ -152,6 +159,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic on canvas with gold leaf, in handmade illuminated frame. 128×108×9 cm.",
     },
     image: img("eden"),
+    poster: pos("eden"),
     video: vid("eden"),
     formats: standardFormats(),
     inStock: true,
@@ -174,6 +182,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic paint on canvas, in handmade illuminated frame. 78×148×9 cm.",
     },
     image: img("eve"),
+    poster: pos("eve"),
     video: vid("eve"),
     formats: standardFormats(),
     inStock: true,
@@ -195,6 +204,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic paint on canvas, in handmade illuminated frame. 88×108×9 cm.",
     },
     image: img("fortuna"),
+    poster: pos("fortuna"),
     video: vid("fortuna"),
     formats: standardFormats(),
     inStock: true,
@@ -216,6 +226,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic on canvas in handmade illuminated frame. 158×108×9 cm.",
     },
     image: img("i-rise"),
+    poster: pos("i-rise"),
     video: vid("i-rise"),
     formats: standardFormats(),
     inStock: true,
@@ -238,6 +249,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic on canvas in handmade illuminated frame. 158×108×9 cm.",
     },
     image: img("jikinya"),
+    poster: pos("jikinya"),
     video: vid("jikinya"),
     formats: standardFormats(),
     inStock: true,
@@ -259,6 +271,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic paint on canvas, in handmade illuminated frame. 128×240×9 cm.",
     },
     image: img("lilith-i"),
+    poster: pos("lilith-i"),
     video: vid("lilith-i"),
     formats: standardFormats(),
     inStock: true,
@@ -280,6 +293,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic on canvas with gold leaf, in handmade illuminated frame. 128×108×9 cm.",
     },
     image: img("obsidian"),
+    poster: pos("obsidian"),
     video: vid("obsidian"),
     formats: standardFormats(),
     inStock: true,
@@ -301,6 +315,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic on canvas in handmade illuminated frame. 158×108×9 cm.",
     },
     image: img("phenomenal"),
+    poster: pos("phenomenal"),
     video: vid("phenomenal"),
     formats: standardFormats(),
     inStock: true,
@@ -323,6 +338,7 @@ export const products: Product[] = [
       en: "Original painting — acrylic on canvas in handmade illuminated frame. 158×108×9 cm.",
     },
     image: img("the-three-graces"),
+    poster: pos("the-three-graces"),
     video: vid("the-three-graces"),
     formats: standardFormats(),
     inStock: true,
