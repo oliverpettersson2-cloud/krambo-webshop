@@ -123,6 +123,7 @@ const loi = new Document({
 
       h2("Utanför månadsavgiften"),
       p("Större designändringar, tilläggssidor utöver shoppen, marknadsförings- och SEO-arbete samt fotografering/filmning av verk offereras separat. Beställaren ansvarar själv för verksfoton och bildmaterial."),
+      p("Domänförnyelsen för constcollection.com (ca 110–250 kr/år beroende på registrar) betalas av Beställaren direkt till registraren — domänen är och förblir Beställarens egendom."),
 
       h2("Avtalstid"),
       p("Fullständigt avtal löper 12 månader från faktureringsstart. Uppsägning senast 3 månader före avtalstidens utgång, annars förlängs avtalet automatiskt 12 månader med prisjustering enligt ovan. Vid avtalets upphörande överlåts domän och allt innehåll till Beställaren."),
