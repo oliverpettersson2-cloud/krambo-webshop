@@ -83,7 +83,7 @@ const loi = new Document({
       new Paragraph({
         spacing: { after: 300 },
         border: { bottom: { color: INK, size: 12, style: BorderStyle.SINGLE, space: 4 } },
-        children: [new TextRun({ text: "Webshop åt Cecilia Kristoffersson · Art by Cecilia K. · Version 2, 30 juli 2026 (ersätter tidigare version)", size: 20, italics: true, color: MUTED, font: "Calibri" })],
+        children: [new TextRun({ text: "Webshop åt Cecilia Kristoffersson · Art by Cecilia K. · Version 2.1, 1 augusti 2026 — pris enligt muntlig överenskommelse (ersätter tidigare versioner)", size: 20, italics: true, color: MUTED, font: "Calibri" })],
       }),
 
       h2("Parter"),
@@ -98,9 +98,9 @@ const loi = new Document({
       p("Denna avsiktsförklaring bekräftar parternas gemensamma avsikt att teckna ett fullständigt tjänsteavtal om leverans och drift av en webshop på domänen constcollection.com. Målsättning: sajten publikt live på constcollection.com senast 6 augusti 2026 — inför Trädgårdsfesten 7–8 augusti 2026."),
 
       h2("Pris och fakturering"),
-      bullet("Månadsavgift: 599 kr inklusive moms (motsvarande 479,20 kr exkl. moms)."),
+      bullet("Månadsavgift: 649 kr inklusive moms (motsvarande 519,20 kr exkl. moms)."),
       bullet("Fakturering påbörjas först den dag webshopen är publikt live på constcollection.com — ingen kostnad dessförinnan."),
-      bullet("Faktura utställs var 6:e månad i förskott: 3 594 kr inkl. moms per faktura."),
+      bullet("Faktura utställs var 6:e månad i förskott: 3 894 kr inkl. moms per faktura."),
       bullet("Inget setup-arvode. Ingen provision på försäljningar."),
       bullet("Årlig prisjustering: +5 % vid varje ny 12-månadersperiod."),
 
