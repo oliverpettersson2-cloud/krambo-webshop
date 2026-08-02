@@ -24,24 +24,40 @@ const ICONS: { key: keyof typeof social; label: string; path: string }[] = [
 ];
 
 export default function SocialIcons({ className = "" }: { className?: string }) {
-  const active = ICONS.filter((i) => social[i.key]);
-  if (active.length === 0) return null;
   return (
     <div className={`flex items-center gap-1 ${className}`}>
-      {active.map((i) => (
-        <a
-          key={i.key}
-          href={social[i.key]}
-          target={i.key === "mail" ? undefined : "_blank"}
-          rel={i.key === "mail" ? undefined : "noopener noreferrer"}
-          aria-label={i.label}
-          className="w-9 h-9 flex items-center justify-center rounded-full text-ink/60 hover:text-accent hover:bg-ink/5 transition"
-        >
+      {ICONS.map((i) => {
+        const icon = (
           <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden="true">
             <path d={i.path} />
           </svg>
-        </a>
-      ))}
+        );
+        // Länk saknas ännu → visas som inaktiv platshållare tills kanalen aktiveras
+        if (!social[i.key]) {
+          return (
+            <span
+              key={i.key}
+              aria-label={`${i.label} (kommer snart)`}
+              title={`${i.label} — kommer snart`}
+              className="w-9 h-9 flex items-center justify-center rounded-full text-ink/30 cursor-default"
+            >
+              {icon}
+            </span>
+          );
+        }
+        return (
+          <a
+            key={i.key}
+            href={social[i.key]}
+            target={i.key === "mail" ? undefined : "_blank"}
+            rel={i.key === "mail" ? undefined : "noopener noreferrer"}
+            aria-label={i.label}
+            className="w-9 h-9 flex items-center justify-center rounded-full text-ink/60 hover:text-accent hover:bg-ink/5 transition"
+          >
+            {icon}
+          </a>
+        );
+      })}
     </div>
   );
 }

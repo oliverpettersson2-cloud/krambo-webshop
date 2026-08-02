@@ -49,7 +49,6 @@ export default function Header() {
           })}
         </nav>
         <div className="flex items-center gap-3 shrink-0">
-          <SocialIcons className="hidden lg:flex" />
           <LanguageToggle />
           <button
             onClick={() => setDrawerOpen(true)}
@@ -64,6 +63,7 @@ export default function Header() {
               </span>
             )}
           </button>
+          <SocialIcons className="hidden lg:flex" />
         </div>
       </div>
       <CartDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
