@@ -15,7 +15,7 @@ export default function KontaktPage() {
     const body = encodeURIComponent(
       `${isEn ? "From" : "Från"}: ${form.name} <${form.email}>\n\n${form.message}`
     );
-    window.location.href = `mailto:cecilia@constcollection.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:cecilia.kristoffersson71@gmail.com?subject=${subject}&body=${body}`;
   }
 
   return (
@@ -111,8 +111,8 @@ export default function KontaktPage() {
             {isEn ? "The artist" : "Konstnären"}
           </p>
           <p className="font-serif text-xl mt-2">Cecilia Kristoffersson</p>
-          <a href="mailto:cecilia@constcollection.com" className="text-sm text-accent hover:underline break-all">
-            cecilia@constcollection.com
+          <a href="mailto:cecilia.kristoffersson71@gmail.com" className="text-sm text-accent hover:underline break-all">
+            cecilia.kristoffersson71@gmail.com
           </a>
         </div>
       </div>

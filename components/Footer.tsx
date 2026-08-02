@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-10">
 
           <div>
-            <p className="font-serif text-2xl">Art by Cecilia K<span className="text-accent">.</span></p>
+            <p className="font-serif text-2xl">Constcollection by Cecilia K<span className="text-accent">.</span></p>
             <p className="text-sm text-paper/70 mt-3 leading-relaxed">{t("footer.tagline")}</p>
             <p className="text-xs text-paper/50 mt-4">
               Cecilia Kristoffersson<br/>
@@ -44,8 +44,8 @@ export default function Footer() {
               </li>
               <li>
                 <span className="block text-paper/60 text-xs">{t("footer.artist")}</span>
-                <a href="mailto:cecilia@constcollection.com" className="hover:text-accent break-all">
-                  cecilia@constcollection.com
+                <a href="mailto:cecilia.kristoffersson71@gmail.com" className="hover:text-accent break-all">
+                  cecilia.kristoffersson71@gmail.com
                 </a>
               </li>
               <li>
@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-paper/15 flex flex-col md:flex-row justify-between gap-3 text-xs text-paper/50">
-          <p>© {new Date().getFullYear()} Art by Cecilia K. {t("footer.rights")}</p>
+          <p>© {new Date().getFullYear()} Constcollection by Cecilia K. {t("footer.rights")}</p>
           <p>{t("footer.lang")}</p>
         </div>
       </div>

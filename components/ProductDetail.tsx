@@ -9,7 +9,7 @@ import { useLang } from "@/components/LanguageProvider";
 
 export default function ProductDetail({ product }: { product: Product }) {
   const { t, lang } = useLang();
-  const [media, setMedia] = useState<MediaKind>("image");
+  const [media, setMedia] = useState<MediaKind>(product.poster ? "poster" : "image");
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       <Link href="/galleri" className="text-sm text-ink/60 hover:text-ink">{t("product.back")}</Link>

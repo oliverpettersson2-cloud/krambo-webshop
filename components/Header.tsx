@@ -22,7 +22,7 @@ export default function Header() {
     <header className="border-b border-ink/10 bg-paper/95 sticky top-0 z-20 backdrop-blur">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         <Link href="/" className="font-serif font-medium tracking-wide text-xl shrink-0">
-          Art by Cecilia K<span className="text-accent">.</span>
+          Constcollection by Cecilia K<span className="text-accent">.</span>
         </Link>
         <nav className="hidden md:flex items-center gap-2 text-sm flex-1 justify-center font-medium">
           {navItems.map((item) => {

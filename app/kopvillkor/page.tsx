@@ -28,10 +28,10 @@ export default function KopvillkorPage() {
           </h2>
           <p className="mt-3">
             {isEn
-              ? "constcollection.com is operated by Cecilia Kristoffersson (\"Art by Cecilia K.\"), Växjögatan 5F, 252 51 Helsingborg, Sweden. All artworks and prints are sold directly by the artist. For questions, contact "
-              : "constcollection.com drivs av Cecilia Kristoffersson (\"Art by Cecilia K.\"), Växjögatan 5F, 252 51 Helsingborg. Alla verk och tryck säljs direkt av konstnären. Frågor besvaras på "}
-            <a href="mailto:cecilia@constcollection.com" className="text-accent underline">
-              cecilia@constcollection.com
+              ? "constcollection.com is operated by Cecilia Kristoffersson (\"Constcollection by Cecilia K.\"), Växjögatan 5F, 252 51 Helsingborg, Sweden. All artworks and prints are sold directly by the artist. For questions, contact "
+              : "constcollection.com drivs av Cecilia Kristoffersson (\"Constcollection by Cecilia K.\"), Växjögatan 5F, 252 51 Helsingborg. Alla verk och tryck säljs direkt av konstnären. Frågor besvaras på "}
+            <a href="mailto:cecilia.kristoffersson71@gmail.com" className="text-accent underline">
+              cecilia.kristoffersson71@gmail.com
             </a>
             .
           </p>
@@ -78,8 +78,8 @@ export default function KopvillkorPage() {
             {isEn
               ? "As a consumer you have the right to withdraw your purchase within 14 days of receiving the goods, in accordance with the Swedish Distance Contracts Act (Distansavtalslagen). To use your right, contact "
               : "Du har som konsument rätt att ångra ditt köp inom 14 dagar från det att du mottagit varan, enligt distansavtalslagen (2005:59). För att utöva ångerrätten kontakta "}
-            <a href="mailto:cecilia@constcollection.com" className="text-accent underline">
-              cecilia@constcollection.com
+            <a href="mailto:cecilia.kristoffersson71@gmail.com" className="text-accent underline">
+              cecilia.kristoffersson71@gmail.com
             </a>
             {isEn
               ? " within the 14-day window. The item must be returned in its original condition. Return shipping is paid by the customer. Refunds are made within 14 days of us receiving the item."
@@ -100,8 +100,8 @@ export default function KopvillkorPage() {
             {isEn
               ? "Under the Swedish Consumer Sales Act (Konsumentköplagen) you have up to 3 years to claim defects that existed at the time of delivery. Report defects as soon as possible — no later than 2 months after discovery — to "
               : "Enligt konsumentköplagen har du rätt att reklamera fel som fanns vid leverans i upp till 3 år. Reklamation ska ske så snart som möjligt — senast inom 2 månader från upptäckt — till "}
-            <a href="mailto:cecilia@constcollection.com" className="text-accent underline">
-              cecilia@constcollection.com
+            <a href="mailto:cecilia.kristoffersson71@gmail.com" className="text-accent underline">
+              cecilia.kristoffersson71@gmail.com
             </a>
             .
           </p>

@@ -206,8 +206,8 @@ export default function Home() {
           <div className="border border-ink/15 rounded-xl p-6 bg-white">
             <p className="text-xs uppercase tracking-widest text-ink/50">{t("contact.artist")}</p>
             <p className="font-serif text-2xl mt-2">Cecilia Kristoffersson</p>
-            <a href="mailto:cecilia@constcollection.com" className="block mt-4 text-accent hover:underline break-all">
-              cecilia@constcollection.com
+            <a href="mailto:cecilia.kristoffersson71@gmail.com" className="block mt-4 text-accent hover:underline break-all">
+              cecilia.kristoffersson71@gmail.com
             </a>
             <p className="text-xs text-ink/50 mt-3">{t("contact.artistHint")}</p>
           </div>

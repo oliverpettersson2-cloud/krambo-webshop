@@ -66,8 +66,8 @@ export default function SuccessPage() {
           {isEn
             ? "Reply to your confirmation email or write to "
             : "Svara på bekräftelsemailet eller skriv till "}
-          <a href="mailto:cecilia@constcollection.com" className="text-accent hover:underline">
-            cecilia@constcollection.com
+          <a href="mailto:cecilia.kristoffersson71@gmail.com" className="text-accent hover:underline">
+            cecilia.kristoffersson71@gmail.com
           </a>
         </p>
       </div>

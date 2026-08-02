@@ -20,8 +20,8 @@ export default function ProductMedia({
   const touchX = useRef<number | null>(null);
 
   const slides: MediaKind[] = [
-    "image",
     ...(product.poster ? (["poster"] as MediaKind[]) : []),
+    "image",
     ...(product.video ? (["video"] as MediaKind[]) : []),
   ];
 
@@ -66,16 +66,16 @@ export default function ProductMedia({
       )}
 
       <div className="mt-3 flex gap-3">
-        <button onClick={() => onChange("image")} aria-label={product.name} className={thumbClass("image")}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={product.image} alt="" className="w-full h-full object-cover" />
-        </button>
         {product.poster && (
           <button onClick={() => onChange("poster")} aria-label={t("product.poster")} className={thumbClass("poster")}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={product.poster} alt="" className="w-full h-full object-contain bg-white" />
           </button>
         )}
+        <button onClick={() => onChange("image")} aria-label={product.name} className={thumbClass("image")}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={product.image} alt="" className="w-full h-full object-cover" />
+        </button>
         {product.video && (
           <button onClick={() => onChange("video")} aria-label={t("product.video")} className={thumbClass("video")}>
             {/* eslint-disable-next-line @next/next/no-img-element */}

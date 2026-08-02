@@ -157,8 +157,8 @@ export default function IntervjuPage() {
             {t("interview.moreP")}
           </p>
           <p className="mt-4">
-            <a className="text-accent hover:underline font-medium" href="mailto:cecilia@constcollection.com">
-              cecilia@constcollection.com
+            <a className="text-accent hover:underline font-medium" href="mailto:cecilia.kristoffersson71@gmail.com">
+              cecilia.kristoffersson71@gmail.com
             </a>
           </p>
         </div>

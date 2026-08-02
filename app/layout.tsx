@@ -24,21 +24,21 @@ const sans = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://constcollection.com"),
-  title: "Art by Cecilia K. — Konsttryck & plexiglas",
+  title: "Constcollection by Cecilia K. — Konsttryck & plexiglas",
   description:
     "Cecilia Kristoffersson — samtida konstnär. Fine art print, plexiglastryck och postrar direkt från konstnären.",
   openGraph: {
-    title: "Art by Cecilia K. — I am a mother artist.",
+    title: "Constcollection by Cecilia K. — I am a mother artist.",
     description:
       "Storskaliga illuminerade akrylmålningar om feminin kraft, förfädernas minne och berättelsens återtagande.",
     url: "https://constcollection.com",
-    siteName: "Art by Cecilia K.",
+    siteName: "Constcollection by Cecilia K.",
     locale: "sv_SE",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Art by Cecilia K. — I am a mother artist.",
+    title: "Constcollection by Cecilia K. — I am a mother artist.",
     description:
       "Storskaliga illuminerade akrylmålningar. Poster, fine art print, plexiglas — direkt från konstnären.",
   },

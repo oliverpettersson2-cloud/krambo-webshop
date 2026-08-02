@@ -85,10 +85,10 @@ export const dict: Dict = {
 
   // BUY CTA
   "buy.eyebrow": { sv: "Galleriet", en: "The gallery" },
-  "buy.h2": { sv: "Se hela samlingen — och köp direkt", en: "See the full collection — and buy directly" },
+  "buy.h2": { sv: "Utvalda verk — och köp direkt", en: "Selected works — and buy directly" },
   "buy.p": {
-    sv: "Poster, signerade fine art prints och plexiglastryck i presentlåda. Klarna, kort och Swish via Stripe.",
-    en: "Posters, signed fine art prints and plexiglass prints in gift box. Klarna, card and Swish via Stripe.",
+    sv: "Poster, signerade fine art prints och plexiglastryck i presentlåda. Klarna, kort och Swish via Stripe. Fler verk tillkommer löpande.",
+    en: "Posters, signed fine art prints and plexiglass prints in gift box. Klarna, card and Swish via Stripe. More works are added continuously.",
   },
   "buy.cta": { sv: "Till galleriet →", en: "To the gallery →" },
 
