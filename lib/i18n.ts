@@ -204,6 +204,8 @@ export const dict: Dict = {
   "format.pick": { sv: "Välj format", en: "Choose format" },
   "cart.add": { sv: "Lägg i kundvagn", en: "Add to cart" },
   "cart.added": { sv: "Tillagd ✓", en: "Added ✓" },
+  "drawer.viewFull": { sv: "Visa varukorgen", en: "View basket" },
+  "drawer.close": { sv: "Stäng", en: "Close" },
 
   // PRODUCT PAGE
   "product.back": { sv: "← Tillbaka till galleriet", en: "← Back to the gallery" },

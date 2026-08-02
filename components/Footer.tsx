@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLang } from "./LanguageProvider";
+import SocialIcons from "./SocialIcons";
 
 export default function Footer() {
   const { t } = useLang();
@@ -15,9 +16,9 @@ export default function Footer() {
             <p className="text-sm text-paper/70 mt-3 leading-relaxed">{t("footer.tagline")}</p>
             <p className="text-xs text-paper/50 mt-4">
               Cecilia Kristoffersson<br/>
-              Växjögatan 5F<br/>
-              252 51 Helsingborg
+              Helsingborg
             </p>
+            <SocialIcons className="mt-4 -ml-2 [&_a]:text-paper/60 [&_a:hover]:text-accent [&_a:hover]:bg-paper/10" />
           </div>
 
           <div>

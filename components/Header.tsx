@@ -1,15 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCart } from "./CartContext";
 import { useLang } from "./LanguageProvider";
 import LanguageToggle from "./LanguageToggle";
+import SocialIcons from "./SocialIcons";
+import CartDrawer from "./CartDrawer";
 
 export default function Header() {
   const { count } = useCart();
   const { t } = useLang();
   const pathname = usePathname();
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const navItems = [
     { href: "/", label: t("nav.home") },
@@ -45,27 +49,24 @@ export default function Header() {
           })}
         </nav>
         <div className="flex items-center gap-3 shrink-0">
+          <SocialIcons className="hidden lg:flex" />
           <LanguageToggle />
-          <Link
-            href="/cart"
-            aria-current={pathname === "/cart" ? "page" : undefined}
-            className={`relative text-sm px-4 py-2 rounded-md transition font-medium flex items-center gap-2 border ${
-              pathname === "/cart"
-                ? "bg-accent text-white border-accent"
-                : "border-accent text-accent hover:bg-accent hover:text-white"
-            }`}
+          <button
+            onClick={() => setDrawerOpen(true)}
+            aria-haspopup="dialog"
+            aria-expanded={drawerOpen}
+            className="relative text-sm px-4 py-2 rounded-md transition font-medium flex items-center gap-2 border border-accent text-accent hover:bg-accent hover:text-white"
           >
             <span>{t("nav.cart")}</span>
             {count > 0 && (
-              <span className={`inline-flex items-center justify-center text-xs rounded-full w-5 h-5 border ${
-                pathname === "/cart" ? "bg-white text-accent border-white" : "bg-accent text-white border-accent"
-              }`}>
+              <span className="inline-flex items-center justify-center text-xs rounded-full w-5 h-5 border bg-accent text-white border-accent">
                 {count}
               </span>
             )}
-          </Link>
+          </button>
         </div>
       </div>
+      <CartDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </header>
   );
 }
