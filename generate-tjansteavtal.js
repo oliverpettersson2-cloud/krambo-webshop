@@ -87,8 +87,12 @@ const avtal = new Document({
       }),
 
       h2("§1 Parter"),
-      p("Leverantör: Oliver Pettersson, PathfinderAI, oliver@pathfinderai.se (\"Leverantören\")."),
-      p("Beställare: Cecilia Kristoffersson, enskild näringsidkare, verksamheten Constcollection by Cecilia K., Växjögatan 5F, 252 51 Helsingborg (\"Beställaren\")."),
+      p("Leverantör: Oliver Pettersson, enskild firma PathfinderAI (\"Leverantören\")"),
+      p("Org.nr: ______________________  ·  E-post: oliver@pathfinderai.se  ·  Telefon: ______________________"),
+      new Paragraph({ spacing: { after: 200 }, children: [new TextRun({ text: "", size: 12 })] }),
+      p("Beställare: Cecilia Kristoffersson, enskild näringsidkare, verksamheten Constcollection by Cecilia K. (\"Beställaren\")"),
+      p("Adress: Växjögatan 5F, 252 51 Helsingborg"),
+      p("Org.nr: ______________________  ·  E-post: ______________________  ·  Telefon: ______________________"),
 
       h2("§2 Tjänsten"),
       p("Leverantören levererar och driftar en webshop för Beställaren på domänen constcollection.com. Sajten är publikt live sedan den 1 augusti 2026. I tjänsten ingår:"),
