@@ -99,7 +99,7 @@ const avtal = new Document({
       bullet("Skräddarsydd webshop med 5 köpformat per verk (poster 40×50, poster 50×70, fine art print 40×50, fine art print 50×70, plexiglas 15×20)."),
       bullet("Produktfilmer: visningsvideo av plexiglasverken på respektive produktsida, tekniskt optimerade för webben."),
       bullet("Verkstexter på svenska och engelska under respektive verk."),
-      bullet("E-postadresser på egna domänen (cecilia@constcollection.com m.fl.): uppsättning och löpande drift."),
+      bullet("E-postadresser på egna domänen: uppsättning och löpande drift av cecilia@constcollection.com samt magnus@constcollection.com (ytterligare adresser vid behov)."),
       bullet("Hosting, SSL-certifikat och CDN via Vercel."),
       bullet("Domänhantering via Cloudflare och Namecheap — Beställaren har och behåller fullt ägarskap av domänen, och erhåller egna inloggningsuppgifter till båda tjänsterna."),
       bullet("Betallösning via Stripe i Beställarens namn: kort och Klarna (Swish aktiveras så snart det stöds i Stripe-kontot). Försäljningsintäkter går direkt till Beställaren."),
