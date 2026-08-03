@@ -88,7 +88,7 @@ const avtal = new Document({
 
       h2("§1 Parter"),
       p("Leverantör: Oliver Pettersson, enskild firma PathfinderAI (\"Leverantören\")"),
-      p("Org.nr: ______________________  ·  E-post: oliver@pathfinderai.se  ·  Telefon: ______________________"),
+      p("Org.nr: 920612-1197  ·  E-post: oliver@pathfinderai.se  ·  Telefon: 0766-07 17 57"),
       new Paragraph({ spacing: { after: 200 }, children: [new TextRun({ text: "", size: 12 })] }),
       p("Beställare: Cecilia Kristoffersson, enskild näringsidkare, verksamheten Constcollection by Cecilia K. (\"Beställaren\")"),
       p("Adress: Växjögatan 5F, 252 51 Helsingborg"),
