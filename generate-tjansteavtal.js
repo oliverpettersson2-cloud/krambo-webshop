@@ -113,7 +113,7 @@ const avtal = new Document({
       h2("§4 Pris och betalning"),
       bullet("Månadsavgift: 649 kr inklusive moms (motsvarande 519,20 kr exkl. moms)."),
       bullet("Fakturering sker från och med den 1 augusti 2026 — dagen då webshopen gick live på constcollection.com. Ingen kostnad har utgått dessförinnan."),
-      bullet("Faktura utställs var 6:e månad i förskott: 3 894 kr inkl. moms per faktura. Betalningsvillkor 20 dagar."),
+      bullet("Faktura utställs var 6:e månad i förskott: 3 894 kr inkl. moms per faktura. Betalningsvillkor 30 dagar."),
       bullet("Inget setup-arvode. Ingen provision på försäljningar."),
       bullet("Årlig prisjustering: +5 %, första gången den 1 januari 2028 och därefter årligen den 1 januari. Priset 649 kr/mån ligger alltså fast hela 2026 och 2027."),
 
@@ -140,7 +140,7 @@ const avtal = new Document({
       h2("§10 Immateriella rättigheter"),
       p("Beställaren äger allt konstnärligt och redaktionellt innehåll på sajten (verksbilder, filmer, texter, biografi) samt domänen constcollection.com."),
       p("Leverantören äger koden och tekniken. Beställaren erhåller en icke-exklusiv nyttjanderätt så länge avtalet gäller."),
-      p("Vid avtalets upphörande överlåts allt innehåll och domänen fullständigt till Beställaren; Leverantören bistår vid överlämning."),
+      p("Vid avtalets upphörande överlåts allt innehåll enligt första stycket samt domänen fullständigt till Beställaren; Leverantören bistår vid överlämning av dessa. Koden, tekniken och webshoppslösningen omfattas inte av överlåtelsen — de förblir Leverantörens egendom och Beställarens nyttjanderätt till dem upphör när avtalet upphör."),
 
       h2("§11 Ansvarsbegränsning"),
       p("Leverantörens skadeståndsansvar är i alla situationer begränsat till motsvarande tre (3) månaders månadsavgift. Följdskador, indirekta skador eller utebliven vinst ersätts inte."),
