@@ -102,7 +102,7 @@ const loi = new Document({
       bullet("Fakturering påbörjas först den dag webshopen är publikt live på constcollection.com — ingen kostnad dessförinnan."),
       bullet("Faktura utställs var 6:e månad i förskott: 3 894 kr inkl. moms per faktura."),
       bullet("Inget setup-arvode. Ingen provision på försäljningar."),
-      bullet("Årlig prisjustering: +5 % vid varje ny 12-månadersperiod."),
+      bullet("Årlig prisjustering: +5 %, första gången den 1 januari 2028 och därefter årligen den 1 januari. Priset 649 kr/mån ligger alltså fast hela 2026 och 2027."),
 
       h2("Vad som ingår i månadsavgiften"),
       bullet("Skräddarsydd webshop med 5 köpformat per verk (poster 40×50, poster 50×70, fine art print 40×50, fine art print 50×70, plexiglas 15×20)."),
