@@ -65,7 +65,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
       <aside
         role="dialog"
         aria-label={t("cart.h1")}
-        className={`absolute right-0 top-0 h-full w-full max-w-md bg-paper shadow-2xl flex flex-col transition-transform duration-300 ${
+        className={`absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col transition-transform duration-300 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -77,14 +77,15 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
         </div>
 
         {lines.length === 0 ? (
-          <div className="flex-1 flex flex-col items-center justify-center gap-4 px-6 text-center">
-            <p className="text-ink/60">{t("cart.empty.h")}</p>
+          <div className="flex-1 flex flex-col items-center justify-center gap-3 px-6 text-center bg-white">
+            <p className="font-serif text-xl text-ink">{t("cart.empty.h")}</p>
+            <p className="text-sm text-ink/60">{t("cart.empty.p")}</p>
             <Link
               href="/galleri"
               onClick={onClose}
-              className="px-6 py-3 bg-ink text-paper rounded-full text-sm font-medium hover:bg-accent transition"
+              className="mt-3 px-6 py-3 bg-ink text-white rounded-full text-sm font-medium hover:bg-accent transition"
             >
-              {t("cart.empty.cta")}
+              {t("cart.empty.cta")} →
             </Link>
           </div>
         ) : (
@@ -118,7 +119,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
               ))}
             </div>
 
-            <div className="border-t border-ink/10 px-6 py-4 shrink-0 bg-paper">
+            <div className="border-t border-ink/10 px-6 py-4 shrink-0 bg-white">
               <div className="flex items-baseline justify-between">
                 <p className="text-sm text-ink/60">{t("cart.totalVat")}</p>
                 <p className="text-2xl font-semibold">{total.toLocaleString("sv-SE")} kr</p>
