@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useLang } from "@/components/LanguageProvider";
 import { Lang } from "@/lib/i18n";
 
@@ -59,8 +60,49 @@ function range(e: Exhibition, lang: Lang): string {
   return `${fmt(e.start, lang)} – ${fmt(e.end, lang)}`;
 }
 
+function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibition; lang: Lang; onClose: () => void }) {
+  const note = lang === "en" && exhibition.note_en ? exhibition.note_en : exhibition.note;
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={exhibition.title}>
+      <div className="absolute inset-0 bg-ink/50" onClick={onClose} />
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8">
+        <button
+          onClick={onClose}
+          aria-label={lang === "en" ? "Close" : "Stäng"}
+          className="absolute top-4 right-4 w-9 h-9 rounded-full hover:bg-ink/5 text-ink/60 hover:text-ink transition"
+        >
+          ✕
+        </button>
+        <p className="text-gold uppercase tracking-[0.25em] text-xs font-semibold">{range(exhibition, lang)}</p>
+        <h3 className="font-serif text-3xl mt-3 leading-tight pr-8">{exhibition.title}</h3>
+        <p className="text-ink/70 mt-3">
+          📍 {exhibition.place} · {exhibition.city}
+        </p>
+        {note && <p className="text-ink/70 mt-5 leading-relaxed italic border-l-2 border-gold/60 pl-4">{note}</p>}
+        <p className="text-xs text-ink/40 mt-6">
+          {lang === "en"
+            ? "Curious about a similar exhibition? Contact curator Magnus Florin."
+            : "Nyfiken på en liknande utställning? Kontakta curator Magnus Florin."}{" "}
+          <a className="text-accent hover:underline" href="mailto:k.magnus.florin@gmail.com">k.magnus.florin@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function UtstallningarPage() {
   const { t, lang } = useLang();
+  const [selected, setSelected] = useState<Exhibition | null>(null);
   const upcoming = exhibitions.filter((e) => e.status === "upcoming" || e.status === "current");
   const past = exhibitions.filter((e) => e.status === "past");
   const noteFor = (e: Exhibition) => (lang === "en" && e.note_en) ? e.note_en : e.note;
@@ -162,10 +204,17 @@ export default function UtstallningarPage() {
             {past.map((e, i) => (
               <li key={i} className="relative">
                 <span className="absolute -left-[42px] top-1 w-4 h-4 rounded-full bg-accent ring-4 ring-warm"></span>
-                <p className="text-xs text-ink/50 uppercase tracking-widest font-medium">{range(e, lang)}</p>
-                <h3 className="font-serif text-2xl mt-1">{e.title}</h3>
-                <p className="text-ink/70 mt-1">{e.place} · {e.city}</p>
-                {noteFor(e) && <p className="text-sm text-ink/55 mt-2 italic">{noteFor(e)}</p>}
+                <button
+                  onClick={() => setSelected(e)}
+                  className="block w-full text-left group rounded-lg -m-2 p-2 transition hover:bg-white/70"
+                >
+                  <p className="text-xs text-ink/50 uppercase tracking-widest font-medium">{range(e, lang)}</p>
+                  <h3 className="font-serif text-2xl mt-1 group-hover:text-accent transition">{e.title}</h3>
+                  <p className="text-ink/70 mt-1">{e.place} · {e.city}</p>
+                  <p className="text-xs text-accent/70 mt-2 opacity-0 group-hover:opacity-100 transition">
+                    {lang === "en" ? "Read more →" : "Läs mer →"}
+                  </p>
+                </button>
               </li>
             ))}
           </ol>
@@ -184,6 +233,8 @@ export default function UtstallningarPage() {
           <a className="text-accent hover:underline" href="tel:+46708734215">+46 708 73 42 15</a>
         </p>
       </section>
+
+      {selected && <ExhibitionDialog exhibition={selected} lang={lang} onClose={() => setSelected(null)} />}
     </div>
   );
 }

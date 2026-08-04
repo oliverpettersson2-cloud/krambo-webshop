@@ -4,5 +4,6 @@ export const social = {
   facebook: "",
   instagram: "",
   youtube: "",
+  tiktok: "",
   mail: "mailto:cecilia.kristoffersson71@gmail.com",
 };
