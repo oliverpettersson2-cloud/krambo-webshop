@@ -22,7 +22,7 @@ export default function Header() {
   const navItems = [
     { href: "/", label: t("nav.home") },
     { href: "/utstallningar", label: t("nav.exhibitions") },
-    { href: "/galleri", label: t("nav.gallery") },
+    { href: "/shop", label: t("nav.gallery") },
     { href: "/intervju", label: t("nav.interview") },
   ];
 
@@ -32,7 +32,7 @@ export default function Header() {
     <header className="border-b border-ink/10 bg-paper/95 sticky top-0 z-20 backdrop-blur">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
         <Link href="/" className="font-serif font-medium tracking-wide text-base sm:text-xl shrink min-w-0 truncate">
-          Constcollection by Cecilia K<span className="text-accent">.</span>
+          Const Collection Art by Cecilia K<span className="text-accent">.</span>
         </Link>
 
         {/* Desktop-nav */}

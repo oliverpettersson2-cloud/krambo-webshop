@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Constcollection by Cecilia K. — Konsttryck & plexiglas";
+export const alt = "Const Collection Art by Cecilia K. — Konsttryck & plexiglas";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -30,7 +30,7 @@ export default async function OGImage() {
               fontWeight: 600,
             }}
           >
-            Constcollection by Cecilia K.
+            Const Collection Art by Cecilia K.
           </div>
         </div>
         <div

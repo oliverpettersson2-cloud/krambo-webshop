@@ -90,7 +90,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
             <p className="font-serif text-xl text-ink">{t("cart.empty.h")}</p>
             <p className="text-sm text-ink/60">{t("cart.empty.p")}</p>
             <Link
-              href="/galleri"
+              href="/shop"
               onClick={onClose}
               className="mt-3 px-6 py-3 bg-ink text-white rounded-full text-sm font-medium hover:bg-accent transition"
             >

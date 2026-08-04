@@ -8,7 +8,7 @@ export const dict: Dict = {
   // NAVIGATION
   "nav.home": { sv: "Hem", en: "Home" },
   "nav.exhibitions": { sv: "Utställningar", en: "Exhibitions" },
-  "nav.gallery": { sv: "Galleri", en: "Gallery" },
+  "nav.gallery": { sv: "Shop", en: "Shop" },
   "nav.interview": { sv: "Intervju", en: "Interview" },
   "nav.cart": { sv: "Kundvagn", en: "Cart" },
   "nav.back": { sv: "← Tillbaka", en: "← Back" },
@@ -84,13 +84,13 @@ export const dict: Dict = {
   "other.h2": { sv: "Andra utvalda verk", en: "Other featured works" },
 
   // BUY CTA
-  "buy.eyebrow": { sv: "Galleriet", en: "The gallery" },
+  "buy.eyebrow": { sv: "Shopen", en: "The shop" },
   "buy.h2": { sv: "Utvalda verk", en: "Selected works" },
   "buy.p": {
     sv: "Poster, signerade fine art prints och plexiglastryck i presentlåda. Klarna, kort och Swish via Stripe. Fler verk tillkommer löpande.",
     en: "Posters, signed fine art prints and plexiglass prints in gift box. Klarna, card and Swish via Stripe. More works are added continuously.",
   },
-  "buy.cta": { sv: "Till galleriet →", en: "To the gallery →" },
+  "buy.cta": { sv: "Till shopen →", en: "To the shop →" },
 
   // SAMARBETEN / PRESS
   "collab.eyebrow": { sv: "Samarbeten & forskning", en: "Collaborations & research" },
@@ -112,15 +112,15 @@ export const dict: Dict = {
   "contact.artist": { sv: "Konstnären", en: "The artist" },
   "contact.artistHint": { sv: "Artist talks · konstvisningar · personlig kontakt", en: "Artist talks · art viewings · personal contact" },
   "contact.buyEyebrow": { sv: "Vill du köpa ett verk?", en: "Want to buy a work?" },
-  "contact.buyH": { sv: "Köp sker direkt via galleriet", en: "Purchase happens directly via the gallery" },
+  "contact.buyH": { sv: "Köp sker direkt via shopen", en: "Purchase happens directly via the shop" },
   "contact.buyP": {
     sv: "Poster, fine art print och plexiglastryck. Trygg betalning med kort, Klarna eller Swish via Stripe.",
     en: "Poster, fine art print and plexiglass print. Secure payment with card, Klarna or Swish via Stripe.",
   },
-  "contact.buyCta": { sv: "Till galleriet →", en: "To the gallery →" },
+  "contact.buyCta": { sv: "Till shopen →", en: "To the shop →" },
 
   // GALLERI PAGE
-  "galleri.eyebrow": { sv: "Galleri", en: "Gallery" },
+  "galleri.eyebrow": { sv: "Shop", en: "Shop" },
   "galleri.h1": { sv: "Verken — direkt från konstnären", en: "The works — direct from the artist" },
   "galleri.intro": {
     sv: "Poster, signerad fine art print eller plexiglas i presentlåda. Klarna, kort och Swish. Hemma hos dig inom 5–10 dagar.",
@@ -180,7 +180,7 @@ export const dict: Dict = {
   "cart.h1": { sv: "Din kundvagn", en: "Your cart" },
   "cart.empty.h": { sv: "Kundvagnen är tom", en: "Your cart is empty" },
   "cart.empty.p": { sv: "Bläddra galleriet och hitta ett verk.", en: "Browse the gallery to find a work." },
-  "cart.empty.cta": { sv: "Till galleriet", en: "To the gallery" },
+  "cart.empty.cta": { sv: "Till shopen", en: "To the shop" },
   "cart.clear": { sv: "Töm kundvagn", en: "Clear cart" },
   "cart.totalVat": { sv: "Totalt inkl. moms", en: "Total incl. VAT" },
   "cart.checkout": { sv: "Till kassan", en: "Checkout" },
@@ -208,7 +208,7 @@ export const dict: Dict = {
   "drawer.close": { sv: "Stäng", en: "Close" },
 
   // PRODUCT PAGE
-  "product.back": { sv: "← Tillbaka till galleriet", en: "← Back to the gallery" },
+  "product.back": { sv: "← Tillbaka till shopen", en: "← Back to the shop" },
   "product.trust.1": { sv: "Äkthetsintyg signerat av konstnären (fine art print)", en: "Certificate of authenticity signed by the artist (fine art print)" },
   "product.trust.2": { sv: "Försäkrad leverans inom Sverige", en: "Insured delivery within Sweden" },
   "product.trust.3": { sv: "14 dagars ångerrätt enligt distansköplagen", en: "14-day right of withdrawal by Swedish law" },

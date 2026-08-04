@@ -12,7 +12,7 @@ export default function ProductDetail({ product }: { product: Product }) {
   const [media, setMedia] = useState<MediaKind>(product.poster ? "poster" : "image");
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
-      <Link href="/galleri" className="text-sm text-ink/60 hover:text-ink">{t("product.back")}</Link>
+      <Link href="/shop" className="text-sm text-ink/60 hover:text-ink">{t("product.back")}</Link>
       <div className="grid md:grid-cols-2 gap-12 mt-6">
         <div>
           <ProductMedia product={product} active={media} onChange={setMedia} />

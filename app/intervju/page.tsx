@@ -96,10 +96,10 @@ export default function IntervjuPage() {
             className="object-cover opacity-45"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/60 to-ink/15" />
         <div className="relative max-w-4xl mx-auto px-6 py-20 md:py-28">
           <Link href="/" className="text-sm text-paper/70 hover:text-accent">{t("nav.back")}</Link>
-          <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold mt-8">{t("interview.eyebrow")}</p>
+          <p className="text-gold uppercase tracking-[0.25em] text-xs font-semibold mt-8">{t("interview.eyebrow")}</p>
           <h1 className="font-serif text-5xl md:text-7xl mt-3 leading-[1.05]">
             {t("interview.h1part1")} <em>Cecilia K.</em>
           </h1>

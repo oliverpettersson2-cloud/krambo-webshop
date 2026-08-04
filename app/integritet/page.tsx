@@ -27,8 +27,8 @@ export default function IntegritetPage() {
             {isEn ? "1. Data controller" : "1. Personuppgiftsansvarig"}
           </h2>
           <p className="mt-3">
-            {isEn ? "Data controller is Cecilia Kristoffersson (\"Constcollection by Cecilia K.\"), Växjögatan 5F, 252 51 Helsingborg, Sweden. Contact: "
-                  : "Personuppgiftsansvarig är Cecilia Kristoffersson (\"Constcollection by Cecilia K.\"), Växjögatan 5F, 252 51 Helsingborg. Kontakt: "}
+            {isEn ? "Data controller is Cecilia Kristoffersson (\"Const Collection Art by Cecilia K.\"), Växjögatan 5F, 252 51 Helsingborg, Sweden. Contact: "
+                  : "Personuppgiftsansvarig är Cecilia Kristoffersson (\"Const Collection Art by Cecilia K.\"), Växjögatan 5F, 252 51 Helsingborg. Kontakt: "}
             <a href="mailto:cecilia.kristoffersson71@gmail.com" className="text-accent underline">
               cecilia.kristoffersson71@gmail.com
             </a>

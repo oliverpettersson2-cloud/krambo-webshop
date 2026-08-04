@@ -6,7 +6,7 @@ const BASE = "https://constcollection.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const staticRoutes = ["", "/galleri", "/utstallningar", "/intervju", "/kopvillkor", "/integritet"];
+  const staticRoutes = ["", "/shop", "/utstallningar", "/intervju", "/kopvillkor", "/integritet"];
 
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((path) => ({
     url: `${BASE}${path}`,

@@ -14,11 +14,11 @@ export default function GalleriPage() {
       {/* HERO */}
       <section className="relative bg-ink text-paper overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/art/eve.jpg" alt="" fill priority className="object-cover opacity-45" />
+          <Image src="/art/eve.jpg" alt="" fill priority className="object-cover opacity-65" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/60 to-ink/15" />
         <div className="relative max-w-6xl mx-auto px-6 py-20 md:py-28">
-          <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">{t("galleri.eyebrow")}</p>
+          <p className="text-gold uppercase tracking-[0.25em] text-xs font-semibold">{t("galleri.eyebrow")}</p>
           <h1 className="font-serif text-5xl md:text-7xl mt-3 leading-[1.05]">{t("galleri.h1")}</h1>
           <p className="mt-5 max-w-xl text-paper/85 text-lg leading-relaxed">{t("galleri.intro")}</p>
         </div>

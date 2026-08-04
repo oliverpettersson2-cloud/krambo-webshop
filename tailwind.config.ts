@@ -9,6 +9,7 @@ const config: Config = {
         paper: "#faf7f2",
         accent: "#8b1a2b",       // vinröd — matchar Cecilias färgvärld
         accentSoft: "#c64a5a",   // ljusare vinröd för hover
+        gold: "#d9a441",         // varm guld — accentfärg på mörka sektioner (belysta ramar)
         warm: "#e8dcc4",         // varmt sandfärgad för sektioner
       },
       fontFamily: {

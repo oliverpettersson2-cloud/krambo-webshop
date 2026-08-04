@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-10">
 
           <div>
-            <p className="font-serif text-2xl">Constcollection by Cecilia K<span className="text-accent">.</span></p>
+            <p className="font-serif text-2xl">Const Collection Art by Cecilia K<span className="text-accent">.</span></p>
             <p className="text-sm text-paper/70 mt-3 leading-relaxed">{t("footer.tagline")}</p>
             <p className="text-xs text-paper/50 mt-4">
               Cecilia Kristoffersson<br/>
@@ -26,7 +26,7 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-sm">
               <li><Link href="/" className="hover:text-accent">{t("nav.home")}</Link></li>
               <li><Link href="/utstallningar" className="hover:text-accent">{t("nav.exhibitions")}</Link></li>
-              <li><Link href="/galleri" className="hover:text-accent">{t("nav.gallery")}</Link></li>
+              <li><Link href="/shop" className="hover:text-accent">{t("nav.gallery")}</Link></li>
               <li><Link href="/intervju" className="hover:text-accent">{t("nav.interview")}</Link></li>
               <li><Link href="/kontakt" className="hover:text-accent">{t("footer.contact")}</Link></li>
               <li className="pt-2 border-t border-paper/15 mt-2"><Link href="/kopvillkor" className="hover:text-accent text-paper/70">{t("footer.terms")}</Link></li>
@@ -60,7 +60,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-paper/15 flex flex-col md:flex-row justify-between gap-3 text-xs text-paper/50">
-          <p>© {new Date().getFullYear()} Constcollection by Cecilia K. {t("footer.rights")}</p>
+          <p>© {new Date().getFullYear()} Const Collection Art by Cecilia K. {t("footer.rights")}</p>
           <p>{t("footer.lang")}</p>
         </div>
       </div>

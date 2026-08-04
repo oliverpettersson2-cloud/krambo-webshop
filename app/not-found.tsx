@@ -32,7 +32,7 @@ export default function NotFound() {
           <Link href="/" className="px-7 py-3 bg-ink text-paper rounded-full font-medium hover:bg-accent transition">
             {isEn ? "Home" : "Hem"}
           </Link>
-          <Link href="/galleri" className="px-7 py-3 border border-ink/20 rounded-full font-medium hover:bg-ink hover:text-paper transition">
+          <Link href="/shop" className="px-7 py-3 border border-ink/20 rounded-full font-medium hover:bg-ink hover:text-paper transition">
             {isEn ? "The gallery" : "Galleriet"}
           </Link>
         </div>

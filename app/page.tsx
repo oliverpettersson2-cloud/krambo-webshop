@@ -19,17 +19,17 @@ export default function Home() {
       {/* HERO */}
       <section className="relative bg-ink text-paper overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/art/eden.jpg" alt="" fill className="object-cover opacity-50" priority />
+          <Image src="/art/eden.jpg" alt="" fill className="object-cover opacity-70" priority />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/55 to-ink/10" />
         <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
-          <p className="text-accent uppercase tracking-[0.3em] text-xs font-semibold">{t("home.tagline")}</p>
+          <p className="text-gold uppercase tracking-[0.3em] text-xs font-semibold">{t("home.tagline")}</p>
           <h1 className="font-serif text-5xl md:text-7xl mt-5 leading-[1.05] max-w-3xl">
             I am a <em>mother artist</em>.
           </h1>
           <p className="mt-6 max-w-xl text-paper/85 text-lg leading-relaxed">{t("home.intro")}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/galleri" className="px-7 py-3 bg-accent text-white rounded-full font-medium hover:bg-accentSoft transition">
+            <Link href="/shop" className="px-7 py-3 bg-accent text-white rounded-full font-medium hover:bg-accentSoft transition">
               {t("home.cta.gallery")}
             </Link>
             <Link href="/utstallningar" className="px-7 py-3 border border-paper/30 text-paper rounded-full font-medium hover:bg-paper hover:text-ink transition">
@@ -106,7 +106,7 @@ export default function Home() {
               </figcaption>
             </figure>
             <div>
-              <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">{t("manifest.eyebrow")}</p>
+              <p className="text-gold uppercase tracking-[0.25em] text-xs font-semibold">{t("manifest.eyebrow")}</p>
               <h2 className="font-serif text-4xl md:text-5xl mt-4">{t("manifest.h2")}</h2>
               <div className="mt-8 space-y-5 text-paper/85 leading-relaxed font-serif italic">
                 <p>{t("manifest.p1")}</p>
@@ -145,7 +145,7 @@ export default function Home() {
           <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">{t("buy.eyebrow")}</p>
           <h3 className="font-serif text-3xl md:text-4xl mt-3">{t("buy.h2")}</h3>
           <p className="mt-5 text-ink/70 max-w-xl mx-auto leading-relaxed">{t("buy.p")}</p>
-          <Link href="/galleri" className="inline-block mt-8 px-8 py-3.5 bg-ink text-paper rounded-full font-medium hover:bg-accent transition text-base">
+          <Link href="/shop" className="inline-block mt-8 px-8 py-3.5 bg-ink text-paper rounded-full font-medium hover:bg-accent transition text-base">
             {t("buy.cta")}
           </Link>
         </div>
