@@ -36,7 +36,7 @@ export default function Header() {
             Const Collection Art by Cecilia K<span className="text-accent">.</span>
           </Link>
           {/* Sociala ikoner under namnet — endast desktop; mobilen har dem i menyn */}
-          <SocialIcons compact className="hidden md:flex -ml-1.5 mt-0.5" />
+          <SocialIcons compact className="hidden md:flex justify-center mt-0.5" />
         </div>
 
         {/* Desktop-nav */}
