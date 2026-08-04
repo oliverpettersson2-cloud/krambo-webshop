@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { getProductById, getFormat } from "@/lib/products";
 
 export type CartItem = { productId: string; formatId: string; qty: number };
 
@@ -28,7 +29,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) setItems(JSON.parse(raw));
+      if (raw) {
+        // Rensa spökposter: rader vars produkt/format inte längre finns räknas annars
+        // i badgen men syns aldrig i listan.
+        const parsed: CartItem[] = JSON.parse(raw);
+        const valid = parsed.filter((i) => {
+          if (!i || typeof i.qty !== "number" || i.qty <= 0) return false;
+          const product = getProductById(i.productId);
+          return !!product && !!getFormat(product, i.formatId);
+        });
+        setItems(valid);
+      }
     } catch {}
     setHydrated(true);
   }, []);
