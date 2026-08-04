@@ -78,13 +78,22 @@ export default function Home() {
               </Link>
             </div>
             <figure className="md:order-last">
-              <div className="rounded-xl overflow-hidden bg-white">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/art/phenomenal.jpg" alt="Phenomenal" className="w-full h-auto block" />
+              <div className="rounded-xl overflow-hidden bg-ink shadow-xl">
+                <video
+                  src="/art/video/evening-garden.mp4"
+                  poster="/art/video/evening-garden-poster.jpg"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-auto block"
+                  aria-label="Evening Garden Exhibition — belysta målningar i skymningsträdgården"
+                />
               </div>
               <figcaption className="mt-3 text-sm text-ink/65 italic text-center md:text-left">
-                <span className="font-serif text-base text-ink not-italic">Phenomenal</span>
-                <span className="mx-2 text-ink/30">·</span>2023
+                <span className="font-serif text-base text-ink not-italic">Evening Garden Exhibition</span>
+                <span className="mx-2 text-ink/30">·</span>Helsingborg
               </figcaption>
             </figure>
           </div>
