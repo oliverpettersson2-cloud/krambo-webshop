@@ -28,12 +28,14 @@ const ICONS: { key: keyof typeof social; label: string; path: string }[] = [
   },
 ];
 
-export default function SocialIcons({ className = "" }: { className?: string }) {
+export default function SocialIcons({ className = "", compact = false }: { className?: string; compact?: boolean }) {
+  const box = compact ? "w-7 h-7" : "w-9 h-9";
+  const glyph = compact ? "w-4 h-4" : "w-5 h-5";
   return (
     <div className={`flex items-center gap-1 ${className}`}>
       {ICONS.map((i) => {
         const icon = (
-          <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className={glyph} fill="currentColor" aria-hidden="true">
             <path d={i.path} />
           </svg>
         );
@@ -44,7 +46,7 @@ export default function SocialIcons({ className = "" }: { className?: string }) 
               key={i.key}
               aria-label={`${i.label} (kommer snart)`}
               title={`${i.label} — kommer snart`}
-              className="w-9 h-9 flex items-center justify-center rounded-full text-ink/30 cursor-default"
+              className={`${box} flex items-center justify-center rounded-full text-ink/30 cursor-default`}
             >
               {icon}
             </span>
@@ -57,7 +59,7 @@ export default function SocialIcons({ className = "" }: { className?: string }) 
             target={i.key === "mail" ? undefined : "_blank"}
             rel={i.key === "mail" ? undefined : "noopener noreferrer"}
             aria-label={i.label}
-            className="w-9 h-9 flex items-center justify-center rounded-full text-ink/60 hover:text-accent hover:bg-ink/5 transition"
+            className={`${box} flex items-center justify-center rounded-full text-ink/60 hover:text-accent hover:bg-ink/5 transition`}
           >
             {icon}
           </a>
