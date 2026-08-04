@@ -3,14 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useCart } from "./CartContext";
 import { getProductById, getFormat } from "@/lib/products";
 import { useLang } from "./LanguageProvider";
 
+// Renderas via portal till <body>: headerns backdrop-blur gör annars att
+// position:fixed spärras in i headerns 64px höga box.
 export default function CartDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { items, setQty, remove } = useCart();
   const { t } = useLang();
   const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!open) return;
@@ -56,11 +62,14 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
     }
   }
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div className={`fixed inset-0 z-50 ${open ? "" : "pointer-events-none"}`} aria-hidden={!open}>
       <div
         onClick={onClose}
-        className={`absolute inset-0 bg-ink/40 transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
+        style={{ opacity: open ? 1 : 0 }}
+        className="absolute inset-0 bg-ink/40 transition-opacity duration-300"
       />
       <aside
         role="dialog"
@@ -144,6 +153,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
           </>
         )}
       </aside>
-    </div>
+    </div>,
+    document.body
   );
 }
