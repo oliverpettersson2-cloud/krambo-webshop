@@ -35,7 +35,7 @@ export async function POST(req: Request) {
             product_data: {
               name: `${p.name} — ${f.name}`,
               description: `Cecilia K. (${p.year}) · ${f.description}`,
-              images: [p.image],
+              images: [`${baseUrl}${p.image}`],
             },
             unit_amount: f.priceSEK * 100,
           },
