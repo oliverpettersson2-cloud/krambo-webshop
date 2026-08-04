@@ -82,13 +82,11 @@ export default function Home() {
                 <video
                   src="/art/video/evening-garden.mp4"
                   poster="/art/video/evening-garden-poster.jpg"
-                  autoPlay
-                  loop
-                  muted
+                  controls
                   playsInline
                   preload="metadata"
                   className="w-full h-auto block"
-                  aria-label="Evening Garden Exhibition — belysta målningar i skymningsträdgården"
+                  aria-label="Cecilia K. — Artist (Evening Garden Exhibition), intervjufilm"
                 />
               </div>
               <figcaption className="mt-3 text-sm text-ink/65 italic text-center md:text-left">
