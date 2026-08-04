@@ -13,6 +13,7 @@ type Exhibition = {
   city: string;
   note?: string;
   note_en?: string;
+  images?: string[]; // foton från utställningen — visas i dialogrutan
   status: "upcoming" | "current" | "past";
 };
 
@@ -61,7 +62,6 @@ function range(e: Exhibition, lang: Lang): string {
 }
 
 function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibition; lang: Lang; onClose: () => void }) {
-  const note = lang === "en" && exhibition.note_en ? exhibition.note_en : exhibition.note;
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
@@ -75,7 +75,7 @@ function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibitio
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={exhibition.title}>
       <div className="absolute inset-0 bg-ink/50" onClick={onClose} />
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8">
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8">
         <button
           onClick={onClose}
           aria-label={lang === "en" ? "Close" : "Stäng"}
@@ -83,18 +83,27 @@ function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibitio
         >
           ✕
         </button>
-        <p className="text-gold uppercase tracking-[0.25em] text-xs font-semibold">{range(exhibition, lang)}</p>
-        <h3 className="font-serif text-3xl mt-3 leading-tight pr-8">{exhibition.title}</h3>
-        <p className="text-ink/70 mt-3">
-          📍 {exhibition.place} · {exhibition.city}
+
+        <h3 className="font-serif text-3xl md:text-4xl leading-tight pr-10">{exhibition.title}</h3>
+        <p className="text-ink/60 mt-2 text-sm">
+          {range(exhibition, lang)} · {exhibition.place} · {exhibition.city}
         </p>
-        {note && <p className="text-ink/70 mt-5 leading-relaxed italic border-l-2 border-gold/60 pl-4">{note}</p>}
-        <p className="text-xs text-ink/40 mt-6">
-          {lang === "en"
-            ? "Curious about a similar exhibition? Contact curator Magnus Florin."
-            : "Nyfiken på en liknande utställning? Kontakta curator Magnus Florin."}{" "}
-          <a className="text-accent hover:underline" href="mailto:k.magnus.florin@gmail.com">k.magnus.florin@gmail.com</a>
-        </p>
+
+        {exhibition.images && exhibition.images.length > 0 && (
+          <div className={`mt-6 grid gap-3 ${exhibition.images.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
+            {exhibition.images.map((src) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={src} src={src} alt={exhibition.title} className="w-full h-auto rounded-lg" />
+            ))}
+          </div>
+        )}
+
+        <a
+          href="mailto:k.magnus.florin@gmail.com?subject=Bokning%20—%20Const%20Collection%20Art%20by%20Cecilia%20K."
+          className="inline-block mt-7 px-6 py-3 bg-ink text-white rounded-full text-sm font-medium hover:bg-accent transition"
+        >
+          {lang === "en" ? "Book a viewing →" : "Boka en visning →"}
+        </a>
       </div>
     </div>
   );
