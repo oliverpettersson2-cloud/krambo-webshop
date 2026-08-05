@@ -216,6 +216,8 @@ export const dict: Dict = {
   "product.video": { sv: "Verket på plexiglas", en: "The artwork on plexiglass" },
   "product.poster": { sv: "Som poster", en: "As poster" },
   "product.original.heading": { sv: "Om originalverket", en: "About the original painting" },
+  "product.readMore": { sv: "Läs mer", en: "Read more" },
+  "product.readLess": { sv: "Visa mindre", en: "Show less" },
   "product.original.contact": { sv: "Kontakta oss direkt för köp av originalmålningen →", en: "Contact us directly to purchase the original painting →" },
 
   // INTERVJU CTA

@@ -18,8 +18,18 @@ export default function Home() {
     <div>
       {/* HERO */}
       <section className="relative bg-ink text-paper overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/art/eden.jpg" alt="" fill className="object-cover opacity-70" priority />
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <video
+            src="/art/video/hero.mp4"
+            poster="/art/video/hero-poster.jpg"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            tabIndex={-1}
+            className="w-full h-full object-cover opacity-70"
+          />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/55 to-ink/10" />
         <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
