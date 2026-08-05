@@ -7,7 +7,7 @@ import { useLang } from "@/components/LanguageProvider";
 
 export default function ProductCard({ product }: { product: Product }) {
   const min = fromPrice(product);
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <Link
       href={`/products/${product.slug}`}
@@ -39,7 +39,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <div className="p-4">
         <p className="text-xs text-ink/50 uppercase tracking-wider">{product.year}</p>
         <h3 className="font-serif text-lg mt-1 italic">{product.name}</h3>
-        <p className="text-sm text-ink/60 mt-1 line-clamp-1">{product.description}</p>
+        <p className="text-sm text-ink/60 mt-1 line-clamp-1">{product.description[lang]}</p>
         <p className="mt-3 font-semibold">{t("card.from")} {min.toLocaleString("sv-SE")} kr</p>
       </div>
     </Link>

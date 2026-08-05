@@ -32,6 +32,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     } catch {}
   };
 
+  // Skärmläsare och sökmotorer ska få rätt språk på dokumentet
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   const t = (key: string) => dict[key]?.[lang] ?? key;
 
   return <Ctx.Provider value={{ lang, setLang, t }}>{children}</Ctx.Provider>;

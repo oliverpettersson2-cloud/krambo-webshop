@@ -71,7 +71,7 @@ export default function IntegritetPage() {
             <li>{isEn ? "Stripe (payment processor) — name, email, payment info" : "Stripe (betalningsleverantör) — namn, mail, betalningsinfo"}</li>
             <li>{isEn ? "The print supplier (for physical prints) — name, delivery address" : "Tryckleverantör (för fysiska tryck) — namn, leveransadress"}</li>
             <li>{isEn ? "The shipping carrier (PostNord etc.) — name, delivery address, phone" : "Fraktbolaget (PostNord m.fl.) — namn, leveransadress, telefon"}</li>
-            <li>{isEn ? "Cloudflare (hosting/security)" : "Cloudflare (hosting/säkerhet)"}</li>
+            <li>{isEn ? "Vercel Analytics & Speed Insights (visitor statistics — only with your consent)" : "Vercel Analytics & Speed Insights (besöksstatistik — endast med ditt samtycke)"}</li>
             <li>{isEn ? "Vercel (hosting)" : "Vercel (hosting)"}</li>
           </ul>
           <p className="mt-3">

@@ -21,6 +21,7 @@ export default function CookieBanner() {
   function accept() {
     try {
       localStorage.setItem(STORAGE_KEY, "accepted");
+      window.dispatchEvent(new Event("cookie-consent-changed"));
     } catch {}
     setVisible(false);
   }
@@ -28,6 +29,7 @@ export default function CookieBanner() {
   function decline() {
     try {
       localStorage.setItem(STORAGE_KEY, "essential-only");
+      window.dispatchEvent(new Event("cookie-consent-changed"));
     } catch {}
     setVisible(false);
   }
@@ -37,7 +39,7 @@ export default function CookieBanner() {
   return (
     <div
       role="dialog"
-      aria-label={isEn ? "Cookie consent" : "Kaksamtycke"}
+      aria-label={isEn ? "Cookie consent" : "Cookie-samtycke"}
       className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 md:max-w-md z-50 bg-ink text-paper rounded-2xl shadow-2xl border border-paper/10"
     >
       <div className="p-5">

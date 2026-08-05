@@ -3,18 +3,24 @@ import Stripe from "stripe";
 import { getProductById, getFormat } from "@/lib/products";
 
 export async function POST(req: Request) {
+  // Deklareras utanför try — catch-blocket behöver språket för sitt felmeddelande
+  let lang: "sv" | "en" = "sv";
+  let en = false;
   try {
-    const { items } = (await req.json()) as {
+    const { items, lang: rawLang } = (await req.json()) as {
       items: { productId: string; formatId: string; qty: number }[];
+      lang?: string;
     };
+    lang = rawLang === "en" ? "en" : "sv";
+    en = lang === "en";
 
     if (!items?.length) {
-      return NextResponse.json({ error: "Kundvagnen är tom" }, { status: 400 });
+      return NextResponse.json({ error: en ? "Your cart is empty" : "Kundvagnen är tom" }, { status: 400 });
     }
 
     if (!process.env.STRIPE_SECRET_KEY) {
       return NextResponse.json(
-        { error: "STRIPE_SECRET_KEY saknas. Kopiera .env.local.example till .env.local och lägg in nycklar." },
+        { error: en ? "Payment is not available right now. Please try again or email us." : "Betalningen är inte tillgänglig just nu. Försök igen eller mejla oss." },
         { status: 500 }
       );
     }
@@ -33,8 +39,8 @@ export async function POST(req: Request) {
           price_data: {
             currency: "sek",
             product_data: {
-              name: `${p.name} — ${f.name}`,
-              description: `Cecilia K. (${p.year}) · ${f.description}`,
+              name: `${p.name} — ${f.name[lang]}`,
+              description: `Cecilia K. (${p.year}) · ${f.description[lang]}`,
               images: [`${baseUrl}${p.image}`],
             },
             unit_amount: f.priceSEK * 100,
@@ -45,7 +51,7 @@ export async function POST(req: Request) {
       .filter((x): x is NonNullable<typeof x> => x !== null);
 
     if (!line_items.length) {
-      return NextResponse.json({ error: "Inga giltiga verk i kundvagnen" }, { status: 400 });
+      return NextResponse.json({ error: en ? "No valid works in your cart" : "Inga giltiga verk i kundvagnen" }, { status: 400 });
     }
 
     const session = await stripe.checkout.sessions.create({
@@ -58,7 +64,7 @@ export async function POST(req: Request) {
           shipping_rate_data: {
             type: "fixed_amount",
             fixed_amount: { amount: 14900, currency: "sek" },
-            display_name: "Försäkrad leverans (5-10 dagar)",
+            display_name: en ? "Insured delivery (5-10 days)" : "Försäkrad leverans (5-10 dagar)",
             delivery_estimate: {
               minimum: { unit: "business_day", value: 5 },
               maximum: { unit: "business_day", value: 10 },
@@ -68,12 +74,15 @@ export async function POST(req: Request) {
       ],
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/cart`,
-      locale: "sv",
+      locale: lang,
     });
 
     return NextResponse.json({ url: session.url });
   } catch (err: any) {
     console.error("Checkout error:", err);
-    return NextResponse.json({ error: err.message || "Internt fel" }, { status: 500 });
+    return NextResponse.json(
+      { error: en ? "Checkout could not be started. Please try again or email us." : "Kassan kunde inte startas. Försök igen eller mejla oss." },
+      { status: 500 }
+    );
   }
 }

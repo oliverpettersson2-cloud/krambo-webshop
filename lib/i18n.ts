@@ -87,8 +87,8 @@ export const dict: Dict = {
   "buy.eyebrow": { sv: "Shopen", en: "The shop" },
   "buy.h2": { sv: "Utvalda verk", en: "Selected works" },
   "buy.p": {
-    sv: "Poster, signerade fine art prints och plexiglastryck i presentlåda. Klarna, kort och Swish via Stripe. Fler verk tillkommer löpande.",
-    en: "Posters, signed fine art prints and plexiglass prints in gift box. Klarna, card and Swish via Stripe. More works are added continuously.",
+    sv: "Poster, signerade fine art prints och plexiglastryck i presentlåda. Kort och Klarna via Stripe. Fler verk tillkommer löpande.",
+    en: "Posters, signed fine art prints and plexiglass prints in gift box. Card and Klarna via Stripe. More works are added continuously.",
   },
   "buy.cta": { sv: "Till shopen →", en: "To the shop →" },
 
@@ -114,8 +114,8 @@ export const dict: Dict = {
   "contact.buyEyebrow": { sv: "Vill du köpa ett verk?", en: "Want to buy a work?" },
   "contact.buyH": { sv: "Köp sker direkt via shopen", en: "Purchase happens directly via the shop" },
   "contact.buyP": {
-    sv: "Poster, fine art print och plexiglastryck. Trygg betalning med kort, Klarna eller Swish via Stripe.",
-    en: "Poster, fine art print and plexiglass print. Secure payment with card, Klarna or Swish via Stripe.",
+    sv: "Poster, fine art print och plexiglastryck. Trygg betalning med kort eller Klarna via Stripe.",
+    en: "Poster, fine art print and plexiglass print. Secure payment with card or Klarna via Stripe.",
   },
   "contact.buyCta": { sv: "Till shopen →", en: "To the shop →" },
 
@@ -123,8 +123,8 @@ export const dict: Dict = {
   "galleri.eyebrow": { sv: "Shop", en: "Shop" },
   "galleri.h1": { sv: "Verken — direkt från konstnären", en: "The works — direct from the artist" },
   "galleri.intro": {
-    sv: "Poster, signerad fine art print eller plexiglas i presentlåda. Klarna, kort och Swish. Hemma hos dig inom 5–10 dagar.",
-    en: "Poster, signed fine art print or plexiglass in gift box. Klarna, card and Swish. Delivered within 5–10 days.",
+    sv: "Poster, signerad fine art print eller plexiglas i presentlåda. Kort och Klarna. Hemma hos dig inom 5–10 dagar.",
+    en: "Poster, signed fine art print or plexiglass in gift box. Card and Klarna. Delivered within 5–10 days.",
   },
   "galleri.works": { sv: "verk", en: "works" },
   "galleri.trust.h1": { sv: "Äkthetsintyg ingår", en: "Certificate of authenticity included" },
@@ -132,7 +132,7 @@ export const dict: Dict = {
   "galleri.trust.h2": { sv: "Försäkrad leverans", en: "Insured delivery" },
   "galleri.trust.p2": { sv: "Packas av professionell konsthandlare.", en: "Packed by a professional art handler." },
   "galleri.trust.h3": { sv: "Trygg betalning", en: "Secure payment" },
-  "galleri.trust.p3": { sv: "Kort, Klarna och Swish via Stripe — färdigintegrerat.", en: "Card, Klarna and Swish via Stripe — fully integrated." },
+  "galleri.trust.p3": { sv: "Trygg betalning med kort eller Klarna via Stripe.", en: "Secure payment by card or Klarna via Stripe." },
 
   // UTSTÄLLNINGAR
   "exh.eyebrow": { sv: "Cecilia i världen", en: "Cecilia in the world" },
@@ -179,7 +179,7 @@ export const dict: Dict = {
   // CART
   "cart.h1": { sv: "Din kundvagn", en: "Your cart" },
   "cart.empty.h": { sv: "Kundvagnen är tom", en: "Your cart is empty" },
-  "cart.empty.p": { sv: "Bläddra galleriet och hitta ett verk.", en: "Browse the gallery to find a work." },
+  "cart.empty.p": { sv: "Bläddra bland verken och hitta ditt.", en: "Browse the gallery to find a work." },
   "cart.empty.cta": { sv: "Till shopen", en: "To the shop" },
   "cart.clear": { sv: "Töm kundvagn", en: "Clear cart" },
   "cart.totalVat": { sv: "Totalt inkl. moms", en: "Total incl. VAT" },
@@ -188,8 +188,8 @@ export const dict: Dict = {
   "cart.perUnit": { sv: "kr/st", en: "kr/each" },
   "cart.error.generic": { sv: "Något gick fel", en: "Something went wrong" },
   "cart.error.stripe": {
-    sv: "Kunde inte ansluta till betalningen. Är Stripe-nycklarna satta i .env.local?",
-    en: "Could not connect to payment. Are the Stripe keys set in .env.local?",
+    sv: "Betalningen kunde inte startas just nu. Försök igen eller mejla oss.",
+    en: "Payment could not be started right now. Please try again or email us.",
   },
 
   // PRODUCT CARD
@@ -211,8 +211,8 @@ export const dict: Dict = {
   "product.back": { sv: "← Tillbaka till shopen", en: "← Back to the shop" },
   "product.trust.1": { sv: "Äkthetsintyg signerat av konstnären (fine art print)", en: "Certificate of authenticity signed by the artist (fine art print)" },
   "product.trust.2": { sv: "Försäkrad leverans inom Sverige", en: "Insured delivery within Sweden" },
-  "product.trust.3": { sv: "14 dagars ångerrätt enligt distansköplagen", en: "14-day right of withdrawal by Swedish law" },
-  "product.trust.4": { sv: "Betala med kort, Klarna eller Swish", en: "Pay with card, Klarna or Swish" },
+  "product.trust.3": { sv: "14 dagars ångerrätt enligt distansavtalslagen", en: "14-day right of withdrawal under Swedish law" },
+  "product.trust.4": { sv: "Betala med kort eller Klarna", en: "Pay with card or Klarna" },
   "product.video": { sv: "Verket på plexiglas", en: "The artwork on plexiglass" },
   "product.poster": { sv: "Som poster", en: "As poster" },
   "product.original.heading": { sv: "Om originalverket", en: "About the original painting" },

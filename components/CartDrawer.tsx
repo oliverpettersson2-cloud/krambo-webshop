@@ -12,7 +12,7 @@ import { useLang } from "./LanguageProvider";
 // position:fixed spärras in i headerns 64px höga box.
 export default function CartDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { items, setQty, remove } = useCart();
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -47,7 +47,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items }),
+        body: JSON.stringify({ items, lang }),
       });
       const data = await res.json();
       if (data.url) {
@@ -107,7 +107,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-medium italic text-sm truncate">{l.product.name}</p>
-                    <p className="text-xs text-ink/60 truncate">{l.format.name}</p>
+                    <p className="text-xs text-ink/60 truncate">{l.format.name[lang]}</p>
                     <div className="flex items-center gap-2 mt-1">
                       <button
                         onClick={() => setQty(l.productId, l.formatId, l.qty - 1)}

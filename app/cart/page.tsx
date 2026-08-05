@@ -10,7 +10,7 @@ import { useLang } from "@/components/LanguageProvider";
 export default function CartPage() {
   const { items, setQty, remove, clear } = useCart();
   const [loading, setLoading] = useState(false);
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   const lines = items
     .map((i) => {
@@ -30,7 +30,7 @@ export default function CartPage() {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items }),
+        body: JSON.stringify({ items, lang }),
       });
       const data = await res.json();
       if (data.url) {
@@ -51,7 +51,7 @@ export default function CartPage() {
         <h1 className="text-3xl font-semibold">{t("cart.empty.h")}</h1>
         <p className="text-ink/60 mt-3">{t("cart.empty.p")}</p>
         <Link
-          href="/"
+          href="/shop"
           className="inline-block mt-8 px-6 py-3 bg-ink text-paper rounded-full font-medium hover:bg-accent transition"
         >
           {t("cart.empty.cta")}
@@ -75,7 +75,7 @@ export default function CartPage() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-medium italic truncate">{l.product.name}</p>
-              <p className="text-sm text-ink/60">{l.format.name} · {l.format.priceSEK.toLocaleString("sv-SE")} {t("cart.perUnit")}</p>
+              <p className="text-sm text-ink/60">{l.format.name[lang]} · {l.format.priceSEK.toLocaleString("sv-SE")} {t("cart.perUnit")}</p>
             </div>
             <div className="flex items-center gap-2">
               <button

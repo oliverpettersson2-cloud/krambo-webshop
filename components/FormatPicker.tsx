@@ -14,7 +14,7 @@ export default function FormatPicker({
 }) {
   const [selectedId, setSelectedId] = useState<string>(product.formats[0].id);
   const selected = product.formats.find((f) => f.id === selectedId)!;
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   return (
     <div>
@@ -35,7 +35,7 @@ export default function FormatPicker({
         >
           {product.formats.map((f) => (
             <option key={f.id} value={f.id}>
-              {f.name} — {f.priceSEK.toLocaleString("sv-SE")} kr
+              {f.name[lang]} — {f.priceSEK.toLocaleString("sv-SE")} kr
             </option>
           ))}
         </select>
@@ -45,11 +45,11 @@ export default function FormatPicker({
       {/* Detaljer för valt format */}
       <div className="mt-3 bg-white border border-ink/10 rounded-xl p-4">
         <div className="flex items-baseline justify-between gap-3">
-          <p className="font-medium">{selected.name}</p>
+          <p className="font-medium">{selected.name[lang]}</p>
           <p className="font-semibold whitespace-nowrap">{selected.priceSEK.toLocaleString("sv-SE")} kr</p>
         </div>
-        <p className="text-sm text-ink/60 mt-1">{selected.description}</p>
-        <p className="text-xs text-ink/50 mt-1">{selected.leadTime}</p>
+        <p className="text-sm text-ink/60 mt-1">{selected.description[lang]}</p>
+        <p className="text-xs text-ink/50 mt-1">{selected.leadTime[lang]}</p>
       </div>
 
       <div className="mt-5">

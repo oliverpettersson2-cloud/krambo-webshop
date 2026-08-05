@@ -54,8 +54,8 @@ export default function KopvillkorPage() {
           </h2>
           <p className="mt-3">
             {isEn
-              ? "Payments are processed via Stripe. Accepted methods: card (Visa, Mastercard), Klarna (invoice or instalments), Swish, Apple Pay and Google Pay. No card details are stored by us — Stripe handles all payment data under PCI DSS Level 1 compliance."
-              : "Betalningar hanteras av Stripe. Godkända metoder: kort (Visa, Mastercard), Klarna (faktura eller delbetalning), Swish, Apple Pay och Google Pay. Vi lagrar inga kortuppgifter — Stripe hanterar alla betalningsdata under PCI DSS Level 1."}
+              ? "Payments are processed via Stripe. Accepted methods: card (Visa, Mastercard), Klarna (invoice or instalments). No card details are stored by us — Stripe handles all payment data under PCI DSS Level 1 compliance."
+              : "Betalningar hanteras av Stripe. Godkända metoder: kort (Visa, Mastercard), Klarna (faktura eller delbetalning). Vi lagrar inga kortuppgifter — Stripe hanterar alla betalningsdata under PCI DSS Level 1."}
           </p>
         </section>
 

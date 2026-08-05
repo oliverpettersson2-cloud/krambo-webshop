@@ -19,7 +19,8 @@ type Exhibition = {
   status: "upcoming" | "current" | "past";
 };
 
-const TODAY = "2026-07";
+// Räknas ut vid rendering så kommande/tidigare aldrig ruttnar
+const TODAY = new Date().toISOString().slice(0, 7);
 
 const exhibitionsRaw: Omit<Exhibition, "status">[] = [
   { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "7-8 augusti", city: "Helsingborg",
