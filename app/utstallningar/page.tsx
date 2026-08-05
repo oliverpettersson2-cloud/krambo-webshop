@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useLang } from "@/components/LanguageProvider";
 import { Lang } from "@/lib/i18n";
 
+type ExhibitionMedia = { type: "image" | "video"; src: string };
+
 type Exhibition = {
   start: string;
   end?: string;
@@ -13,7 +15,7 @@ type Exhibition = {
   city: string;
   note?: string;
   note_en?: string;
-  images?: string[]; // foton från utställningen — visas i dialogrutan
+  media?: ExhibitionMedia[]; // foton/filmer från utställningen — bläddras i dialogrutan
   status: "upcoming" | "current" | "past";
 };
 
@@ -27,15 +29,25 @@ const exhibitionsRaw: Omit<Exhibition, "status">[] = [
     note: "Andra helgen — samma format, ny publik",
     note_en: "Second weekend — same format, new audience" },
   { start: "2025-11", end: "2026-04", title: "BYWRTRS Gallery", place: "Odengatan 15", city: "Stockholm",
-    note: "Soloutställning", note_en: "Solo exhibition" },
-  { start: "2026-02", end: "2026-03", title: "I samarbete med HBGCITY", place: "Södergatan 11 & Södergallerian", city: "Helsingborg" },
+    note: "Soloutställning", note_en: "Solo exhibition",
+    media: [
+      { type: "image", src: "/exhibitions/bywrtrs/1.jpg" },
+      { type: "image", src: "/exhibitions/bywrtrs/2.jpg" },
+      { type: "video", src: "/exhibitions/bywrtrs/3.mp4" },
+    ] },
+  { start: "2026-02", end: "2026-03", title: "I samarbete med HBGCITY", place: "Södergatan 11 & Södergallerian", city: "Helsingborg",
+    media: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ type: "image" as const, src: `/exhibitions/hbgcity/${n}.jpg` })) },
   { start: "2025-11", title: "\"Here Together\" — gruppvisning", place: "Dunkers Kulturhus", city: "Helsingborg",
-    note: "I samarbete med Kulturrumet", note_en: "In collaboration with Kulturrumet" },
-  { start: "2025-08", title: "\"Edenfield Returns\" Evening Garden Exhibition", place: "Norrtäljegatan", city: "Helsingborg" },
-  { start: "2024-12", end: "2025-03", title: "\"Edenfield Sees You\"", place: "Clarion Sea U Hotel", city: "Helsingborg" },
+    note: "I samarbete med Kulturrumet", note_en: "In collaboration with Kulturrumet",
+    media: [1, 2, 3].map((n) => ({ type: "image" as const, src: `/exhibitions/dunkers/${n}.jpg` })) },
+  { start: "2025-08", title: "\"Edenfield Returns\" Evening Garden Exhibition", place: "Norrtäljegatan", city: "Helsingborg",
+    media: [1, 2, 3, 4].map((n) => ({ type: "image" as const, src: `/exhibitions/edenfield-returns-2025/${n}.jpg` })) },
+  { start: "2024-12", end: "2025-03", title: "\"Edenfield Sees You\"", place: "Clarion Sea U Hotel", city: "Helsingborg",
+    media: [{ type: "video", src: "/exhibitions/edenfield-sees-you/1.mp4" }] },
   { start: "2024-08", title: "\"Edenfield\" Evening Garden Exhibition", place: "Norrtäljegatan", city: "Helsingborg",
     note: "Cecilia föredrar utomhus-exhibitioner — där målningarna lyser i mörkret",
-    note_en: "Cecilia prefers outdoor exhibitions — where the paintings glow in the dark" },
+    note_en: "Cecilia prefers outdoor exhibitions — where the paintings glow in the dark",
+    media: [1, 2, 3].map((n) => ({ type: "image" as const, src: `/exhibitions/edenfield-2024/${n}.jpg` })) },
 ];
 
 function getStatus(e: Omit<Exhibition, "status">): Exhibition["status"] {
@@ -62,45 +74,115 @@ function range(e: Exhibition, lang: Lang): string {
 }
 
 function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibition; lang: Lang; onClose: () => void }) {
+  const media = exhibition.media ?? [];
+  const [index, setIndex] = useState(0);
+  const current = media[index];
+
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") setIndex((i) => Math.min(i + 1, media.length - 1));
+      if (e.key === "ArrowLeft") setIndex((i) => Math.max(i - 1, 0));
+    };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [onClose]);
+  }, [onClose, media.length]);
+
+  const arrowClass =
+    "absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-ink shadow-md flex items-center justify-center text-xl transition disabled:opacity-0 disabled:pointer-events-none";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={exhibition.title}>
-      <div className="absolute inset-0 bg-ink/50" onClick={onClose} />
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8">
+      <div className="absolute inset-0 bg-ink/60" onClick={onClose} />
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8">
         <button
           onClick={onClose}
           aria-label={lang === "en" ? "Close" : "Stäng"}
-          className="absolute top-4 right-4 w-9 h-9 rounded-full hover:bg-ink/5 text-ink/60 hover:text-ink transition"
+          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/80 hover:bg-ink/5 text-ink/60 hover:text-ink transition"
         >
           ✕
         </button>
 
-        <h3 className="font-serif text-3xl md:text-4xl leading-tight pr-10">{exhibition.title}</h3>
-        <p className="text-ink/60 mt-2 text-sm">
+        <h3 className="font-serif text-2xl md:text-4xl leading-tight pr-10">{exhibition.title}</h3>
+        <p className="text-ink/60 mt-1.5 text-sm">
           {range(exhibition, lang)} · {exhibition.place} · {exhibition.city}
         </p>
 
-        {exhibition.images && exhibition.images.length > 0 && (
-          <div className={`mt-6 grid gap-3 ${exhibition.images.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
-            {exhibition.images.map((src) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={src} src={src} alt={exhibition.title} className="w-full h-auto rounded-lg" />
-            ))}
+        {media.length > 0 && (
+          <div className="mt-5">
+            {/* Huvudvy */}
+            <div className="relative bg-ink rounded-xl overflow-hidden flex items-center justify-center min-h-[240px]">
+              {current.type === "image" ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img key={current.src} src={current.src} alt={exhibition.title} className="w-full max-h-[52vh] object-contain" />
+              ) : (
+                <video
+                  key={current.src}
+                  src={current.src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full max-h-[52vh] object-contain"
+                />
+              )}
+              {media.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setIndex((i) => Math.max(i - 1, 0))}
+                    disabled={index === 0}
+                    aria-label={lang === "en" ? "Previous" : "Föregående"}
+                    className={`${arrowClass} left-3`}
+                  >
+                    ‹
+                  </button>
+                  <button
+                    onClick={() => setIndex((i) => Math.min(i + 1, media.length - 1))}
+                    disabled={index === media.length - 1}
+                    aria-label={lang === "en" ? "Next" : "Nästa"}
+                    className={`${arrowClass} right-3`}
+                  >
+                    ›
+                  </button>
+                  <span className="absolute bottom-2.5 right-3 text-xs text-white/80 bg-ink/50 rounded-full px-2 py-0.5">
+                    {index + 1} / {media.length}
+                  </span>
+                </>
+              )}
+            </div>
+
+            {/* Tumnaglar */}
+            {media.length > 1 && (
+              <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+                {media.map((m, i) => (
+                  <button
+                    key={m.src}
+                    onClick={() => setIndex(i)}
+                    aria-label={`${i + 1}`}
+                    className={`relative w-16 h-16 shrink-0 rounded-lg overflow-hidden border-2 transition ${
+                      i === index ? "border-accent" : "border-transparent opacity-70 hover:opacity-100"
+                    }`}
+                  >
+                    {m.type === "image" ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={m.src} alt="" className="w-full h-full object-cover" />
+                    ) : (
+                      <span className="w-full h-full bg-ink flex items-center justify-center text-white text-lg">▶</span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
         <a
           href="mailto:k.magnus.florin@gmail.com?subject=Bokning%20—%20Const%20Collection%20Art%20by%20Cecilia%20K."
-          className="inline-block mt-7 px-6 py-3 bg-ink text-white rounded-full text-sm font-medium hover:bg-accent transition"
+          className="inline-block mt-6 px-6 py-3 bg-ink text-white rounded-full text-sm font-medium hover:bg-accent transition"
         >
           {lang === "en" ? "Book a viewing →" : "Boka en visning →"}
         </a>
