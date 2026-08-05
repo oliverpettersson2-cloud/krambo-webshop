@@ -73,6 +73,11 @@ function range(e: Exhibition, lang: Lang): string {
   return `${fmt(e.start, lang)} – ${fmt(e.end, lang)}`;
 }
 
+// Tumnagel enligt konvention: /exhibitions/<slug>/thumbs/<n>.jpg (även för filmer — bildruta ur videon)
+function thumbOf(m: ExhibitionMedia): string {
+  return m.src.replace(/\/([^/]+)\.(jpg|mp4)$/, "/thumbs/$1.jpg");
+}
+
 function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibition; lang: Lang; onClose: () => void }) {
   const media = exhibition.media ?? [];
   const [index, setIndex] = useState(0);
@@ -299,12 +304,43 @@ export default function UtstallningarPage() {
                   onClick={() => setSelected(e)}
                   className="block w-full text-left group rounded-lg -m-2 p-2 transition hover:bg-white/70"
                 >
-                  <p className="text-xs text-ink/50 uppercase tracking-widest font-medium">{range(e, lang)}</p>
-                  <h3 className="font-serif text-2xl mt-1 group-hover:text-accent transition">{e.title}</h3>
-                  <p className="text-ink/70 mt-1">{e.place} · {e.city}</p>
-                  <p className="text-xs text-accent/70 mt-2 opacity-0 group-hover:opacity-100 transition">
-                    {lang === "en" ? "Read more →" : "Läs mer →"}
-                  </p>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-ink/50 uppercase tracking-widest font-medium">{range(e, lang)}</p>
+                      <h3 className="font-serif text-2xl mt-1 group-hover:text-accent transition">{e.title}</h3>
+                      <p className="text-ink/70 mt-1">{e.place} · {e.city}</p>
+                      {e.media && e.media.length > 0 && (
+                        <p className="text-sm text-accent font-medium mt-2">
+                          {e.media.some((m) => m.type === "video")
+                            ? (lang === "en" ? "View photos & film →" : "Se bilder & film →")
+                            : (lang === "en" ? "View the photos →" : "Se bilderna →")}
+                        </p>
+                      )}
+                    </div>
+                    {e.media && e.media.length > 0 && (
+                      <div className="flex gap-1.5 shrink-0">
+                        {e.media.slice(0, 3).map((m, mi) => (
+                          <span
+                            key={m.src}
+                            className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden ring-1 ring-ink/10 group-hover:ring-accent/40 transition"
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={thumbOf(m)} alt="" loading="lazy" className="w-full h-full object-cover" />
+                            {m.type === "video" && (
+                              <span className="absolute inset-0 flex items-center justify-center bg-ink/25">
+                                <span className="w-7 h-7 rounded-full bg-white/85 text-ink flex items-center justify-center text-[11px] pl-0.5">▶</span>
+                              </span>
+                            )}
+                            {mi === 2 && e.media!.length > 3 && (
+                              <span className="absolute inset-0 flex items-center justify-center bg-ink/55 text-white text-sm font-semibold">
+                                +{e.media!.length - 3}
+                              </span>
+                            )}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </button>
               </li>
             ))}

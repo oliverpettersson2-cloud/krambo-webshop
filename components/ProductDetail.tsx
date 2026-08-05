@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import type { Product } from "@/lib/products";
 import FormatPicker from "@/components/FormatPicker";
@@ -13,6 +13,13 @@ export default function ProductDetail({ product }: { product: Product }) {
   const { t, lang } = useLang();
   const [media, setMedia] = useState<MediaKind>(product.poster ? "poster" : "image");
   const [storyOpen, setStoryOpen] = useState(false);
+  const mediaRef = useRef<HTMLDivElement>(null);
+
+  // Vid formatval: byt media OCH lyft upp verket i synfältet så kunden ser varianten den väljer
+  const handleFormatSelect = (id: string) => {
+    setMedia(id === "plexi-15x20" ? "video" : id.startsWith("poster") && product.poster ? "poster" : "image");
+    mediaRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const story = product.story[lang];
   const isLong = story.length > STORY_CLAMP_LIMIT;
@@ -21,7 +28,7 @@ export default function ProductDetail({ product }: { product: Product }) {
     <div className="max-w-6xl mx-auto px-6 py-10">
       <Link href="/shop" className="text-sm text-ink/60 hover:text-ink">{t("product.back")}</Link>
       <div className="grid md:grid-cols-2 gap-12 mt-6">
-        <div>
+        <div ref={mediaRef} className="scroll-mt-24">
           <ProductMedia product={product} active={media} onChange={setMedia} />
         </div>
         <div>
@@ -48,14 +55,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           </div>
 
           <div className="mt-8">
-            <FormatPicker
-              product={product}
-              onSelect={(id) =>
-                setMedia(
-                  id === "plexi-15x20" ? "video" : id.startsWith("poster") && product.poster ? "poster" : "image"
-                )
-              }
-            />
+            <FormatPicker product={product} onSelect={handleFormatSelect} />
           </div>
 
           <ul className="mt-10 space-y-2 text-sm text-ink/60 border-t border-ink/10 pt-6">
