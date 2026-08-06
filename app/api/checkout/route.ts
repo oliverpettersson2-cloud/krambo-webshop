@@ -57,9 +57,9 @@ export async function POST(req: Request) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items,
-      // Stripe visar alla metoder som är aktiverade i kontot och som kunden är
-      // behörig för. Aktiverar Cecilia t.ex. Swish dyker den upp utan kodändring.
-      automatic_payment_methods: { enabled: true },
+      // Ingen payment_method_types-lista: Stripe visar då alla metoder som är
+      // aktiverade i kontot och som kunden är behörig för. Aktiverar Cecilia
+      // t.ex. Swish dyker den upp utan att koden behöver ändras.
       billing_address_collection: "required", // Klarna behöver kundens land för att kunna erbjudas
       shipping_address_collection: { allowed_countries: ["SE", "NO", "DK", "FI", "DE", "GB"] },
       shipping_options: [
