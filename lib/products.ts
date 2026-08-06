@@ -6,6 +6,8 @@ export type Format = {
   priceSEK: number;
   description: Localized;
   leadTime: Localized;
+  /** false = tillfälligt dold i butiken (t.ex. leverantörsproblem). Tänd igen genom att ta bort raden. */
+  available?: boolean;
 };
 
 export type Product = {
@@ -64,6 +66,7 @@ const standardFormats = (): Format[] => [
       en: "Signed and numbered art print on Hahnemühle Studio Lustre 250 g archival paper. Limited edition of 40.",
     },
     leadTime: { sv: "7-10 dagar", en: "7-10 days" },
+    available: false, // pausad 2026-08-06: leverantörs- och pappersproblem
   },
   {
     id: "print-50x70",
@@ -74,6 +77,7 @@ const standardFormats = (): Format[] => [
       en: "Signed and numbered art print on Hahnemühle Studio Lustre 250 g archival paper. Limited edition of 40.",
     },
     leadTime: { sv: "7-10 dagar", en: "7-10 days" },
+    available: false, // pausad 2026-08-06: leverantörs- och pappersproblem
   },
   {
     id: "plexi-15x20",
@@ -342,12 +346,17 @@ export function getProductById(id: string): Product | undefined {
   return products.find((p) => p.id === id);
 }
 
+/** Format som faktiskt går att köpa just nu. */
+export function availableFormats(product: Product): Format[] {
+  return product.formats.filter((f) => f.available !== false);
+}
+
 export function getFormat(product: Product, formatId: string): Format | undefined {
-  return product.formats.find((f) => f.id === formatId);
+  return availableFormats(product).find((f) => f.id === formatId);
 }
 
 export function fromPrice(product: Product): number {
-  return Math.min(...product.formats.map((f) => f.priceSEK));
+  return Math.min(...availableFormats(product).map((f) => f.priceSEK));
 }
 
 export function getYears(): number[] {

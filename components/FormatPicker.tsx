@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Product } from "@/lib/products";
+import { availableFormats, type Product } from "@/lib/products";
 import AddToCartButton from "./AddToCartButton";
 import { useLang } from "@/components/LanguageProvider";
 
@@ -12,8 +12,9 @@ export default function FormatPicker({
   product: Product;
   onSelect?: (formatId: string) => void;
 }) {
-  const [selectedId, setSelectedId] = useState<string>(product.formats[0].id);
-  const selected = product.formats.find((f) => f.id === selectedId)!;
+  const formats = availableFormats(product);
+  const [selectedId, setSelectedId] = useState<string>(formats[0].id);
+  const selected = formats.find((f) => f.id === selectedId)!;
   const { t, lang } = useLang();
 
   return (
@@ -33,7 +34,7 @@ export default function FormatPicker({
           }}
           className="w-full appearance-none border border-ink/20 rounded-xl bg-white px-4 py-3.5 pr-10 font-medium text-ink cursor-pointer focus:outline-none focus:border-accent"
         >
-          {product.formats.map((f) => (
+          {formats.map((f) => (
             <option key={f.id} value={f.id}>
               {f.name[lang]} — {f.priceSEK.toLocaleString("sv-SE")} kr
             </option>
