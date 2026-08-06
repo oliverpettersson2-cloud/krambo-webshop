@@ -16,6 +16,7 @@ type Exhibition = {
   note?: string;
   note_en?: string;
   media?: ExhibitionMedia[]; // foton/filmer från utställningen — bläddras i dialogrutan
+  ongoing?: boolean; // pågår tills vidare, utan bestämt slutdatum
   status: "upcoming" | "current" | "past";
 };
 
@@ -29,8 +30,8 @@ const exhibitionsRaw: Omit<Exhibition, "status">[] = [
   { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "14-15 augusti", city: "Helsingborg",
     note: "Andra helgen — samma format, ny publik",
     note_en: "Second weekend — same format, new audience" },
-  { start: "2025-11", end: "2026-04", title: "BYWRTRS Gallery", place: "Odengatan 15", city: "Stockholm",
-    note: "Soloutställning", note_en: "Solo exhibition",
+  { start: "2025-11", title: "BYWRTRS Gallery", place: "Odengatan 15", city: "Stockholm",
+    note: "Soloutställning", note_en: "Solo exhibition", ongoing: true,
     media: [
       { type: "image", src: "/exhibitions/bywrtrs/1.jpg" },
       { type: "image", src: "/exhibitions/bywrtrs/2.jpg" },
@@ -52,6 +53,7 @@ const exhibitionsRaw: Omit<Exhibition, "status">[] = [
 ];
 
 function getStatus(e: Omit<Exhibition, "status">): Exhibition["status"] {
+  if (e.ongoing) return "current";
   const end = e.end ?? e.start;
   if (end < TODAY) return "past";
   if (e.start > TODAY) return "upcoming";
@@ -70,6 +72,7 @@ function fmt(ym: string, lang: Lang): string {
 }
 
 function range(e: Exhibition, lang: Lang): string {
+  if (e.ongoing) return `${fmt(e.start, lang)} – ${lang === "en" ? "ongoing" : "pågår"}`;
   if (!e.end || e.end === e.start) return fmt(e.start, lang);
   return `${fmt(e.start, lang)} – ${fmt(e.end, lang)}`;
 }
@@ -272,18 +275,51 @@ export default function UtstallningarPage() {
         ) : (
           <ul className="space-y-6">
             {upcoming.map((e, i) => (
-              <li key={i} className="flex flex-col md:flex-row md:items-baseline gap-3 md:gap-8 border border-accent/30 bg-accent/5 rounded-xl p-5">
-                <div className="md:w-56 shrink-0">
-                  <p className="text-xs text-ink/60 uppercase tracking-widest font-semibold">{range(e, lang)}</p>
-                  <span className="inline-block mt-2 text-xs bg-accent text-white px-2 py-0.5 rounded-full">
-                    {e.status === "current" ? t("exh.badgeCurrent") : t("exh.badgeUpcoming")}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-serif text-2xl">{e.title}</p>
-                  <p className="text-ink/70 mt-1">{e.place} · {e.city}</p>
-                  {noteFor(e) && <p className="text-sm text-ink/55 mt-2 italic">{noteFor(e)}</p>}
-                </div>
+              <li key={i} className="border border-accent/30 bg-accent/5 rounded-xl p-5">
+                <button
+                  onClick={() => e.media?.length && setSelected(e)}
+                  disabled={!e.media?.length}
+                  className="w-full text-left group flex flex-col md:flex-row md:items-center gap-3 md:gap-8 disabled:cursor-default"
+                >
+                  <div className="md:w-56 shrink-0">
+                    <p className="text-xs text-ink/60 uppercase tracking-widest font-semibold">{range(e, lang)}</p>
+                    <span className="inline-block mt-2 text-xs bg-accent text-white px-2 py-0.5 rounded-full">
+                      {e.status === "current" ? t("exh.badgeCurrent") : t("exh.badgeUpcoming")}
+                    </span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-serif text-2xl group-hover:text-accent transition">{e.title}</p>
+                    <p className="text-ink/70 mt-1">{e.place} · {e.city}</p>
+                    {noteFor(e) && <p className="text-sm text-ink/55 mt-2 italic">{noteFor(e)}</p>}
+                    {e.media && e.media.length > 0 && (
+                      <p className="text-sm text-accent font-medium mt-2">
+                        {e.media.some((m) => m.type === "video")
+                          ? (lang === "en" ? "View photos & film →" : "Se bilder & film →")
+                          : (lang === "en" ? "View the photos →" : "Se bilderna →")}
+                      </p>
+                    )}
+                  </div>
+                  {e.media && e.media.length > 0 && (
+                    <div className="flex gap-1.5 shrink-0">
+                      {e.media.slice(0, 3).map((m, mi) => (
+                        <span key={m.src} className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden ring-1 ring-ink/10 group-hover:ring-accent/40 transition">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={thumbOf(m)} alt="" loading="lazy" className="w-full h-full object-cover" />
+                          {m.type === "video" && (
+                            <span className="absolute inset-0 flex items-center justify-center bg-ink/25">
+                              <span className="w-7 h-7 rounded-full bg-white/85 text-ink flex items-center justify-center text-[11px] pl-0.5">▶</span>
+                            </span>
+                          )}
+                          {mi === 2 && e.media!.length > 3 && (
+                            <span className="absolute inset-0 flex items-center justify-center bg-ink/55 text-white text-sm font-semibold">
+                              +{e.media!.length - 3}
+                            </span>
+                          )}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </button>
               </li>
             ))}
           </ul>
