@@ -26,7 +26,8 @@ const TODAY = new Date().toISOString().slice(0, 7);
 const exhibitionsRaw: Omit<Exhibition, "status">[] = [
   { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "7-8 augusti", city: "Helsingborg",
     note: "Två helger i augusti — kvällsvisning i trädgården där målningarna lyser upp när natten faller",
-    note_en: "Two weekends in August — evening viewing in the garden where the paintings light up as night falls" },
+    note_en: "Two weekends in August — evening viewing in the garden where the paintings light up as night falls",
+    media: [{ type: "video", src: "/exhibitions/tradgardsfest-2026/1.mp4" }] },
   { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "14-15 augusti", city: "Helsingborg",
     note: "Andra helgen — samma format, ny publik",
     note_en: "Second weekend — same format, new audience" },
@@ -225,14 +226,31 @@ export default function UtstallningarPage() {
       {/* TRÄDGÅRDSFEST — utvalt event med affisch */}
       <section className="bg-warm py-12">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="grid md:grid-cols-[280px_1fr] gap-8 items-center">
-            <div className="rounded-lg overflow-hidden shadow-xl bg-white">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={lang === "en" ? "/art/tradgardsfest-en.jpg" : "/art/tradgardsfest-sv.jpg"}
-                alt="Kvällskonst 2026 — Trädgårdsfesten"
-                className="w-full h-auto block"
-              />
+          <div className="grid md:grid-cols-[280px_1fr] gap-8 items-start">
+            <div className="space-y-4">
+              <div className="rounded-lg overflow-hidden shadow-xl bg-white">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={lang === "en" ? "/art/tradgardsfest-en.jpg" : "/art/tradgardsfest-sv.jpg"}
+                  alt="Kvällskonst 2026 — Trädgårdsfesten"
+                  className="w-full h-auto block"
+                />
+              </div>
+              {/* Film från helgens utställning — bredvid affischen */}
+              <figure>
+                <video
+                  src="/exhibitions/tradgardsfest-2026/1.mp4"
+                  poster="/exhibitions/tradgardsfest-2026/thumbs/1.jpg"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-auto block rounded-lg shadow-xl bg-ink"
+                  aria-label={lang === "en" ? "Film from the exhibition" : "Film från utställningen"}
+                />
+                <figcaption className="mt-2 text-xs text-ink/55 italic text-center">
+                  {lang === "en" ? "Film from the exhibition" : "Film från utställningen"}
+                </figcaption>
+              </figure>
             </div>
             <div>
               <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">
@@ -252,6 +270,9 @@ export default function UtstallningarPage() {
                   {lang === "en" ? "Cancelled if heavy rain." : "Ställs in vid mycket regn."}
                 </li>
               </ul>
+              <p className="mt-4 text-sm text-ink/70 border-l-2 border-gold/60 pl-3">
+                {t("exh.originalRule")}
+              </p>
             </div>
           </div>
         </div>

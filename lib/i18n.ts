@@ -218,7 +218,14 @@ export const dict: Dict = {
   "product.original.heading": { sv: "Om originalverket", en: "About the original painting" },
   "product.readMore": { sv: "Läs mer", en: "Read more" },
   "product.readLess": { sv: "Visa mindre", en: "Show less" },
-  "product.original.contact": { sv: "Kontakta oss direkt för köp av originalmålningen →", en: "Contact us directly to purchase the original painting →" },
+  "product.original.rule": {
+    sv: "Originalverk säljs endast vid utställningstillfälle, med letter of authentication.",
+    en: "Original works are sold only at exhibitions, with a letter of authentication.",
+  },
+  "exh.originalRule": {
+    sv: "Originalverk säljs endast vid utställningstillfälle, med letter of authentication.",
+    en: "Original works are sold only at exhibitions, with a letter of authentication.",
+  },
 
   // INTERVJU CTA
   "interview.moreH": { sv: "Vill du veta mer?", en: "Want to know more?" },
