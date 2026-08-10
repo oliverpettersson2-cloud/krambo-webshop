@@ -7,7 +7,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ConsentedAnalytics from "@/components/ConsentedAnalytics";
 import CookieBanner from "@/components/CookieBanner";
-import { Analytics } from "@vercel/analytics/next";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],

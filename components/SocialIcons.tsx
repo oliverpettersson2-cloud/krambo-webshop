@@ -29,7 +29,7 @@ const ICONS: { key: keyof typeof social; label: string; path: string }[] = [
 ];
 
 export default function SocialIcons({ className = "", compact = false }: { className?: string; compact?: boolean }) {
-  const box = compact ? "w-7 h-7" : "w-9 h-9";
+  const box = compact ? "w-7 h-7 shrink-0" : "w-9 h-9 shrink-0";
   const glyph = compact ? "w-4 h-4" : "w-5 h-5";
   return (
     <div className={`flex items-center gap-1 ${className}`}>

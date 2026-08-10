@@ -16,6 +16,11 @@ export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const openDrawer = () => {
+    setMenuOpen(false); // annars ligger mobilmenyn kvar öppen bakom luckan
+    setDrawerOpen(true);
+  };
+
   // Stäng mobilmenyn vid sidbyte
   useEffect(() => setMenuOpen(false), [pathname]);
 
@@ -24,6 +29,7 @@ export default function Header() {
     { href: "/utstallningar", label: t("nav.exhibitions") },
     { href: "/shop", label: t("nav.gallery") },
     { href: "/intervju", label: t("nav.interview") },
+    { href: "/kontakt", label: t("footer.contact") },
   ];
 
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
@@ -32,11 +38,11 @@ export default function Header() {
     <header className="border-b border-ink/10 bg-paper/95 sticky top-0 z-20 backdrop-blur">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 min-h-16 py-2 flex items-center justify-between gap-3">
         <div className="shrink min-w-0">
-          <Link href="/" className="font-serif font-medium tracking-wide text-base md:text-lg block truncate">
+          <Link href="/" className="font-serif font-medium tracking-wide text-base lg:text-lg block truncate">
             Const Collection Art by Cecilia K<span className="text-accent">.</span>
           </Link>
           {/* Sociala ikoner under namnet — endast desktop; mobilen har dem i menyn */}
-          <SocialIcons compact className="hidden md:flex justify-center mt-0.5" />
+          <SocialIcons compact className="hidden lg:flex justify-center mt-0.5" />
         </div>
 
         {/* Desktop-nav */}
@@ -64,7 +70,7 @@ export default function Header() {
 
           {/* Kundvagn: ikon på mobil, ikon + text på större skärmar */}
           <button
-            onClick={() => setDrawerOpen(true)}
+            onClick={openDrawer}
             aria-haspopup="dialog"
             aria-expanded={drawerOpen}
             aria-label={t("nav.cart")}
@@ -97,9 +103,12 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobilmeny */}
+      {/* Mobilmeny — tapp utanför stänger den */}
       {menuOpen && (
-        <nav className="md:hidden border-t border-ink/10 bg-paper">
+        <div className="md:hidden fixed inset-0 top-16 z-10 bg-ink/20" onClick={() => setMenuOpen(false)} aria-hidden="true" />
+      )}
+      {menuOpen && (
+        <nav className="md:hidden relative z-20 border-t border-ink/10 bg-paper">
           {navItems.map((item) => (
             <Link
               key={item.href}

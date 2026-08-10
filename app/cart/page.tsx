@@ -64,34 +64,48 @@ export default function CartPage() {
     <div className="max-w-4xl mx-auto px-6 py-10">
       <h1 className="text-3xl font-semibold">{t("cart.h1")}</h1>
 
+      {/* Raderna staplas: på en enda rad blev namn och format 0 px breda på mobil och texten spillde över knapparna */}
       <div className="mt-8 space-y-4">
         {lines.map((l) => (
           <div
             key={`${l.productId}-${l.formatId}`}
-            className="flex gap-4 items-center bg-white border border-ink/10 rounded-xl p-3"
+            className="bg-white border border-ink/10 rounded-xl p-3"
           >
-            <div className="relative w-20 h-20 bg-white rounded-lg overflow-hidden shrink-0">
-              <Image src={l.product.image} alt={l.product.name} fill className="object-contain p-1" sizes="80px" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="font-medium italic truncate">{l.product.name}</p>
-              <p className="text-sm text-ink/60">{l.format.name[lang]} · {l.format.priceSEK.toLocaleString("sv-SE")} {t("cart.perUnit")}</p>
-            </div>
-            <div className="flex items-center gap-2">
+            <div className="flex gap-4 items-start">
+              <div className="relative w-20 h-20 bg-white rounded-lg overflow-hidden shrink-0">
+                <Image src={l.product.image} alt={l.product.name} fill className="object-contain p-1" sizes="80px" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-medium italic">{l.product.name}</p>
+                <p className="text-sm text-ink/60">{l.format.name[lang]}</p>
+                <p className="text-sm text-ink/60">
+                  {l.format.priceSEK.toLocaleString("sv-SE")} {t("cart.perUnit")}
+                </p>
+              </div>
               <button
-                onClick={() => setQty(l.productId, l.formatId, l.qty - 1)}
-                className="w-8 h-8 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
-              >−</button>
-              <span className="w-6 text-center">{l.qty}</span>
-              <button
-                onClick={() => setQty(l.productId, l.formatId, l.qty + 1)}
-                className="w-8 h-8 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
-              >+</button>
+                onClick={() => remove(l.productId, l.formatId)}
+                aria-label={t("cart.removeLine")}
+                className="w-10 h-10 -mt-1 -mr-1 shrink-0 flex items-center justify-center rounded-full text-ink/40 hover:text-accent hover:bg-ink/5"
+              >✕</button>
             </div>
-            <p className="w-28 text-right font-semibold">
-              {l.lineTotal.toLocaleString("sv-SE")} kr
-            </p>
-            <button onClick={() => remove(l.productId, l.formatId)} className="text-ink/40 hover:text-accent">✕</button>
+            <div className="flex items-center justify-between gap-3 mt-3 pt-3 border-t border-ink/5">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setQty(l.productId, l.formatId, l.qty - 1)}
+                  aria-label="−"
+                  className="w-10 h-10 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
+                >−</button>
+                <span className="w-6 text-center">{l.qty}</span>
+                <button
+                  onClick={() => setQty(l.productId, l.formatId, l.qty + 1)}
+                  aria-label="+"
+                  className="w-10 h-10 rounded-full border border-ink/15 hover:bg-ink hover:text-paper"
+                >+</button>
+              </div>
+              <p className="text-right font-semibold whitespace-nowrap">
+                {l.lineTotal.toLocaleString("sv-SE")} kr
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -103,6 +117,7 @@ export default function CartPage() {
         <div className="md:text-right">
           <p className="text-sm text-ink/60">{t("cart.totalVat")}</p>
           <p className="text-3xl font-semibold mt-1">{total.toLocaleString("sv-SE")} kr</p>
+          <p className="text-xs text-ink/50 mt-1">{t("cart.shippingNote")}</p>
           <button
             onClick={checkout}
             disabled={loading}

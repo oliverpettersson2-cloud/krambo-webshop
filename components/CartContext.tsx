@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useState, ReactNode } from "react";
 import { getProductById, getFormat } from "@/lib/products";
 
 export type CartItem = { productId: string; formatId: string; qty: number };
@@ -12,6 +12,8 @@ type CartCtx = {
   setQty: (productId: string, formatId: string, qty: number) => void;
   clear: () => void;
   count: number;
+  /** true när korgen laddats från localStorage — innan dess kan den inte tömmas säkert */
+  hydrated: boolean;
 };
 
 const Ctx = createContext<CartCtx | null>(null);
@@ -66,11 +68,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
         : prev.map((i) => (sameLine(i, productId, formatId) ? { ...i, qty } : i))
     );
 
-  const clear = () => setItems([]);
+  // Bail out om korgen redan är tom — annars ger varje anrop en ny array,
+  // vilket triggar en ny render och kan skapa en oändlig loop hos anroparen.
+  const clear = useCallback(() => setItems((prev) => (prev.length === 0 ? prev : [])), []);
 
   const count = items.reduce((sum, i) => sum + i.qty, 0);
 
-  return <Ctx.Provider value={{ items, add, remove, setQty, clear, count }}>{children}</Ctx.Provider>;
+  return <Ctx.Provider value={{ items, add, remove, setQty, clear, count, hydrated }}>{children}</Ctx.Provider>;
 }
 
 export function useCart() {

@@ -20,18 +20,21 @@ export default function ProductDetail({ product }: { product: Product }) {
   const mediaForFormat = (id: string): MediaKind =>
     id === "plexi-15x20" && product.video ? "video" : id.startsWith("poster") && product.poster ? "poster" : "image";
 
-  // Format valt → visa rätt bild och lyft upp verket i synfältet
+  // Format valt → visa motsvarande bild. Ingen scroll: på mobil hamnade
+  // formatlistan och köpknappen ~1000 px under vikningen efter hoppet.
   const handleFormatSelect = (id: string) => {
     setFormatId(id);
     setMedia(mediaForFormat(id));
-    mediaRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  // Bild vald → hoppa till motsvarande format, så media och pris alltid hör ihop
+  // Bild vald → byt format bara om det valda formatet hör till en ANNAN vy.
+  // Annars nollställdes t.ex. "Poster 50×70" till "Poster 40×50" och priset
+  // sjönk tyst från 900 till 500 kr när man bläddrade tillbaka till affischen.
   const handleMediaSelect = (kind: MediaKind) => {
     setMedia(kind);
+    if (mediaForFormat(formatId) === kind) return;
     const match = formats.find((f) => mediaForFormat(f.id) === kind);
-    if (match && match.id !== formatId) setFormatId(match.id);
+    if (match) setFormatId(match.id);
   };
 
   const story = product.story[lang];

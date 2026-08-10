@@ -16,6 +16,10 @@ export default function CookieBanner() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (!stored) setVisible(true);
     } catch {}
+    // Bannern lovar "du kan ändra dig när som helst" — footern kan öppna den igen
+    const reopen = () => setVisible(true);
+    window.addEventListener("cookie-settings-open", reopen);
+    return () => window.removeEventListener("cookie-settings-open", reopen);
   }, []);
 
   function accept() {
@@ -40,7 +44,7 @@ export default function CookieBanner() {
     <div
       role="dialog"
       aria-label={isEn ? "Cookie consent" : "Cookie-samtycke"}
-      className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 md:max-w-md z-50 bg-ink text-paper rounded-2xl shadow-2xl border border-paper/10"
+      className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 md:max-w-md z-40 bg-ink text-paper rounded-2xl shadow-2xl border border-paper/10"
     >
       <div className="p-5">
         <p className="text-sm font-medium">

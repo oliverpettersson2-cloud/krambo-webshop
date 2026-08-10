@@ -1,16 +1,27 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useCart } from "@/components/CartContext";
 import { useLang } from "@/components/LanguageProvider";
 
 export default function SuccessPage() {
-  const { clear } = useCart();
+  const { clear, hydrated } = useCart();
   const { lang } = useLang();
   const isEn = lang === "en";
 
-  useEffect(() => { clear(); }, [clear]);
+  // Töm korgen exakt en gång — inte vid varje render
+  const cleared = useRef(false);
+  useEffect(() => {
+    // Vänta tills korgen laddats — annars skriver hydreringen tillbaka varorna
+    if (!hydrated || cleared.current) return;
+    // Rensa bara efter en riktig betalning — Stripe skickar tillbaka session_id.
+    // Utan kontroll tömdes korgen för vem som helst som råkade öppna /success.
+    const hasSession = new URLSearchParams(window.location.search).has("session_id");
+    if (!hasSession) return;
+    cleared.current = true;
+    clear();
+  }, [clear, hydrated]);
 
   return (
     <div className="max-w-2xl mx-auto px-6 py-24">

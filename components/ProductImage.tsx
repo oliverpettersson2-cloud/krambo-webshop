@@ -18,7 +18,7 @@ export default function ProductImage({ src, alt }: { src: string; alt: string })
           alt={alt}
           className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-500"
         />
-        <div className="absolute top-3 right-3 bg-ink/70 backdrop-blur-sm text-paper rounded-full w-9 h-9 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition">
+        <div className="absolute top-3 right-3 bg-ink/70 backdrop-blur-sm text-paper rounded-full w-9 h-9 flex items-center justify-center text-xs opacity-70 md:opacity-0 md:group-hover:opacity-100 transition">
           🔍
         </div>
       </button>

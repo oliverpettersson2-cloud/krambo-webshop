@@ -204,6 +204,9 @@ export const dict: Dict = {
   "format.pick": { sv: "Välj format", en: "Choose format" },
   "cart.add": { sv: "Lägg i kundvagn", en: "Add to cart" },
   "cart.added": { sv: "Tillagd ✓", en: "Added ✓" },
+  "footer.cookieSettings": { sv: "Cookie-inställningar", en: "Cookie settings" },
+  "cart.removeLine": { sv: "Ta bort", en: "Remove" },
+  "cart.shippingNote": { sv: "Frakt 149 kr tillkommer i kassan.", en: "Shipping 149 kr is added at checkout." },
   "drawer.viewFull": { sv: "Visa varukorgen", en: "View basket" },
   "drawer.close": { sv: "Stäng", en: "Close" },
 
@@ -211,7 +214,7 @@ export const dict: Dict = {
   "product.back": { sv: "← Tillbaka till shopen", en: "← Back to the shop" },
   "product.trust.1": { sv: "Tryckt och godkänt av konstnären själv", en: "Printed and approved by the artist herself" },
   "product.trust.2": { sv: "Försäkrad leverans inom Sverige", en: "Insured delivery within Sweden" },
-  "product.trust.3": { sv: "14 dagars ångerrätt enligt distansavtalslagen", en: "14-day right of withdrawal under Swedish law" },
+  "product.trust.3": { sv: "14 dagars ångerrätt enligt distansavtalslagen (se köpvillkor)", en: "14-day right of withdrawal under Swedish law (see terms)" },
   "product.trust.4": { sv: "Betala med kort eller Klarna", en: "Pay with card or Klarna" },
   "product.video": { sv: "Verket på plexiglas", en: "The artwork on plexiglass" },
   "product.poster": { sv: "Som poster", en: "As poster" },

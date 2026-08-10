@@ -11,7 +11,9 @@ type Exhibition = {
   start: string;
   end?: string;
   title: string;
+  title_en?: string;
   place: string;
+  place_en?: string;
   city: string;
   note?: string;
   note_en?: string;
@@ -24,11 +26,11 @@ type Exhibition = {
 const TODAY = new Date().toISOString().slice(0, 7);
 
 const exhibitionsRaw: Omit<Exhibition, "status">[] = [
-  { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "7-8 augusti", city: "Helsingborg",
+  { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "7-8 augusti", place_en: "7-8 August", city: "Helsingborg",
     note: "Två helger i augusti — kvällsvisning i trädgården där målningarna lyser upp när natten faller",
     note_en: "Two weekends in August — evening viewing in the garden where the paintings light up as night falls",
     media: [{ type: "video", src: "/exhibitions/tradgardsfest-2026/1.mp4" }] },
-  { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "14-15 augusti", city: "Helsingborg",
+  { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "14-15 augusti", place_en: "14-15 August", city: "Helsingborg",
     note: "Andra helgen — samma format, ny publik",
     note_en: "Second weekend — same format, new audience" },
   { start: "2025-11", title: "BYWRTRS Gallery", place: "Odengatan 15", city: "Stockholm",
@@ -38,9 +40,9 @@ const exhibitionsRaw: Omit<Exhibition, "status">[] = [
       { type: "image", src: "/exhibitions/bywrtrs/2.jpg" },
       { type: "video", src: "/exhibitions/bywrtrs/3.mp4" },
     ] },
-  { start: "2026-02", end: "2026-03", title: "I samarbete med HBGCITY", place: "Södergatan 11 & Södergallerian", city: "Helsingborg",
+  { start: "2026-02", end: "2026-03", title: "I samarbete med HBGCITY", title_en: "In collaboration with HBGCITY", place: "Södergatan 11 & Södergallerian", city: "Helsingborg",
     media: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ type: "image" as const, src: `/exhibitions/hbgcity/${n}.jpg` })) },
-  { start: "2025-11", title: "\"Here Together\" — gruppvisning", place: "Dunkers Kulturhus", city: "Helsingborg",
+  { start: "2025-11", title: "\"Here Together\" — gruppvisning", title_en: "\"Here Together\" — group show", place: "Dunkers Kulturhus", city: "Helsingborg",
     note: "I samarbete med Kulturrumet", note_en: "In collaboration with Kulturrumet",
     media: [1, 2, 3].map((n) => ({ type: "image" as const, src: `/exhibitions/dunkers/${n}.jpg` })) },
   { start: "2025-08", title: "\"Edenfield Returns\" Evening Garden Exhibition", place: "Norrtäljegatan", city: "Helsingborg",
@@ -72,6 +74,9 @@ function fmt(ym: string, lang: Lang): string {
   return `${(lang === "en" ? monthsEn : monthsSv)[parseInt(m,10)-1]} ${y}`;
 }
 
+const titleOf = (e: Exhibition, lang: Lang) => (lang === "en" && e.title_en ? e.title_en : e.title);
+const placeOf = (e: Exhibition, lang: Lang) => (lang === "en" && e.place_en ? e.place_en : e.place);
+
 function range(e: Exhibition, lang: Lang): string {
   if (e.ongoing) return `${fmt(e.start, lang)} – ${lang === "en" ? "ongoing" : "pågår"}`;
   if (!e.end || e.end === e.start) return fmt(e.start, lang);
@@ -86,7 +91,9 @@ function thumbOf(m: ExhibitionMedia): string {
 function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibition; lang: Lang; onClose: () => void }) {
   const media = exhibition.media ?? [];
   const [index, setIndex] = useState(0);
-  const current = media[index];
+  // Nollställ vid byte av utställning — annars pekar index utanför den nya listan
+  useEffect(() => setIndex(0), [exhibition]);
+  const current = media[Math.min(index, Math.max(media.length - 1, 0))];
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -106,7 +113,7 @@ function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibitio
     "absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-ink shadow-md flex items-center justify-center text-xl transition disabled:opacity-0 disabled:pointer-events-none";
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={exhibition.title}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={titleOf(exhibition, lang)}>
       <div className="absolute inset-0 bg-ink/60" onClick={onClose} />
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8">
         <button
@@ -117,9 +124,9 @@ function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibitio
           ✕
         </button>
 
-        <h3 className="font-serif text-2xl md:text-4xl leading-tight pr-10">{exhibition.title}</h3>
+        <h3 className="font-serif text-2xl md:text-4xl leading-tight pr-10">{titleOf(exhibition, lang)}</h3>
         <p className="text-ink/60 mt-1.5 text-sm">
-          {range(exhibition, lang)} · {exhibition.place} · {exhibition.city}
+          {range(exhibition, lang)} · {placeOf(exhibition, lang)} · {exhibition.city}
         </p>
 
         {media.length > 0 && (
@@ -128,15 +135,15 @@ function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibitio
             <div className="relative bg-ink rounded-xl overflow-hidden flex items-center justify-center min-h-[240px]">
               {current.type === "image" ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img key={current.src} src={current.src} alt={exhibition.title} className="w-full max-h-[52vh] object-contain" />
+                <img key={current.src} src={current.src} alt={titleOf(exhibition, lang)} className="w-full max-h-[52vh] object-contain" />
               ) : (
                 <video
                   key={current.src}
                   src={current.src}
-                  autoPlay
-                  loop
-                  muted
+                  controls
                   playsInline
+                  preload="metadata"
+                  poster={thumbOf(current)}
                   className="w-full max-h-[52vh] object-contain"
                 />
               )}
@@ -263,7 +270,7 @@ export default function UtstallningarPage() {
                   : "Kvällskonst-utställning ute i trädgården. Ta med egen picknickkorg och filt, sitt en stund och njut av tavlornas skiftande färger när natten faller."}
               </p>
               <ul className="mt-5 space-y-1 text-sm">
-                <li>📅 <strong>7–8 augusti &amp; 14–15 augusti 2026</strong></li>
+                <li>📅 <strong>{lang === "en" ? "7–8 August & 14–15 August 2026" : "7–8 augusti & 14–15 augusti 2026"}</strong></li>
                 <li>🕗 20:30–23:00</li>
                 <li>📍 Norrtäljegatan 13, Helsingborg</li>
                 <li className="text-ink/60 italic mt-2">
@@ -309,8 +316,8 @@ export default function UtstallningarPage() {
                     </span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-serif text-2xl group-hover:text-accent transition">{e.title}</p>
-                    <p className="text-ink/70 mt-1">{e.place} · {e.city}</p>
+                    <p className="font-serif text-2xl group-hover:text-accent transition">{titleOf(e, lang)}</p>
+                    <p className="text-ink/70 mt-1">{placeOf(e, lang)} · {e.city}</p>
                     {noteFor(e) && <p className="text-sm text-ink/55 mt-2 italic">{noteFor(e)}</p>}
                     {e.media && e.media.length > 0 && (
                       <p className="text-sm text-accent font-medium mt-2">
@@ -365,8 +372,8 @@ export default function UtstallningarPage() {
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
                     <div className="flex-1 min-w-0">
                       <p className="text-xs text-ink/50 uppercase tracking-widest font-medium">{range(e, lang)}</p>
-                      <h3 className="font-serif text-2xl mt-1 group-hover:text-accent transition">{e.title}</h3>
-                      <p className="text-ink/70 mt-1">{e.place} · {e.city}</p>
+                      <h3 className="font-serif text-2xl mt-1 group-hover:text-accent transition">{titleOf(e, lang)}</h3>
+                      <p className="text-ink/70 mt-1">{placeOf(e, lang)} · {e.city}</p>
                       {e.media && e.media.length > 0 && (
                         <p className="text-sm text-accent font-medium mt-2">
                           {e.media.some((m) => m.type === "video")

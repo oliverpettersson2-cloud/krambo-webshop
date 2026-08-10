@@ -111,18 +111,18 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
                     <div className="flex items-center gap-2 mt-1">
                       <button
                         onClick={() => setQty(l.productId, l.formatId, l.qty - 1)}
-                        className="w-6 h-6 text-sm rounded-full border border-ink/15 hover:bg-ink hover:text-paper leading-none"
+                        className="w-9 h-9 text-sm rounded-full border border-ink/15 hover:bg-ink hover:text-paper leading-none"
                       >−</button>
                       <span className="w-5 text-center text-sm">{l.qty}</span>
                       <button
                         onClick={() => setQty(l.productId, l.formatId, l.qty + 1)}
-                        className="w-6 h-6 text-sm rounded-full border border-ink/15 hover:bg-ink hover:text-paper leading-none"
+                        className="w-9 h-9 text-sm rounded-full border border-ink/15 hover:bg-ink hover:text-paper leading-none"
                       >+</button>
                     </div>
                   </div>
                   <div className="text-right shrink-0">
                     <p className="text-sm font-semibold whitespace-nowrap">{l.lineTotal.toLocaleString("sv-SE")} kr</p>
-                    <button onClick={() => remove(l.productId, l.formatId)} className="text-ink/40 hover:text-accent text-xs mt-1">✕</button>
+                    <button onClick={() => remove(l.productId, l.formatId)} aria-label={t("cart.removeLine")} className="w-9 h-9 mt-1 ml-auto flex items-center justify-center rounded-full text-ink/40 hover:text-accent hover:bg-ink/5 text-xs">✕</button>
                   </div>
                 </div>
               ))}
@@ -133,6 +133,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
                 <p className="text-sm text-ink/60">{t("cart.totalVat")}</p>
                 <p className="text-2xl font-semibold">{total.toLocaleString("sv-SE")} kr</p>
               </div>
+              <p className="text-xs text-ink/50 mt-1">{t("cart.shippingNote")}</p>
               <div className="grid grid-cols-2 gap-3 mt-4">
                 <Link
                   href="/cart"
