@@ -92,17 +92,18 @@ const avtal = new Document({
       new Paragraph({ spacing: { after: 200 }, children: [new TextRun({ text: "", size: 12 })] }),
       p("Beställare: Cecilia Kristoffersson, enskild näringsidkare, verksamheten Constcollection by Cecilia K. (\"Beställaren\")"),
       p("Adress: Växjögatan 5F, 252 51 Helsingborg"),
-      p("Org.nr: ______________________  ·  E-post: ______________________  ·  Telefon: ______________________"),
+      p("E-post: cecilia.kristoffersson71@gmail.com"),
+      p("Org.nr (personnummer): ______________________  ·  Telefon: ______________________"),
 
       h2("§2 Tjänsten"),
       p("Leverantören levererar och driftar en webshop för Beställaren på domänen constcollection.com. Sajten är publikt live sedan den 1 augusti 2026. I tjänsten ingår:"),
-      bullet("Skräddarsydd webshop med 5 köpformat per verk (poster 40×50, poster 50×70, fine art print 40×50, fine art print 50×70, plexiglas 15×20)."),
+      bullet("Skräddarsydd webshop där varje verk säljs i de köpformat som vid var tid erbjuds i butiken (i dagsläget poster 40×50, poster 50×70 och plexiglas 15×20 i presentlåda). Format kan läggas till, pausas eller tas bort löpande efter Beställarens önskemål, utan att avtalet behöver ändras."),
       bullet("Produktfilmer: visningsvideo av plexiglasverken på respektive produktsida, tekniskt optimerade för webben."),
       bullet("Verkstexter på svenska och engelska under respektive verk."),
       bullet("E-postadresser på egna domänen: uppsättning och löpande drift av cecilia@constcollection.com samt magnus@constcollection.com (ytterligare adresser vid behov)."),
       bullet("Hosting, SSL-certifikat och CDN via Vercel."),
       bullet("Domänhantering via Cloudflare och Namecheap — Beställaren har och behåller fullt ägarskap av domänen, och erhåller egna inloggningsuppgifter till båda tjänsterna."),
-      bullet("Betallösning via Stripe i Beställarens namn: kort och Klarna (Swish aktiveras så snart det stöds i Stripe-kontot). Försäljningsintäkter går direkt till Beställaren."),
+      bullet("Betallösning via Stripe i Beställarens namn: kort och Klarna. Ytterligare betalmetoder kan aktiveras när de finns tillgängliga i Stripe-kontot. Försäljningsintäkter går direkt till Beställaren."),
       bullet("Säkerhetsuppdateringar, backups och buggfixar utan extra kostnad."),
       bullet("Felsökning vid driftproblem: påbörjas och återkopplas till Beställaren inom 24 timmar från felanmälan."),
 
@@ -116,6 +117,7 @@ const avtal = new Document({
       bullet("Faktura utställs var 6:e månad i förskott: 3 894 kr inkl. moms per faktura. Betalningsvillkor 30 dagar."),
       bullet("Inget setup-arvode. Ingen provision på försäljningar."),
       bullet("Årlig prisjustering: +5 %, första gången den 1 januari 2028 och därefter årligen den 1 januari. Priset 649 kr/mån ligger alltså fast hela 2026 och 2027."),
+      p("Betalning sker till Leverantörens konto: Swedbank, clearing 8214-9, kontonummer 944 602 627-1. Ange fakturanumret som meddelande. Leverantören är godkänd för F-skatt och innehar momsregistreringsnummer SE920612119701.", { size: 20 }),
 
       h2("§5 Volym"),
       p("Upp till 30 verk i webshopen ingår i månadsavgiften. För verk därutöver tillkommer 50 kr/mån per påbörjat 10-tal verk (avser utökad datalagring och drift). Exempel: 31–40 verk = +50 kr/mån, 41–50 verk = +100 kr/mån."),
@@ -128,30 +130,40 @@ const avtal = new Document({
       p("Avtalet gäller från den 1 augusti 2026 och löper i 12 månader."),
       p("Uppsägning ska ske skriftligen (till oliver@pathfinderai.se respektive Beställarens e-postadress) senast 3 månader före avtalstidens utgång. Sker ingen uppsägning förlängs avtalet automatiskt med 12 nya månader i taget."),
 
-      h2("§8 Beställarens ansvar"),
+      h2("§8 Konton och åtkomst"),
+      p("Följande tjänster används för att driva webshopen. Ägarskapet framgår nedan och gäller oavsett vem som praktiskt sköter inställningarna. Beställaren erhåller egna inloggningsuppgifter till samtliga tjänster som Beställaren äger."),
+      bullet("Domän (Namecheap) — ägs av Beställaren. Registrerad i Beställarens namn, betald till juli 2028."),
+      bullet("DNS (Cloudflare) — ägs av Beställaren. Leverantören har åtkomst som medlem för drift."),
+      bullet("Betalkonto (Stripe) — ägs av Beställaren. Utbetalningar går till Beställarens eget bankkonto. Leverantören har administratörsbehörighet för teknisk drift, men aldrig åtkomst till uttag eller utbetalningar."),
+      bullet("E-post på domänen — ägs av Beställaren."),
+      bullet("Hosting (Vercel) — ägs och bekostas av Leverantören som del av månadsavgiften."),
+      bullet("Källkod (GitHub) — ägs av Leverantören, se §11."),
+      p("Beställarens bankuppgifter registreras enbart hos Stripe av Beställaren själv och lagras inte av Leverantören."),
+
+      h2("§9 Beställarens ansvar"),
       bullet("Tillhandahåller och underhåller verksfoton, prislista och övrigt innehållsmaterial (t.ex. via delad Drive-mapp)."),
       bullet("Innehar eget Stripe-konto för utbetalningar samt ansvarar för avtal med tryckleverantör."),
       bullet("Ansvarar för korrekta produkt-, moms- och företagsuppgifter samt att försäljningen följer konsument- och e-handelslagstiftning."),
 
-      h2("§9 Leverantörens ansvar"),
+      h2("§10 Leverantörens ansvar"),
       bullet("Levererar tjänsten enligt §2 med rimlig omsorg och professionalitet; teknisk drift enligt best effort."),
       bullet("Skyddar Beställarens innehåll och kunddata enligt GDPR. Vid behov tecknas separat personuppgiftsbiträdesavtal (GDPR art. 28)."),
 
-      h2("§10 Immateriella rättigheter"),
+      h2("§11 Immateriella rättigheter"),
       p("Beställaren äger allt konstnärligt och redaktionellt innehåll på sajten (verksbilder, filmer, texter, biografi) samt domänen constcollection.com."),
       p("Leverantören äger koden och tekniken. Beställaren erhåller en icke-exklusiv nyttjanderätt så länge avtalet gäller."),
       p("Vid avtalets upphörande överlåts allt innehåll enligt första stycket samt domänen fullständigt till Beställaren; Leverantören bistår vid överlämning av dessa. Koden, tekniken och webshoppslösningen omfattas inte av överlåtelsen — de förblir Leverantörens egendom och Beställarens nyttjanderätt till dem upphör när avtalet upphör."),
 
-      h2("§11 Ansvarsbegränsning"),
+      h2("§12 Ansvarsbegränsning"),
       p("Leverantörens skadeståndsansvar är i alla situationer begränsat till motsvarande tre (3) månaders månadsavgift. Följdskador, indirekta skador eller utebliven vinst ersätts inte."),
 
-      h2("§12 Sekretess"),
+      h2("§13 Sekretess"),
       p("Vardera part åtar sig att inte röja konfidentiell information som mottagits från den andra parten."),
 
-      h2("§13 Force majeure"),
+      h2("§14 Force majeure"),
       p("Ingen part ansvarar för fördröjning eller utebliven prestation som beror på omständigheter utanför partens kontroll, såsom driftsstopp hos tredjepartsleverantör (t.ex. Vercel, Stripe, Cloudflare, Namecheap, Zoho)."),
 
-      h2("§14 Tvister"),
+      h2("§15 Tvister"),
       p("På detta avtal tillämpas svensk rätt. Tvist prövas i första hand av Helsingborgs tingsrätt."),
 
       h2("Ort och datum"),

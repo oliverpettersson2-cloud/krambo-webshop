@@ -8,8 +8,10 @@ import { Lang } from "@/lib/i18n";
 type ExhibitionMedia = { type: "image" | "video"; src: string };
 
 type Exhibition = {
-  start: string;
-  end?: string;
+  start: string;          // ÅÅÅÅ-MM
+  end?: string;           // ÅÅÅÅ-MM
+  startDag?: string;      // ÅÅÅÅ-MM-DD — exakt datum för korta evenemang
+  slutDag?: string;       // ÅÅÅÅ-MM-DD
   title: string;
   title_en?: string;
   place: string;
@@ -24,13 +26,14 @@ type Exhibition = {
 
 // Räknas ut vid rendering så kommande/tidigare aldrig ruttnar
 const TODAY = new Date().toISOString().slice(0, 7);
+const IDAG = new Date().toISOString().slice(0, 10);
 
 const exhibitionsRaw: Omit<Exhibition, "status">[] = [
-  { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "7-8 augusti", place_en: "7-8 August", city: "Helsingborg",
+  { start: "2026-08", startDag: "2026-08-07", slutDag: "2026-08-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "7-8 augusti", place_en: "7-8 August", city: "Helsingborg",
     note: "Två helger i augusti — kvällsvisning i trädgården där målningarna lyser upp när natten faller",
     note_en: "Two weekends in August — evening viewing in the garden where the paintings light up as night falls",
     media: [{ type: "video", src: "/exhibitions/tradgardsfest-2026/1.mp4" }] },
-  { start: "2026-08", title: "Trädgårdsfest — Evening Garden Exhibition", place: "14-15 augusti", place_en: "14-15 August", city: "Helsingborg",
+  { start: "2026-08", startDag: "2026-08-14", slutDag: "2026-08-15", title: "Trädgårdsfest — Evening Garden Exhibition", place: "14-15 augusti", place_en: "14-15 August", city: "Helsingborg",
     note: "Andra helgen — samma format, ny publik",
     note_en: "Second weekend — same format, new audience" },
   { start: "2025-11", title: "BYWRTRS Gallery", place: "Odengatan 15", city: "Stockholm",
@@ -57,6 +60,15 @@ const exhibitionsRaw: Omit<Exhibition, "status">[] = [
 
 function getStatus(e: Omit<Exhibition, "status">): Exhibition["status"] {
   if (e.ongoing) return "current";
+  // Dagsexakta datum går före månadsjämförelsen — annars ligger en helghelg
+  // kvar som "pågående" resten av månaden
+  if (e.slutDag || e.startDag) {
+    const slut = e.slutDag ?? e.startDag!;
+    const start = e.startDag ?? e.slutDag!;
+    if (slut < IDAG) return "past";
+    if (start > IDAG) return "upcoming";
+    return "current";
+  }
   const end = e.end ?? e.start;
   if (end < TODAY) return "past";
   if (e.start > TODAY) return "upcoming";
@@ -211,6 +223,8 @@ function ExhibitionDialog({ exhibition, lang, onClose }: { exhibition: Exhibitio
 export default function UtstallningarPage() {
   const { t, lang } = useLang();
   const [selected, setSelected] = useState<Exhibition | null>(null);
+  // Trädgårdsfesten byter från inbjudan till återblick när sista helgen passerat
+  const festenKvar = exhibitions.some((e) => e.startDag && e.status !== "past");
   const upcoming = exhibitions.filter((e) => e.status === "upcoming" || e.status === "current");
   const past = exhibitions.filter((e) => e.status === "past");
   const noteFor = (e: Exhibition) => (lang === "en" && e.note_en) ? e.note_en : e.note;
@@ -261,21 +275,36 @@ export default function UtstallningarPage() {
             </div>
             <div>
               <p className="text-accent uppercase tracking-[0.25em] text-xs font-semibold">
-                {lang === "en" ? "Featured this summer" : "Sommarens höjdpunkt"}
+                {festenKvar
+                  ? (lang === "en" ? "Featured this summer" : "Sommarens höjdpunkt")
+                  : (lang === "en" ? "Summer 2026 — thank you!" : "Sommaren 2026 — tack!")}
               </p>
               <h2 className="font-serif text-3xl md:text-4xl mt-3">Kvällskonst 2026</h2>
               <p className="mt-4 text-ink/80 leading-relaxed">
-                {lang === "en"
-                  ? "Evening art exhibition outdoors in the garden. Bring your own picnic basket and blanket, sit a while and enjoy the shifting colours of the paintings when night falls."
-                  : "Kvällskonst-utställning ute i trädgården. Ta med egen picknickkorg och filt, sitt en stund och njut av tavlornas skiftande färger när natten faller."}
+                {festenKvar
+                  ? (lang === "en"
+                      ? "Evening art exhibition outdoors in the garden. Bring your own picnic basket and blanket, sit a while and enjoy the shifting colours of the paintings when night falls."
+                      : "Kvällskonst-utställning ute i trädgården. Ta med egen picknickkorg och filt, sitt en stund och njut av tavlornas skiftande färger när natten faller.")
+                  : (lang === "en"
+                      ? "Two August weekends in the garden, where the paintings lit up as night fell. Thank you to everyone who came — the film beside gives a glimpse of the evenings."
+                      : "Två augustihelger i trädgården, där målningarna tändes när natten föll. Tack till alla som kom — filmen bredvid ger en glimt av kvällarna.")}
               </p>
               <ul className="mt-5 space-y-1 text-sm">
                 <li>📅 <strong>{lang === "en" ? "7–8 August & 14–15 August 2026" : "7–8 augusti & 14–15 augusti 2026"}</strong></li>
-                <li>🕗 20:30–23:00</li>
                 <li>📍 Norrtäljegatan 13, Helsingborg</li>
-                <li className="text-ink/60 italic mt-2">
-                  {lang === "en" ? "Cancelled if heavy rain." : "Ställs in vid mycket regn."}
-                </li>
+                {festenKvar && <li>🕗 20:30–23:00</li>}
+                {festenKvar && (
+                  <li className="text-ink/60 italic mt-2">
+                    {lang === "en" ? "Cancelled if heavy rain." : "Ställs in vid mycket regn."}
+                  </li>
+                )}
+                {!festenKvar && (
+                  <li className="text-ink/60 italic mt-2">
+                    {lang === "en"
+                      ? "Want to know about the next one? Get in touch with Magnus."
+                      : "Vill du veta när nästa blir av? Hör av dig till Magnus."}
+                  </li>
+                )}
               </ul>
               <p className="mt-4 text-sm text-ink/70 border-l-2 border-gold/60 pl-3">
                 {t("exh.originalRule")}
