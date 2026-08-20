@@ -204,7 +204,6 @@ export const dict: Dict = {
   "format.pick": { sv: "Välj format", en: "Choose format" },
   "cart.add": { sv: "Lägg i kundvagn", en: "Add to cart" },
   "cart.added": { sv: "Tillagd ✓", en: "Added ✓" },
-  "footer.cookieSettings": { sv: "Cookie-inställningar", en: "Cookie settings" },
   "cart.removeLine": { sv: "Ta bort", en: "Remove" },
   "cart.shippingNote": { sv: "Frakt 149 kr tillkommer i kassan.", en: "Shipping 149 kr is added at checkout." },
   "drawer.viewFull": { sv: "Visa varukorgen", en: "View basket" },

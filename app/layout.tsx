@@ -6,7 +6,6 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ConsentedAnalytics from "@/components/ConsentedAnalytics";
-import CookieBanner from "@/components/CookieBanner";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -52,7 +51,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
-            <CookieBanner />
           </CartProvider>
         </LanguageProvider>
         <ConsentedAnalytics />

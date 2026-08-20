@@ -56,7 +56,7 @@ export default function IntegritetPage() {
             <li>{isEn ? "To process and deliver your order (legal basis: contract)" : "För att hantera och leverera din beställning (rättslig grund: avtal)"}</li>
             <li>{isEn ? "For accounting and tax obligations (legal basis: legal obligation)" : "För bokföring och skattekrav (rättslig grund: rättslig förpliktelse)"}</li>
             <li>{isEn ? "To respond to your questions (legal basis: legitimate interest)" : "För att besvara dina frågor (rättslig grund: berättigat intresse)"}</li>
-            <li>{isEn ? "To improve the shop with anonymous analytics (legal basis: consent)" : "För att förbättra sajten via anonym statistik (rättslig grund: samtycke)"}</li>
+            <li>{isEn ? "To improve the shop with cookie-free, anonymous visitor statistics that cannot identify you (legal basis: legitimate interest)" : "För att förbättra sajten via cookiefri, anonym besöksstatistik som inte kan identifiera dig (rättslig grund: berättigat intresse)"}</li>
           </ul>
         </section>
 
@@ -71,7 +71,7 @@ export default function IntegritetPage() {
             <li>{isEn ? "Stripe (payment processor) — name, email, payment info" : "Stripe (betalningsleverantör) — namn, mail, betalningsinfo"}</li>
             <li>{isEn ? "The print supplier (for physical prints) — name, delivery address" : "Tryckleverantör (för fysiska tryck) — namn, leveransadress"}</li>
             <li>{isEn ? "The shipping carrier (PostNord etc.) — name, delivery address, phone" : "Fraktbolaget (PostNord m.fl.) — namn, leveransadress, telefon"}</li>
-            <li>{isEn ? "Vercel Analytics & Speed Insights (visitor statistics — only with your consent)" : "Vercel Analytics & Speed Insights (besöksstatistik — endast med ditt samtycke)"}</li>
+            <li>{isEn ? "Vercel Analytics & Speed Insights (cookie-free, anonymous visitor statistics — no cookies, no personal identification, no cross-site tracking)" : "Vercel Analytics & Speed Insights (cookiefri, anonym besöksstatistik — inga kakor, ingen personlig identifiering, ingen spårning mellan sajter)"}</li>
             <li>{isEn ? "Vercel (hosting)" : "Vercel (hosting)"}</li>
           </ul>
           <p className="mt-3">
@@ -97,8 +97,8 @@ export default function IntegritetPage() {
             {isEn ? "6. Cookies" : "6. Kakor (cookies)"}
           </h2>
           <p className="mt-3">
-            {isEn ? "We use only essential cookies (cart, language preference). No third-party tracking without your consent. See the cookie banner at first visit."
-                  : "Vi använder bara nödvändiga kakor (kundvagn, språkval). Ingen tredjepartsspårning utan ditt samtycke. Se kakbannern vid första besöket."}
+            {isEn ? "We do not use any tracking cookies — which is why you see no cookie banner. The site only stores what is strictly necessary in your browser (cart contents and language choice). Visitor statistics are collected cookie-free via Vercel Analytics: nothing is stored on your device and no individual can be identified."
+                  : "Vi använder inga spårningskakor — därför möts du inte av någon kakbanner. Sajten sparar bara det som är strikt nödvändigt i din webbläsare (kundvagnens innehåll och språkval). Besöksstatistik samlas in cookiefritt via Vercel Analytics: inget lagras på din enhet och ingen enskild person kan identifieras."}
           </p>
         </section>
 
